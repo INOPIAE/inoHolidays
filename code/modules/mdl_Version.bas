@@ -1,9 +1,9 @@
 Attribute VB_Name = "mdl_Version"
 Option Explicit
 
-Public Const strMakroVersion As String = "0.01"
-Public Const dtVersionOf As Date = #8/17/2021#
-Private Const strVBProjects As String = "inoHolidays"
+Public Const strMakroVersion As String = "0.02"
+Public Const dtVersionOf As Date = #8/18/2021#
+Public Const strVBProjects As String = "inoHolidays"
 Private Const strVBComponents As String = "DieseArbeitsmappe"
 
 'Set a reference to "Microsoft Visual Basic For Applications Extensibility 5.3" and to "Microsoft Scripting Runtime"
@@ -11,6 +11,7 @@ Private Const strVBComponents As String = "DieseArbeitsmappe"
 Public Sub Build()
     UpdateXlamFileProperties
     ExportModules
+    Zip_File_Or_Files
 End Sub
 
 Public Sub UpdateXlamFileProperties()

@@ -11,7 +11,7 @@ Public Function Ostern(ByVal Jahr As Integer) As Date
 
     'ermittelt das Datum des Ostersonntags des ausgewählten Jahres
     
-    Dim a, b, c, d, e, F, g, h, i, k, l, m, Wert, Monat, Datum
+    Dim a, b, c, d, e, F, g, h, I, k, l, m, Wert, Monat, Datum
     
     a = Jahr Mod 19
     
@@ -29,11 +29,11 @@ Public Function Ostern(ByVal Jahr As Integer) As Date
     
     h = (19 * a + b - d - g + 15) Mod 30
     
-    i = c \ 4
+    I = c \ 4
     
     k = c Mod 4
     
-    l = (32 + 2 * e + 2 * i - h - k) Mod 7
+    l = (32 + 2 * e + 2 * I - h - k) Mod 7
     
     m = (a + 11 * h + 22 * l) \ 451
     
