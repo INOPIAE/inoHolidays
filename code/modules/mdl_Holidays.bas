@@ -6,8 +6,11 @@ Private clsH As New clsHolidays
 Public ImportRange As Range
 Public ImportJahr As Integer
 Public ImportBln As Boolean
+Public ImportCountry As String
 
 Public Function Ostern(ByVal Jahr As Integer) As Date
+Attribute Ostern.VB_Description = "Gibt das Datum des Ostersonntags des angegeben Jahres zurück."
+Attribute Ostern.VB_ProcData.VB_Invoke_Func = " \n14"
 
     'ermittelt das Datum des Ostersonntags des ausgewählten Jahres
     
@@ -59,15 +62,17 @@ Public Function LetzterAdventSonntag(ByVal Jahr As Integer) As Date
 End Function
 
 Public Sub ImportHolidays()
-    frmImportHoliday.Show
-    
+    With frmImportHoliday
+        .FillForm clsH.Jahr, clsH.Country
+        .Show
+    End With
     If ImportBln = False Then Exit Sub
     
     Dim rng As Range
     Set rng = ImportRange
     
     Dim arr
-    arr = clsH.GetAllHolidays(ImportJahr)
+    arr = clsH.GetAllHolidays(ImportJahr, ImportCountry)
 
     rng.Resize(UBound(arr) + 1, 1).Value = Application.Transpose(arr) ' arr
     Application.DisplayAlerts = False
@@ -84,6 +89,9 @@ Public Sub ImportHolidays()
     
 End Sub
 
-
+Public Function isHoliday(ByVal Datum As Date, _
+    Optional ByVal Country As String = "de", Optional ByVal State As String = vbNullString) As Boolean
+    isHoliday = clsH.isHoliday(Datum, Country, State)
+End Function
 
 

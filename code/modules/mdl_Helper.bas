@@ -1,5 +1,6 @@
 Attribute VB_Name = "mdl_Helper"
 Option Explicit
+Option Private Module
 
 Public Function mdlHelper_FileExists(ByVal strFilePath As String) As Boolean
       mdlHelper_FileExists = False

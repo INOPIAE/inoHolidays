@@ -132,16 +132,16 @@ Private Sub TestIsHolidayFixed()
     'Ausfuehren:
     Datum = #1/1/2020#
     
-    If h.IsHoliday(Datum) = False Then GoTo TestFehlschlag
-    If h.IsHoliday(Datum, "BE") = False Then GoTo TestFehlschlag
+    If h.isHoliday(Datum) = False Then GoTo TestFehlschlag
+    If h.isHoliday(Datum, , "BE") = False Then GoTo TestFehlschlag
         
     Datum = #1/2/2020#
-    If h.IsHoliday(Datum) = True Then GoTo TestFehlschlag
-    If h.IsHoliday(Datum, "BE") = True Then GoTo TestFehlschlag
+    If h.isHoliday(Datum) = True Then GoTo TestFehlschlag
+    If h.isHoliday(Datum, , "BE") = True Then GoTo TestFehlschlag
         
     Datum = #3/8/2020#
-    If h.IsHoliday(Datum) = True Then GoTo TestFehlschlag
-    If h.IsHoliday(Datum, "BE") = False Then GoTo TestFehlschlag
+    If h.isHoliday(Datum) = True Then GoTo TestFehlschlag
+    If h.isHoliday(Datum, , "BE") = False Then GoTo TestFehlschlag
         
     'Validieren:
     
@@ -163,16 +163,16 @@ Private Sub TestIsHolidayDefault()
     
     'Ausfuehren:
     Datum = DateSerial(Year(Now), 1, 1)
-    If h.IsHoliday(Datum) = False Then GoTo TestFehlschlag
-    If h.IsHoliday(Datum, "BE") = False Then GoTo TestFehlschlag
+    If h.isHoliday(Datum) = False Then GoTo TestFehlschlag
+    If h.isHoliday(Datum, , "BE") = False Then GoTo TestFehlschlag
         
     Datum = DateSerial(Year(Now), 1, 2)
-    If h.IsHoliday(Datum) = True Then GoTo TestFehlschlag
-    If h.IsHoliday(Datum, "BE") = True Then GoTo TestFehlschlag
+    If h.isHoliday(Datum) = True Then GoTo TestFehlschlag
+    If h.isHoliday(Datum, , "BE") = True Then GoTo TestFehlschlag
         
     Datum = DateSerial(Year(Now), 3, 8)
-    If h.IsHoliday(Datum) = True Then GoTo TestFehlschlag
-    If h.IsHoliday(Datum, "BE") = False Then GoTo TestFehlschlag
+    If h.isHoliday(Datum) = True Then GoTo TestFehlschlag
+    If h.isHoliday(Datum, , "BE") = False Then GoTo TestFehlschlag
     
     'Validieren:
     

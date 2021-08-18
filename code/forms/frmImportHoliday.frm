@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frmImportHoliday 
    Caption         =   "Feiertage importieren"
-   ClientHeight    =   3555
+   ClientHeight    =   4260
    ClientLeft      =   120
    ClientTop       =   465
    ClientWidth     =   4560
@@ -14,6 +14,10 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
+
+Public Jahr As Integer
+Private Countries() As String
+Public Country As String
 
 Private Sub cmdCancel_Click()
     ImportBln = False
@@ -54,6 +58,34 @@ Private Sub cmdImport_Click()
     
     ImportBln = True
     ImportJahr = Me.txtJahr.Value
+    ImportCountry = Me.cboCountry.Text
     Set ImportRange = rng
     Unload Me
+End Sub
+
+Private Sub UserForm_Initialize()
+    FillCountries
+End Sub
+
+Private Sub FillCountries()
+    Dim strPath As String
+    Dim strFile As String
+    Dim intCount As Integer
+    strPath = AddIns(strVBProjects).Path & "\countrycodes\"
+    strFile = Dir(strPath & "*")
+    Do While strFile <> ""
+        ReDim Preserve Countries(intCount)
+        Dim c() As String
+        c = Split(strFile, ".")
+        Me.cboCountry.AddItem (c(0))
+        intCount = intCount + 1
+        strFile = Dir()
+    Loop
+End Sub
+
+Public Sub FillForm(ByVal j As Integer, ByVal c As String)
+    Jahr = j
+    Country = c
+    Me.txtJahr.Text = Jahr
+    Me.cboCountry.Text = Country
 End Sub

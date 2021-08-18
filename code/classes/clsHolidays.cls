@@ -11,7 +11,8 @@ Option Explicit
 'https://www.datenportal.bmbf.de/portal/de/G122.html
 
 Public Jahr As Integer
-Public country As String
+Public Country As String
+Private Countries() As String
 
 Private Type Holiday
     Datum As Date
@@ -23,8 +24,9 @@ Private Holidays() As Holiday
 
 Private Sub Class_Initialize()
     Jahr = Year(Now)
-    country = "de"
+    Country = "de"
     InitDatumFile
+    FillCountries
 End Sub
 
 Private Sub InitDatum()
@@ -99,7 +101,7 @@ Private Sub InitDatumFile()
     Dim myLine() As String
     FNr = FreeFile
     Dim strFile As String
-    strFile = AddIns(strVBProjects).Path & "\countrycodes\" & country & ".inocsv"
+    strFile = AddIns(strVBProjects).Path & "\countrycodes\" & Country & ".inocsv"
     
     If mdlHelper_FileExists(strFile) = False Then
         InitDatum
@@ -202,17 +204,21 @@ Public Function GetHolidayName(ByVal Datum As Date, Optional ByVal State As Stri
     GetHolidayName = h.Holiday
 End Function
 
-Public Function IsHoliday(ByVal Datum As Date, Optional ByVal State As String = vbNullString) As Boolean
+Public Function isHoliday(ByVal Datum As Date, _
+    Optional ByVal CountryA As String = "de", _
+    Optional ByVal State As String = vbNullString) As Boolean
+    
     Dim h As Holiday
-    If Year(Datum) <> Jahr Then
+    If Year(Datum) <> Jahr Or CountryA <> Country Then
         Jahr = Year(Datum)
-        InitDatum
+        Country = CountryA
+        InitDatumFile
     End If
     h = GetHoldidayByDate(Datum, State)
     If h.Holiday = vbNullString Then
-        IsHoliday = False
+        isHoliday = False
     Else
-        IsHoliday = True
+        isHoliday = True
     End If
 End Function
 
@@ -231,9 +237,10 @@ Public Function GetHolidayStates(ByVal Datum As Date) As String
     End If
 End Function
 
-Public Function GetAllHolidays(ByVal JahrA As Integer) As Variant()
-    If JahrA <> Jahr Then
+Public Function GetAllHolidays(ByVal JahrA As Integer, Optional ByVal CountryA As String = "de") As Variant()
+    If JahrA <> Jahr Or CountryA <> Country Then
         Jahr = JahrA
+        Country = CountryA
         InitDatumFile
     End If
 
@@ -246,3 +253,30 @@ Public Function GetAllHolidays(ByVal JahrA As Integer) As Variant()
     Next
     GetAllHolidays = HArray
 End Function
+
+Public Function GetCountries() As Variant()
+    Dim intCount As Integer
+    Dim CArray()
+    For intCount = 0 To UBound(Countries)
+        ReDim Preserve CArray(intCount)
+         
+        CArray(intCount) = Countries(intCount)
+    Next
+    GetCountries = CArray
+End Function
+
+Private Sub FillCountries()
+    Dim strPath As String
+    Dim strFile As String
+    Dim intCount As Integer
+    strPath = AddIns(strVBProjects).Path & "\countrycodes\"
+    strFile = Dir(strPath & "*")
+    Do While strFile <> ""
+        ReDim Preserve Countries(intCount)
+        Dim c() As String
+        c = Split(strFile, ".")
+        Countries(intCount) = c(0)
+        intCount = intCount + 1
+        strFile = Dir()
+    Loop
+End Sub

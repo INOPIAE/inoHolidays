@@ -1,9 +1,10 @@
 Attribute VB_Name = "mdl_zip"
 Option Explicit
+Option Private Module
 
 'taken from https://www.rondebruin.nl/win/s7/win001.htm
 
-Sub NewZip(sPath)
+Private Sub NewZip(sPath)
 'Create empty Zip File
 'Changed by keepITcool Dec-12-2005
     If Len(Dir(sPath)) > 0 Then Kill sPath
@@ -13,14 +14,14 @@ Sub NewZip(sPath)
 End Sub
 
 
-Function bIsBookOpen(ByVal szBookName As String) As Boolean
+Private Function bIsBookOpen(ByVal szBookName As String) As Boolean
 ' Rob Bovey
     On Error Resume Next
     bIsBookOpen = Not (Application.Workbooks(szBookName) Is Nothing)
 End Function
 
 
-Function Split97(sStr As Variant, sdelim As String) As Variant
+Private Function Split97(sStr As Variant, sdelim As String) As Variant
 'Tom Ogilvy
     Split97 = Evaluate("{""" & _
                        Application.Substitute(sStr, sdelim, """,""") & """}")
@@ -37,7 +38,18 @@ Sub Zip_File_Or_Files()
     FileNameZip = clearPath(strPath & "download_inoHolidays.zip")
     ReDim FName(1)
     FName(0) = clearPath(strPath & "inoHolidays.xlam")
-    FName(1) = clearPath(strPath & "countrycodes\de.inocsv")
+    
+    Dim strFile As String
+    strFile = Dir(strPath & "countrycodes\" & "*.inocsv")
+    Do While strFile <> ""
+        
+        Dim intC As Integer
+        intC = UBound(FName)
+        ReDim Preserve FName(intC)
+        FName(intC) = strPath & "countrycodes\" & strFile
+        strFile = Dir()
+    Loop
+    'FName(1) = clearPath(strPath & "countrycodes\de.inocsv")
 
     If IsArray(FName) = False Then
         'do nothing

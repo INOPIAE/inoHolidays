@@ -1,5 +1,6 @@
 Attribute VB_Name = "mdl_Version"
 Option Explicit
+Option Private Module
 
 Public Const strMakroVersion As String = "0.02"
 Public Const dtVersionOf As Date = #8/18/2021#
