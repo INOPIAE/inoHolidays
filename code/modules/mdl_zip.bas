@@ -36,7 +36,7 @@ Sub Zip_File_Or_Files()
     strPath = AddIns(strVBProjects).Path & "\"
     
     FileNameZip = clearPath(strPath & "download_inoHolidays.zip")
-    ReDim FName(1)
+    ReDim FName(0)
     FName(0) = clearPath(strPath & "inoHolidays.xlam")
     
     Dim strFile As String
@@ -44,7 +44,7 @@ Sub Zip_File_Or_Files()
     Do While strFile <> ""
         
         Dim intC As Integer
-        intC = UBound(FName)
+        intC = UBound(FName) + 1
         ReDim Preserve FName(intC)
         FName(intC) = strPath & "countrycodes\" & strFile
         strFile = Dir()

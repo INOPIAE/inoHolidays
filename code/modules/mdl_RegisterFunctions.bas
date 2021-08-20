@@ -1,5 +1,6 @@
 Attribute VB_Name = "mdl_RegisterFunctions"
 Option Explicit
+'https://jkp-ads.com/Articles/RegisterUDF00.asp
 
 Sub RegisterFunction()
     Dim vArgDescr() As Variant

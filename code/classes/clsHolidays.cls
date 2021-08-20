@@ -118,6 +118,7 @@ Private Sub InitDatumFile()
         Else
             Dim pos As Integer
             Dim intSign As Integer
+            intSign = 1
             pos = InStr(myLine(0), "-")
             If pos = 0 Then
                 pos = InStr(myLine(0), "+")
