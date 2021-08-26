@@ -10,6 +10,7 @@ Public strCmd(4) As String
 Public strFrmInfo(1) As String
 Public strFrmHolidays(7) As String
 Public strFrmFunction(8) As String
+Public strRegister(7) As String
 
 Public Sub germanText()
     strFrmInfo(0) = "Der Quellcode is OpenSource unter AGPLv3 und verfügbar auf "
@@ -59,6 +60,18 @@ Public Sub germanText()
     strSupertip(2) = "Funktion LastAdvent gibt das Datum des 4. Adventsonntags eines gegebenen Jahres zurück."
     strSupertip(3) = ""
     strSupertip(4) = ""
+    
+    strRegister(0) = "GivenYear - Das Jahr für den Ostersonntag an"
+    strRegister(1) = "Gibt das Datum des Ostersonntags des angegeben Jahres (GivenYear) zurück."
+    strRegister(2) = "GivenYear - Das Jahr für den 4. Adventsonntag an"
+    strRegister(3) = "Gibt das Datum des 4. Adventsonntags des angegeben Jahres (GivenYear) zurück."
+    strRegister(4) = "GivenDate - Das Datum das überprüft werden soll"
+    strRegister(5) = "Country - Der Staat (Country) in 2-Zeichen-ISO-Code für den der Feiertag ermittelt werden soll." _
+        & "Standardvorgabe ist 'de'."
+    strRegister(6) = "State - Das Bundesland für das der Feiertag ermittelt werden soll. (siehe Dokumenation)" _
+        & "Es gibt keine Standardvorgabe."
+    strRegister(7) = "Prüft, ob das angegebene Datum (GivenDate) unter Berücksichtigung des Staates und evtl. Bundeslandes ein Feiertag ist."
+
 End Sub
 
 Public Sub englishText()
@@ -96,6 +109,17 @@ Public Sub englishText()
     strLabel(2) = "Funktion LastAdvent"
     strLabel(3) = ""
     strLabel(4) = "Info"
+
+    strRegister(0) = "GivenYear - Year for the Easter Sunday"
+    strRegister(1) = "Returns the date of Easter Sunday of the given year"
+    strRegister(2) = "GivenYear - Year for the 4th Advent Sunday"
+    strRegister(3) = "Returns the date of 4th Advent Sunday of the given year"
+    strRegister(4) = "GivenDate - Date to be checked"
+    strRegister(5) = "Country - Country in 2-letter-ISO-Code for which the holiday shall be checked." _
+        & "Default value is 'de'."
+    strRegister(6) = "State - State for which the holiday shall be checked. (see documantation)" _
+        & "No default value given."
+    strRegister(7) = "Checks whether the given date is a holiday for a given country and tentative state."
 
 End Sub
 
