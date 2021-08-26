@@ -15,7 +15,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 
-Public Jahr As Integer
+Public GivenYear As Integer
 Private Countries() As String
 Public Country As String
 
@@ -26,7 +26,7 @@ End Sub
 
 Private Sub cmdImport_Click()
     If IsNumeric(Me.txtJahr.Value) = False Then
-        MsgBox "Das Jahr muss als Zahl angegeben sein."
+        MsgBox strFrmHolidays(5)
         With Me.txtJahr
             .SetFocus
             .SelStart = 0
@@ -37,7 +37,7 @@ Private Sub cmdImport_Click()
     
     Dim rng As Range
     If Me.reZelle.Value = vbNullString Then
-        MsgBox "Es muss eine Zelle ausgewählt werden."
+        MsgBox strFrmHolidays(6)
         With Me.reZelle
             .SetFocus
             .SelStart = 0
@@ -47,7 +47,7 @@ Private Sub cmdImport_Click()
     End If
     Set rng = Range(Me.reZelle.Value)
     If rng.Cells.Count > 1 Then
-        MsgBox "Es darf nur eine Zelle ausgewählt werden."
+        MsgBox strFrmHolidays(7)
         With Me.reZelle
             .SetFocus
             .SelStart = 0
@@ -57,14 +57,15 @@ Private Sub cmdImport_Click()
     End If
     
     ImportBln = True
-    ImportJahr = Me.txtJahr.Value
-    ImportCountry = Me.cboCountry.Text
+    ImportGivenYear = Me.txtJahr.Value
+    ImportCountry = Me.cboCountry.text
     Set ImportRange = rng
     Unload Me
 End Sub
 
 Private Sub UserForm_Initialize()
     FillCountries
+    InitLanguage
 End Sub
 
 Private Sub FillCountries()
@@ -84,8 +85,19 @@ Private Sub FillCountries()
 End Sub
 
 Public Sub FillForm(ByVal j As Integer, ByVal c As String)
-    Jahr = j
+    GivenYear = j
     Country = c
-    Me.txtJahr.Text = Jahr
-    Me.cboCountry.Text = Country
+    Me.txtJahr.text = GivenYear
+    Me.cboCountry.text = Country
+End Sub
+
+Private Sub InitLanguage()
+    If lc = 0 Then SetLanguage
+    Me.Caption = strFrmHolidays(0)
+    Me.lblJahr.Caption = strFrmHolidays(1)
+    Me.lblCell.Caption = strFrmHolidays(2)
+    Me.lblCountry.Caption = strFrmHolidays(3)
+    Me.lblInfo.Caption = strFrmHolidays(4)
+    Me.cmdCancel.Caption = strCmd(1)
+    Me.cmdImport.Caption = strCmd(2)
 End Sub

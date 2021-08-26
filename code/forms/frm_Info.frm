@@ -20,7 +20,9 @@ Private Sub cmdOK_Click()
 End Sub
 
 Private Sub UserForm_Initialize()
+    If lc = 0 Then SetLanguage
     Me.lblTitle.Caption = "inoHolidays Version " & strMakroVersion & " (" & dtVersionOf & ")"
     Me.lblCopyright.Caption = "Copyright 2021 - " & Year(Date)
-    Me.lblInfo.Caption = strfrmInfo(0) & "https://github.com/INOPIAE/inoHolidays"
+    Me.lblInfo.Caption = strFrmInfo(0) & "https://github.com/INOPIAE/inoHolidays"
+    Me.cmdOK.Caption = strCmd(0)
 End Sub

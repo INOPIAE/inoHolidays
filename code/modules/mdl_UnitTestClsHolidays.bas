@@ -41,30 +41,30 @@ Private Sub TestGetHolidayNameFixed()
     
     'Einrichten:
     Dim h As New clsHolidays
-    Dim Datum As Date
+    Dim GivenDate As Date
     Dim Feiertag As String
     
     'Ausfuehren:
-    Datum = #1/1/2020#
+    GivenDate = #1/1/2020#
     
-    Feiertag = h.GetHolidayName(Datum)
-    If Feiertag <> "Neujahr" Then GoTo TestFehlschlag
+    Feiertag = h.GetHolidayName(GivenDate)
+    If Feiertag <> "NeuGivenYear" Then GoTo TestFehlschlag
         
-    Feiertag = h.GetHolidayName(Datum, "BE")
-    If Feiertag <> "Neujahr" Then GoTo TestFehlschlag
+    Feiertag = h.GetHolidayName(GivenDate, "BE")
+    If Feiertag <> "NeuGivenYear" Then GoTo TestFehlschlag
         
-    Datum = #1/2/2020#
-    Feiertag = h.GetHolidayName(Datum)
+    GivenDate = #1/2/2020#
+    Feiertag = h.GetHolidayName(GivenDate)
     If Feiertag <> vbNullString Then GoTo TestFehlschlag
 
-    Feiertag = h.GetHolidayName(Datum, "BE")
+    Feiertag = h.GetHolidayName(GivenDate, "BE")
     If Feiertag <> vbNullString Then GoTo TestFehlschlag
         
-    Datum = #3/8/2020#
-    Feiertag = h.GetHolidayName(Datum)
+    GivenDate = #3/8/2020#
+    Feiertag = h.GetHolidayName(GivenDate)
     If Feiertag <> vbNullString Then GoTo TestFehlschlag
 
-    Feiertag = h.GetHolidayName(Datum, "BE")
+    Feiertag = h.GetHolidayName(GivenDate, "BE")
     If Feiertag <> "Int. Frauentag" Then GoTo TestFehlschlag
         
     'Validieren:
@@ -83,32 +83,32 @@ Private Sub TestGetHolidayNameDefault()
     
     'Einrichten:
     Dim h As New clsHolidays
-    Dim Datum As Date
+    Dim GivenDate As Date
     Dim Feiertag As String
     
     'Ausfuehren:
-    Datum = DateSerial(Year(Now), 1, 1)
+    GivenDate = DateSerial(Year(Now), 1, 1)
     
-    Feiertag = h.GetHolidayName(Datum)
-    If Feiertag <> "Neujahr" Then GoTo TestFehlschlag
+    Feiertag = h.GetHolidayName(GivenDate)
+    If Feiertag <> "NeuGivenYear" Then GoTo TestFehlschlag
         
-    Feiertag = h.GetHolidayName(Datum, "BE")
-    If Feiertag <> "Neujahr" Then GoTo TestFehlschlag
+    Feiertag = h.GetHolidayName(GivenDate, "BE")
+    If Feiertag <> "NeuGivenYear" Then GoTo TestFehlschlag
         
-    Datum = DateSerial(Year(Now), 1, 2)
+    GivenDate = DateSerial(Year(Now), 1, 2)
 
-    Feiertag = h.GetHolidayName(Datum)
+    Feiertag = h.GetHolidayName(GivenDate)
     If Feiertag <> vbNullString Then GoTo TestFehlschlag
 
-    Feiertag = h.GetHolidayName(Datum, "BE")
+    Feiertag = h.GetHolidayName(GivenDate, "BE")
     If Feiertag <> vbNullString Then GoTo TestFehlschlag
         
-    Datum = DateSerial(Year(Now), 3, 8)
+    GivenDate = DateSerial(Year(Now), 3, 8)
 
-    Feiertag = h.GetHolidayName(Datum)
+    Feiertag = h.GetHolidayName(GivenDate)
     If Feiertag <> vbNullString Then GoTo TestFehlschlag
 
-    Feiertag = h.GetHolidayName(Datum, "BE")
+    Feiertag = h.GetHolidayName(GivenDate, "BE")
     If Feiertag <> "Int. Frauentag" Then GoTo TestFehlschlag
         
     'Validieren:
@@ -127,21 +127,21 @@ Private Sub TestIsHolidayFixed()
     
     'Einrichten:
     Dim h As New clsHolidays
-    Dim Datum As Date
+    Dim GivenDate As Date
     
     'Ausfuehren:
-    Datum = #1/1/2020#
+    GivenDate = #1/1/2020#
     
-    If h.isHoliday(Datum) = False Then GoTo TestFehlschlag
-    If h.isHoliday(Datum, , "BE") = False Then GoTo TestFehlschlag
+    If h.isHoliday(GivenDate) = False Then GoTo TestFehlschlag
+    If h.isHoliday(GivenDate, , "BE") = False Then GoTo TestFehlschlag
         
-    Datum = #1/2/2020#
-    If h.isHoliday(Datum) = True Then GoTo TestFehlschlag
-    If h.isHoliday(Datum, , "BE") = True Then GoTo TestFehlschlag
+    GivenDate = #1/2/2020#
+    If h.isHoliday(GivenDate) = True Then GoTo TestFehlschlag
+    If h.isHoliday(GivenDate, , "BE") = True Then GoTo TestFehlschlag
         
-    Datum = #3/8/2020#
-    If h.isHoliday(Datum) = True Then GoTo TestFehlschlag
-    If h.isHoliday(Datum, , "BE") = False Then GoTo TestFehlschlag
+    GivenDate = #3/8/2020#
+    If h.isHoliday(GivenDate) = True Then GoTo TestFehlschlag
+    If h.isHoliday(GivenDate, , "BE") = False Then GoTo TestFehlschlag
         
     'Validieren:
     
@@ -159,20 +159,20 @@ Private Sub TestIsHolidayDefault()
     
     'Einrichten:
     Dim h As New clsHolidays
-    Dim Datum As Date
+    Dim GivenDate As Date
     
     'Ausfuehren:
-    Datum = DateSerial(Year(Now), 1, 1)
-    If h.isHoliday(Datum) = False Then GoTo TestFehlschlag
-    If h.isHoliday(Datum, , "BE") = False Then GoTo TestFehlschlag
+    GivenDate = DateSerial(Year(Now), 1, 1)
+    If h.isHoliday(GivenDate) = False Then GoTo TestFehlschlag
+    If h.isHoliday(GivenDate, , "BE") = False Then GoTo TestFehlschlag
         
-    Datum = DateSerial(Year(Now), 1, 2)
-    If h.isHoliday(Datum) = True Then GoTo TestFehlschlag
-    If h.isHoliday(Datum, , "BE") = True Then GoTo TestFehlschlag
+    GivenDate = DateSerial(Year(Now), 1, 2)
+    If h.isHoliday(GivenDate) = True Then GoTo TestFehlschlag
+    If h.isHoliday(GivenDate, , "BE") = True Then GoTo TestFehlschlag
         
-    Datum = DateSerial(Year(Now), 3, 8)
-    If h.isHoliday(Datum) = True Then GoTo TestFehlschlag
-    If h.isHoliday(Datum, , "BE") = False Then GoTo TestFehlschlag
+    GivenDate = DateSerial(Year(Now), 3, 8)
+    If h.isHoliday(GivenDate) = True Then GoTo TestFehlschlag
+    If h.isHoliday(GivenDate, , "BE") = False Then GoTo TestFehlschlag
     
     'Validieren:
     

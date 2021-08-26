@@ -4,31 +4,31 @@ Option Explicit
 Private clsH As New clsHolidays
 
 Public ImportRange As Range
-Public ImportJahr As Integer
+Public ImportGivenYear As Integer
 Public ImportBln As Boolean
 Public ImportCountry As String
 
-Public Function Ostern(ByVal Jahr As Integer) As Date
-Attribute Ostern.VB_Description = "Gibt das Datum des Ostersonntags des angegeben Jahres zurück."
-Attribute Ostern.VB_ProcData.VB_Invoke_Func = " \n14"
+Public Function Easter(ByVal GivenYear As Integer) As Date
+Attribute Easter.VB_Description = "Gibt das Datum des Ostersonntags des angegeben Jahres zurück."
+Attribute Easter.VB_ProcData.VB_Invoke_Func = " \n14"
 
-    'ermittelt das Datum des Ostersonntags des ausgewählten Jahres
+    'calculates the date of Easter of a given year
     
-    Dim a, b, c, d, e, F, g, h, I, k, l, m, Wert, Monat, Datum
+    Dim a, b, c, d, e, f, g, h, I, k, l, m, W, Mon, GivenDate
     
-    a = Jahr Mod 19
+    a = GivenYear Mod 19
     
-    b = Jahr \ 100
+    b = GivenYear \ 100
     
-    c = Jahr Mod 100
+    c = GivenYear Mod 100
     
     d = b \ 4
     
     e = b Mod 4
     
-    F = (b + 8) \ 25
+    f = (b + 8) \ 25
     
-    g = (b - F + 1) \ 3
+    g = (b - f + 1) \ 3
     
     h = (19 * a + b - d - g + 15) Mod 30
     
@@ -40,30 +40,30 @@ Attribute Ostern.VB_ProcData.VB_Invoke_Func = " \n14"
     
     m = (a + 11 * h + 22 * l) \ 451
     
-    Wert = h + l - 7 * m + 22
+    W = h + l - 7 * m + 22
     
-    Monat = 3 - (Wert > 31)
+    Mon = 3 - (W > 31)
     
-    Datum = Wert + 31 * (Wert > 31)
+    GivenDate = W + 31 * (W > 31)
     
-    Ostern = DateSerial(Jahr, Monat, Datum)
+    Easter = DateSerial(GivenYear, Mon, GivenDate)
 
 End Function
 
-Public Function LetzterAdventSonntag(ByVal Jahr As Integer) As Date
+Public Function LastAdvent(ByVal GivenYear As Integer) As Date
     Dim dt As Date
-    dt = DateSerial(Jahr, 12, 24)
+    dt = DateSerial(GivenYear, 12, 24)
     Dim wkday As Integer
     wkday = Weekday(dt, vbMonday)
     If wkday <> 7 Then
         dt = DateAdd("d", -wkday, dt)
     End If
-    LetzterAdventSonntag = dt
+    LastAdvent = dt
 End Function
 
 Public Sub ImportHolidays()
     With frmImportHoliday
-        .FillForm clsH.Jahr, clsH.Country
+        .FillForm clsH.GivenYear, clsH.Country
         .Show
     End With
     If ImportBln = False Then Exit Sub
@@ -72,7 +72,7 @@ Public Sub ImportHolidays()
     Set rng = ImportRange
     
     Dim arr
-    arr = clsH.GetAllHolidays(ImportJahr, ImportCountry)
+    arr = clsH.GetAllHolidays(ImportGivenYear, ImportCountry)
 
     rng.Resize(UBound(arr) + 1, 1).Value = Application.Transpose(arr) ' arr
     Application.DisplayAlerts = False
@@ -89,9 +89,9 @@ Public Sub ImportHolidays()
     
 End Sub
 
-Public Function isHoliday(ByVal Datum As Date, _
+Public Function isHoliday(ByVal GivenDate As Date, _
     Optional ByVal Country As String = "de", Optional ByVal State As String = vbNullString) As Boolean
-    isHoliday = clsH.isHoliday(Datum, Country, State)
+    isHoliday = clsH.isHoliday(GivenDate, Country, State)
 End Function
 
 

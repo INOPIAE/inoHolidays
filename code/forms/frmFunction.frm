@@ -18,77 +18,81 @@ Option Explicit
 Private rngStart As Range
 Private rngValue As Range
 Public strFunction As String
-Private intJahr As Integer
+Private intGivenYear As Integer
 
 Private Sub cmdCancel_Click()
     Unload Me
 End Sub
 
 Private Sub cmdImport_Click()
-    If intJahr > 0 Then
+    If intGivenYear > 0 Then
         Select Case strFunction
             Case "Ostern"
-                rngStart.Formula = "=Ostern(" & Me.reJahr.Value & ")"
+                rngStart.Formula = "=Easter(" & Me.reGivenYear.Value & ")"
             Case "Advent"
-                rngStart.Formula = "=LetzterAdventSonntag(" & Me.reJahr.Value & ")"
+                rngStart.Formula = "=LastAdvent(" & Me.reGivenYear.Value & ")"
         End Select
-        rngStart.NumberFormat = "dd.MM.yyyy"
+        rngStart.NumberFormat = strFrmFunction(5)
         Unload Me
     End If
 End Sub
 
 Private Sub cmdValue_Click()
-    If intJahr > 0 Then
+    If intGivenYear > 0 Then
         Select Case strFunction
             Case "Ostern"
-                rngStart.Value = Ostern(intJahr)
+                rngStart.Value = Easter(intGivenYear)
             Case "Advent"
-                rngStart.Value = LetzterAdventSonntag(intJahr)
+                rngStart.Value = LastAdvent(intGivenYear)
         End Select
-        rngStart.NumberFormat = "dd.MM.yyyy"
+        rngStart.NumberFormat = strFrmFunction(5)
         Unload Me
     End If
 End Sub
 
-Private Sub reJahr_Exit(ByVal Cancel As MSForms.ReturnBoolean)
-    If IsNumeric(Me.reJahr.Value) Then
-        Me.lblJahrValue.Caption = Me.reJahr.Value
-        intJahr = Me.reJahr.Value
+Private Sub reGivenYear_Exit(ByVal Cancel As MSForms.ReturnBoolean)
+    If IsNumeric(Me.reGivenYear.Value) Then
+        Me.lblGivenYearValue.Caption = Me.reGivenYear.Value
+        intGivenYear = Me.reGivenYear.Value
         ShowResult
         Exit Sub
     End If
     
     On Error GoTo Fehler
-    Set rngValue = Range(Me.reJahr.Value)
+    Set rngValue = Range(Me.reGivenYear.Value)
     If rngValue.Cells.Count > 1 Then
-      MsgBox "Bitte nur eine Zelle auswählen!"
+      MsgBox strFrmFunction(6)
       Cancel = True
     End If
     
     If IsNumeric(rngValue.Value) = False Then
-      MsgBox "Die Zelle muss eine Zahl enthalten."
+      MsgBox strFrmFunction(7)
       Cancel = True
     End If
     
     
-    intJahr = rngValue.Value
-    Me.lblJahrValue.Caption = intJahr
+    intGivenYear = rngValue.Value
+    Me.lblJahrValue.Caption = intGivenYear
     ShowResult
     
     Exit Sub
 Fehler:
     Select Case Err.Number
         Case 1004
-            If Me.reJahr.Value <> vbNullString Then
-                MsgBox "Es wurde kein gültiger Bereich eingegeben."
+            If Me.reGivenYear.Value <> vbNullString Then
+                MsgBox strFrmFunction(8)
                 Err.Clear
                 Cancel = True
             End If
             Err.Clear
         Case Else
-            MsgBox Err.Number & " - " & Err.Description, , "Fehler"
+            MsgBox Err.Number & " - " & Err.Description, , strError(0)
     End Select
     
+End Sub
+
+Private Sub lblJahr_Click()
+
 End Sub
 
 Private Sub UserForm_Initialize()
@@ -101,20 +105,25 @@ End Sub
 Private Sub ShowResult()
     Select Case strFunction
         Case "Ostern"
-            Me.lblResult.Caption = Ostern(intJahr)
+            Me.lblResult.Caption = Easter(intGivenYear)
         Case "Advent"
-            Me.lblResult.Caption = LetzterAdventSonntag(intJahr)
+            Me.lblResult.Caption = LastAdvent(intGivenYear)
     End Select
 End Sub
 
 Public Sub InitForm(ByVal strFunctionDef As String)
+    If lc = 0 Then SetLanguage
     strFunction = strFunctionDef
     Select Case strFunction
         Case "Ostern"
-            Me.Caption = "Oster-Funktion"
-            Me.lblInfo = "Die Funktion Ostern(Jahr) gibt das Datum des Ostersonnstags für das gegebene Jahr zurück."
+            Me.Caption = strFrmFunction(1)
+            Me.lblInfo = strFrmFunction(2)
         Case "Advent"
-            Me.Caption = "LetzterAdventSonntag-Funktion"
-            Me.lblInfo = "Die Funktion LetzterAdventSonntag(Jahr) gibt das Datum des 4. Adventsonntags für das gegebene Jahr zurück."
+            Me.Caption = strFrmFunction(3)
+            Me.lblInfo = strFrmFunction(4)
    End Select
+   Me.cmdCancel.Caption = strCmd(1)
+   Me.cmdValue.Caption = strCmd(3)
+   Me.cmdImport.Caption = strCmd(4)
+   Me.lblJahr.Caption = strFrmFunction(0)
 End Sub

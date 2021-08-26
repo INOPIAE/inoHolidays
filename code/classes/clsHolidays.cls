@@ -10,12 +10,12 @@ Attribute VB_Exposed = False
 Option Explicit
 'https://www.datenportal.bmbf.de/portal/de/G122.html
 
-Public Jahr As Integer
+Public GivenYear As Integer
 Public Country As String
 Private Countries() As String
 
 Private Type Holiday
-    Datum As Date
+    GivenDate As Date
     Holiday As String
     State() As Variant
 End Type
@@ -23,80 +23,80 @@ End Type
 Private Holidays() As Holiday
 
 Private Sub Class_Initialize()
-    Jahr = Year(Now)
+    GivenYear = Year(Now)
     Country = "de"
-    InitDatumFile
+    InitDateFile
     FillCountries
 End Sub
 
-Private Sub InitDatum()
+Private Sub InitDate()
     ReDim Holidays(16)
-    Holidays(0).Datum = DateSerial(Jahr, 1, 1)
-    Holidays(0).Holiday = "Neujahr"
+    Holidays(0).GivenDate = DateSerial(GivenYear, 1, 1)
+    Holidays(0).Holiday = "NeuGivenYear"
     Holidays(0).State = Array("All")
-    Holidays(1).Datum = DateSerial(Jahr, 1, 6)
+    Holidays(1).GivenDate = DateSerial(GivenYear, 1, 6)
     Holidays(1).Holiday = "Drei Hl. Könige"
     Holidays(1).State = Array("BY", "ST", "BW")
-    Holidays(2).Datum = DateSerial(Jahr, 3, 8)
+    Holidays(2).GivenDate = DateSerial(GivenYear, 3, 8)
     Holidays(2).Holiday = "Int. Frauentag"
     Holidays(2).State = Array("BE")
     Dim Ostersonntag As Date
-    Ostersonntag = Ostern(Jahr)
-    Holidays(3).Datum = DateAdd("d", -2, Ostersonntag)
+    Ostersonntag = Easter(GivenYear)
+    Holidays(3).GivenDate = DateAdd("d", -2, Ostersonntag)
     Holidays(3).Holiday = "Karfreitag"
     Holidays(3).State = Array("All")
-    Holidays(4).Datum = Ostersonntag
+    Holidays(4).GivenDate = Ostersonntag
     Holidays(4).Holiday = "Ostersonntag"
     Holidays(4).State = Array("All")
-    Holidays(5).Datum = DateAdd("d", 1, Ostersonntag)
+    Holidays(5).GivenDate = DateAdd("d", 1, Ostersonntag)
     Holidays(5).Holiday = "Ostermontag"
     Holidays(5).State = Array("All")
-    Holidays(6).Datum = DateAdd("d", 39, Ostersonntag)
+    Holidays(6).GivenDate = DateAdd("d", 39, Ostersonntag)
     Holidays(6).Holiday = "Christi Himmelfahrt"
     Holidays(6).State = Array("All")
-    Holidays(7).Datum = DateAdd("d", 50, Ostersonntag)
+    Holidays(7).GivenDate = DateAdd("d", 50, Ostersonntag)
     Holidays(7).Holiday = "Pfingstmontag"
     Holidays(7).State = Array("All")
-    Holidays(8).Datum = DateAdd("d", 60, Ostersonntag)
+    Holidays(8).GivenDate = DateAdd("d", 60, Ostersonntag)
     Holidays(8).Holiday = "Fronleichnam"
     Holidays(8).State = Array("BW", "BY", "HE", "NW", "RP", "SL")
-    Holidays(9).Datum = DateSerial(Jahr, 8, 15)
+    Holidays(9).GivenDate = DateSerial(GivenYear, 8, 15)
     Holidays(9).Holiday = "Maria Himmelfahrt"
     Holidays(9).State = Array("BY", "SL")
-    Holidays(10).Datum = DateSerial(Jahr, 9, 20)
+    Holidays(10).GivenDate = DateSerial(GivenYear, 9, 20)
     Holidays(10).Holiday = "Weltkindertag"
     Holidays(10).State = Array("TH")
-    Holidays(11).Datum = DateSerial(Jahr, 10, 3)
+    Holidays(11).GivenDate = DateSerial(GivenYear, 10, 3)
     Holidays(11).Holiday = "Tag der dt. Einheit"
     Holidays(11).State = Array("All")
-    Holidays(12).Datum = DateSerial(Jahr, 10, 31)
+    Holidays(12).GivenDate = DateSerial(GivenYear, 10, 31)
     Holidays(12).Holiday = "Reformationstag"
     Holidays(12).State = Array("SH", "NI", "HB", "HH", "BB", "ST", "SN", "TH", "MV")
-    Holidays(13).Datum = DateSerial(Jahr, 11, 1)
+    Holidays(13).GivenDate = DateSerial(GivenYear, 11, 1)
     Holidays(13).Holiday = "Allerheiligen"
     Holidays(13).State = Array("BW", "BY", "NW", "RP", "SL")
     Dim LetzterAdvent As Date
-    LetzterAdvent = LetzterAdventSonntag(Jahr)
-    Holidays(14).Datum = DateAdd("d", -32, LetzterAdvent)
+    LetzterAdvent = LastAdvent(GivenYear)
+    Holidays(14).GivenDate = DateAdd("d", -32, LetzterAdvent)
     Holidays(14).Holiday = "Buß- und Bettag"
     Holidays(14).State = Array("SN")
-    Holidays(15).Datum = DateSerial(Jahr, 12, 25)
+    Holidays(15).GivenDate = DateSerial(GivenYear, 12, 25)
     Holidays(15).Holiday = "1. Weihnachtstag"
     Holidays(15).State = Array("All")
-    Holidays(16).Datum = DateSerial(Jahr, 12, 26)
+    Holidays(16).GivenDate = DateSerial(GivenYear, 12, 26)
     Holidays(16).Holiday = "2. Weihnachtstag"
     Holidays(16).State = Array("All")
 
 End Sub
 
-Private Sub InitDatumFile()
+Private Sub InitDateFile()
     Dim FNr As Integer
     Dim intLine As Integer
     Dim DataLine As String
     Dim Ostersonntag As Date
-    Ostersonntag = Ostern(Jahr)
+    Ostersonntag = Easter(GivenYear)
     Dim LetzterAdvent As Date
-    LetzterAdvent = LetzterAdventSonntag(Jahr)
+    LetzterAdvent = LastAdvent(GivenYear)
 
     Dim myLine() As String
     FNr = FreeFile
@@ -104,7 +104,7 @@ Private Sub InitDatumFile()
     strFile = AddIns(strVBProjects).Path & "\countrycodes\" & Country & ".inocsv"
     
     If mdlHelper_FileExists(strFile) = False Then
-        InitDatum
+        InitDate
         Exit Sub
     End If
     
@@ -114,7 +114,7 @@ Private Sub InitDatumFile()
         Line Input #FNr, DataLine
         myLine = Split(DataLine, ";")
         If IsDate(myLine(0)) Then
-            Holidays(intLine).Datum = DateSerial(Jahr, Month(myLine(0)), Day(myLine(0)))
+            Holidays(intLine).GivenDate = DateSerial(GivenYear, Month(myLine(0)), Day(myLine(0)))
         Else
             Dim pos As Integer
             Dim intSign As Integer
@@ -125,13 +125,13 @@ Private Sub InitDatumFile()
                 intSign = -1
             End If
             If myLine(0) = "Ostern" Then
-                Holidays(intLine).Datum = Ostersonntag
+                Holidays(intLine).GivenDate = Ostersonntag
             Else
             Select Case Left(myLine(0), pos - 1)
                 Case "Ostern"
-                   Holidays(intLine).Datum = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), Ostersonntag)
+                   Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), Ostersonntag)
                 Case "Advent"
-                   Holidays(intLine).Datum = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), LetzterAdvent)
+                   Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), LetzterAdvent)
             End Select
             End If
             
@@ -173,11 +173,11 @@ Function IsInArray(stringToBeFound As Variant, arr As Variant) As Boolean
     IsInArray = Not IsError(Application.Match(stringToBeFound, arr, 0))
 End Function
 
-Private Function GetHoldidayByDate(ByVal Datum As Date, Optional ByVal State As String = vbNullString) As Holiday
+Private Function GetHoldidayByDate(ByVal GivenDate As Date, Optional ByVal State As String = vbNullString) As Holiday
     Dim h As Holiday
     Dim intCount As Integer
     For intCount = 0 To UBound(Holidays)
-        If Holidays(intCount).Datum = Datum Then
+        If Holidays(intCount).GivenDate = GivenDate Then
             If State = "State" Then
                 h = Holidays(intCount)
                 Exit For
@@ -195,27 +195,27 @@ Private Function GetHoldidayByDate(ByVal Datum As Date, Optional ByVal State As 
     GetHoldidayByDate = h
 End Function
 
-Public Function GetHolidayName(ByVal Datum As Date, Optional ByVal State As String = vbNullString) As String
+Public Function GetHolidayName(ByVal GivenDate As Date, Optional ByVal State As String = vbNullString) As String
     Dim h As Holiday
-    If Year(Datum) <> Jahr Then
-        Jahr = Year(Datum)
-        InitDatumFile
+    If Year(GivenDate) <> GivenYear Then
+        GivenYear = Year(GivenDate)
+        InitDateFile
     End If
-    h = GetHoldidayByDate(Datum, State)
+    h = GetHoldidayByDate(GivenDate, State)
     GetHolidayName = h.Holiday
 End Function
 
-Public Function isHoliday(ByVal Datum As Date, _
+Public Function isHoliday(ByVal GivenDate As Date, _
     Optional ByVal CountryA As String = "de", _
     Optional ByVal State As String = vbNullString) As Boolean
     
     Dim h As Holiday
-    If Year(Datum) <> Jahr Or CountryA <> Country Then
-        Jahr = Year(Datum)
+    If Year(GivenDate) <> GivenYear Or CountryA <> Country Then
+        GivenYear = Year(GivenDate)
         Country = CountryA
-        InitDatumFile
+        InitDateFile
     End If
-    h = GetHoldidayByDate(Datum, State)
+    h = GetHoldidayByDate(GivenDate, State)
     If h.Holiday = vbNullString Then
         isHoliday = False
     Else
@@ -223,13 +223,13 @@ Public Function isHoliday(ByVal Datum As Date, _
     End If
 End Function
 
-Public Function GetHolidayStates(ByVal Datum As Date) As String
+Public Function GetHolidayStates(ByVal GivenDate As Date) As String
     Dim h As Holiday
-    If Year(Datum) <> Jahr Then
-        Jahr = Year(Datum)
-        InitDatumFile
+    If Year(GivenDate) <> GivenYear Then
+        GivenYear = Year(GivenDate)
+        InitDateFile
     End If
-    h = GetHoldidayByDate(Datum, "State")
+    h = GetHoldidayByDate(GivenDate, "State")
     If h.Holiday = vbNullString Then
         GetHolidayStates = ""
     Else
@@ -238,11 +238,11 @@ Public Function GetHolidayStates(ByVal Datum As Date) As String
     End If
 End Function
 
-Public Function GetAllHolidays(ByVal JahrA As Integer, Optional ByVal CountryA As String = "de") As Variant()
-    If JahrA <> Jahr Or CountryA <> Country Then
-        Jahr = JahrA
+Public Function GetAllHolidays(ByVal GivenYearA As Integer, Optional ByVal CountryA As String = "de") As Variant()
+    If GivenYearA <> GivenYear Or CountryA <> Country Then
+        GivenYear = GivenYearA
         Country = CountryA
-        InitDatumFile
+        InitDateFile
     End If
 
     Dim intCount As Integer
@@ -250,7 +250,7 @@ Public Function GetAllHolidays(ByVal JahrA As Integer, Optional ByVal CountryA A
     For intCount = 0 To UBound(Holidays)
         ReDim Preserve HArray(intCount)
          
-        HArray(intCount) = Holidays(intCount).Datum & "; " & Holidays(intCount).Holiday & "; " & Replace(Replace(Join(Holidays(intCount).State, ", "), "}", ""), "{", "")
+        HArray(intCount) = Holidays(intCount).GivenDate & "; " & Holidays(intCount).Holiday & "; " & Replace(Replace(Join(Holidays(intCount).State, ", "), "}", ""), "{", "")
     Next
     GetAllHolidays = HArray
 End Function
