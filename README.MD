@@ -8,6 +8,7 @@ Currently holidays are available for these countries:
 
 * Austria (States: All)
 * Germany (States according to https://www.datenportal.bmbf.de/portal/de/G122.html: All, BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SH, SL, SN, ST, TH = Thüringen)
+* Switzerland
 
 To execute the unit tests in the module mdl_UnitTestClsHolidays.bas the the COM add-in rubberduck needs be installed (https://github.com/rubberduck-vba/Rubberduck).
 (Thank you guys for your work)
