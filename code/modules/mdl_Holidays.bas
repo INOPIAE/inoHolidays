@@ -9,12 +9,12 @@ Public ImportBln As Boolean
 Public ImportCountry As String
 
 Public Function Easter(ByVal GivenYear As Integer) As Date
-Attribute Easter.VB_Description = "Gibt das Datum des Ostersonntags des angegeben Jahres zurück."
-Attribute Easter.VB_ProcData.VB_Invoke_Func = " \n14"
+Attribute Easter.VB_Description = "Gibt das Datum des Ostersonntags des angegeben Jahres (GivenYear) zurück."
+Attribute Easter.VB_ProcData.VB_Invoke_Func = " \n20"
 
     'calculates the date of Easter of a given year
     
-    Dim a, b, c, d, e, f, g, h, I, k, l, m, W, Mon, GivenDate
+    Dim a, b, c, d, e, f, g, h, i, k, l, m, W, Mon, GivenDate
     
     a = GivenYear Mod 19
     
@@ -32,11 +32,11 @@ Attribute Easter.VB_ProcData.VB_Invoke_Func = " \n14"
     
     h = (19 * a + b - d - g + 15) Mod 30
     
-    I = c \ 4
+    i = c \ 4
     
     k = c Mod 4
     
-    l = (32 + 2 * e + 2 * I - h - k) Mod 7
+    l = (32 + 2 * e + 2 * i - h - k) Mod 7
     
     m = (a + 11 * h + 22 * l) \ 451
     
@@ -51,6 +51,8 @@ Attribute Easter.VB_ProcData.VB_Invoke_Func = " \n14"
 End Function
 
 Public Function LastAdvent(ByVal GivenYear As Integer) As Date
+Attribute LastAdvent.VB_Description = "Gibt das Datum des 4. Adventsonntags des angegeben Jahres (GivenYear) zurück."
+Attribute LastAdvent.VB_ProcData.VB_Invoke_Func = " \n20"
     Dim dt As Date
     dt = DateSerial(GivenYear, 12, 24)
     Dim wkday As Integer
@@ -91,6 +93,8 @@ End Sub
 
 Public Function isHoliday(ByVal GivenDate As Date, _
     Optional ByVal Country As String = "de", Optional ByVal State As String = vbNullString) As Boolean
+Attribute isHoliday.VB_Description = "Prüft, ob das angegebene Datum (GivenDate) unter Berücksichtigung des Staates und evtl. Bundeslandes ein Feiertag ist."
+Attribute isHoliday.VB_ProcData.VB_Invoke_Func = " \n20"
     isHoliday = clsH.isHoliday(GivenDate, Country, State)
 End Function
 

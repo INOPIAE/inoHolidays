@@ -1,0 +1,51 @@
+<!--RibbonX Visual Designer 2.33 for Microsoft Excel CustomUI14 . XML Code produced on 2021.08.26-->
+<customUI  xmlns="http://schemas.microsoft.com/office/2009/07/customui" >
+	<ribbon >
+		<tabs >
+			<tab  idMso="TabFormulas" >
+				<group 
+					id="grpInoHolidays"
+					insertBeforeMso="GroupNamedCells"
+					label="inoHolidays">
+					<button 
+						id="btnInoHolidays"
+						getLabel="rbGetLabelH"
+						getScreentip="rbGetScreentipH"
+						getSupertip="rbGetSupertipH"
+						onAction="rbHolidays"/>
+					<button 
+						id="btnInoOstern"
+						getLabel="rbGetLabelH"
+						getScreentip="rbGetScreentipH"
+						getSupertip="rbGetSupertipH"
+						onAction="rbOstern"/>
+					<button 
+						id="btnInoLastAdvent"
+						getLabel="rbGetLabelH"
+						getScreentip="rbGetScreentipH"
+						getSupertip="rbGetSupertipH"
+						onAction="rbAdvent"/>
+					<menu 
+						id="mnuInoRound"
+						image="burger"
+						getLabel="rbGetLabelH"
+						getScreentip="rbGetScreentipH"
+						getSupertip="rbGetSupertipH">
+						<button 
+							id="btnOutlookInoHolidays"
+							getLabel="rbGetLabelH"
+							getScreentip="rbGetScreentipH"
+							getSupertip="rbGetSupertipH"
+							onAction="rbOutlookInoHolidays"/>
+						<button 
+							id="btnInfoInoHolidays"
+							getLabel="rbGetLabelH"
+							getScreentip="rbGetScreentipH"
+							getSupertip="rbGetSupertipH"
+							onAction="rbInfoInoHolidays"/>
+					</menu >
+				</group >
+			</tab >
+		</tabs >
+	</ribbon >
+</customUI >

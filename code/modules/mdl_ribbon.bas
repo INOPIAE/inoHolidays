@@ -12,7 +12,6 @@ End Sub
 
 Public Sub rbGetLabelH(ByRef control As IRibbonControl, ByRef label As Variant)
     SetLanguage
-    Debug.Print control.ID
     Select Case control.ID
         Case "grpInoHolidays"
             label = "inoHolidays"
@@ -26,6 +25,8 @@ Public Sub rbGetLabelH(ByRef control As IRibbonControl, ByRef label As Variant)
             label = strLabel(3)
         Case "btnInfoInoHolidays"
             label = strLabel(4)
+        Case "btnOutlookInoHolidays"
+            label = strLabel(5)
         Case Else
             label = ""
     End Select
@@ -43,6 +44,8 @@ Public Sub rbGetScreentipH(ByRef control As IRibbonControl, ByRef text)
             text = strScreentip(3)
         Case "btnInfoInoHolidays"
             text = strScreentip(4)
+        Case "btnOutlookInoHolidays"
+            text = strScreentip(5)
         Case Else
             text = ""
     End Select
@@ -60,6 +63,8 @@ Public Sub rbGetSupertipH(ByRef control As IRibbonControl, ByRef text)
             text = strSupertip(3)
         Case "btnInfoInoHolidays"
             text = strSupertip(4)
+        Case "btnOutlookInoHolidays"
+            text = strSupertip(5)
         Case Else
             text = ""
     End Select
@@ -88,6 +93,9 @@ Public Sub rbInfoInoHolidays(ctrl As IRibbonControl)
     frm_Info.Show
 End Sub
 
+Public Sub rbOutlookInoHolidays(ctrl As IRibbonControl)
+    frmOutlookImport.Show
+End Sub
 
 Public Sub SetLanguage()
     lc = Application.LanguageSettings.LanguageID(msoLanguageIDUI)

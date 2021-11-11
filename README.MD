@@ -32,11 +32,12 @@ Now the Add-In is available.
 ## Usage
 
 ### Ribbon
-In the tab Formulas ther is a group inoHolidays which contains these buttons:
+In the tab Formulas there is a group inoHolidays which contains these buttons:
 
-* Import Holidays - Adds a list of all public holidays for a given year and country
+* Import Holidays - Retruns a list of all public holidays for a given year and country
 * Function Easter - Return the date of Easter Sunday of a given year as fixed date or as function
 * Function LastAdvent - Return the date of 4th Advent Sunday of a given year as fixed date or as function
+* Add holidays to Outlook - Adds all public holidays for a given year and country to Outlook
 
 ### Functions
 

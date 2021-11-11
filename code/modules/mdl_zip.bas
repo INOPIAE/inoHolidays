@@ -29,7 +29,7 @@ End Function
 
 Sub Zip_File_Or_Files()
     Dim strDate As String, DefPath As String, sFName As String
-    Dim oApp As Object, iCtr As Long, I As Integer
+    Dim oApp As Object, iCtr As Long, i As Integer
     Dim FName, vArr, FileNameZip
     
     Dim strPath As String
@@ -57,17 +57,17 @@ Sub Zip_File_Or_Files()
         'Create empty Zip File
         NewZip (FileNameZip)
         Set oApp = CreateObject("Shell.Application")
-        I = 0
+        i = 0
         For iCtr = LBound(FName) To UBound(FName)
             vArr = Split97(FName(iCtr), "\")
             sFName = vArr(UBound(vArr))
             'Copy the file to the compressed folder
-            I = I + 1
+            i = i + 1
             oApp.Namespace(FileNameZip).CopyHere FName(iCtr)
 
             'Keep script waiting until Compressing is done
             On Error Resume Next
-            Do Until oApp.Namespace(FileNameZip).items.Count = I
+            Do Until oApp.Namespace(FileNameZip).items.Count = i
                 Application.Wait (Now + TimeValue("0:00:01"))
             Loop
             On Error GoTo 0
