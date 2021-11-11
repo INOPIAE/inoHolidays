@@ -1,4 +1,4 @@
-# Excel Add-In which adds functions to calulate Easter Sunday and the 4th Advent Sunday as well as functions to get information about public holidays and a list of public holidays.
+# Excel Add-In which adds functions to calculate Easter Sunday and the 4th Advent Sunday as well as functions to get information about public holidays and a list of public holidays and add the llist to Outlook.
 
 Add the inoHolidays.xlam file to the Excel Add-Ins.
 
