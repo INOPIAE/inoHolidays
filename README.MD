@@ -1,4 +1,4 @@
-# Excel Add-In which adds functions to calculate Easter Sunday and the 4th Advent Sunday as well as functions to get information about public holidays and a list of public holidays and add the llist to Outlook.
+# Excel Add-In which adds functions to calculate Easter Sunday and the 4th Advent Sunday as well as functions to get information about public holidays and a list of public holidays and add the list to Outlook.
 
 Add the inoHolidays.xlam file to the Excel Add-Ins.
 
@@ -8,6 +8,7 @@ Currently holidays are available for these countries:
 
 * Austria (States: All)
 * Germany (States according to https://www.datenportal.bmbf.de/portal/de/G122.html: All, BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SH, SL, SN, ST, TH = Thüringen)
+* Italy (States: All, Alto Adige)
 * Switzerland
 
 To execute the unit tests in the module mdl_UnitTestClsHolidays.bas the the COM add-in rubberduck needs be installed (https://github.com/rubberduck-vba/Rubberduck).

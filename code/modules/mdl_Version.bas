@@ -3,7 +3,7 @@ Option Explicit
 Option Private Module
 
 Public Const strMakroVersion As String = "0.05"
-Public Const dtVersionOf As Date = #11/11/2021#
+Public Const dtVersionOf As Date = #11/18/2021#
 Public Const strVBProjects As String = "inoHolidays"
 Private Const strVBComponents As String = "DieseArbeitsmappe"
 

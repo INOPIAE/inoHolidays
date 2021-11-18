@@ -12,7 +12,7 @@ Public strFrmHolidays(7) As String
 Public strFrmFunction(8) As String
 Public strRegister(7) As String
 Public strFrmOutlook(12) As String
-Public strCountry(2) As String
+Public strCountry(3) As String
 
 Public Sub germanText()
     strFrmInfo(0) = "Der Quellcode ist OpenSource unter AGPLv3." & vbNewLine & "Der Quellcode und die Dokumentation sind verfügbar auf "
@@ -99,6 +99,7 @@ Public Sub germanText()
     strCountry(0) = "Deutschland"
     strCountry(1) = "Österreich"
     strCountry(2) = "Schweiz"
+    strCountry(3) = "Italien"
 End Sub
 
 Public Sub englishText()
@@ -172,20 +173,21 @@ Public Sub englishText()
     strFrmOutlook(2) = "Country:"
     strFrmOutlook(3) = "State/Region:"
     strFrmOutlook(4) = "Add holiday as busy"
-    strFrmOutlook(5) = "Die ersten 3 Felder müssen gefüllt sein." & vbNewLine & "Wenn 'Feiertage als gebucht eintragen' ausgewählt ist, werden die Feiertage für das ausgewählte Bundesland/Region als gebucht eingetragen. Bundesland/Region =  All nur die landesweiten Feiertage werden eingetragen."
+    strFrmOutlook(5) = "The first 3 fields must be used." & vbNewLine & "If 'Add holiday as busy' is ticked the public holidays will be add as busy for the given State/Region. If State/Region = All only the countrywide holidays are set as busy."
     strFrmOutlook(6) = "Year must be entered as number."
     strFrmOutlook(7) = "A country must be selected."
     strFrmOutlook(8) = "A state must be selected."
     strFrmOutlook(9) = "Outlook must be started."
-    strFrmOutlook(10) = "{0} entries processed for {1}. Davon " & vbNewLine _
-        & "{2} neue Einträge" & vbNewLine _
-        & "{3} geänderte Einträge" & vbNewLine _
-        & "{4} unveränderte Einträge" & vbNewLine
+    strFrmOutlook(10) = "{0} entries processed for {1}. Thereof " & vbNewLine _
+        & "{2} new entries" & vbNewLine _
+        & "{3} changed entries" & vbNewLine _
+        & "{4} unchanged entries" & vbNewLine
     strFrmOutlook(11) = "{0} entries deleted for {1}."
     strFrmOutlook(12) = "{0} entries deleted."
 
     strCountry(0) = "Germany"
     strCountry(1) = "Austria"
     strCountry(2) = "Switzerland"
+    strCountry(3) = "Italy"
 End Sub
 
