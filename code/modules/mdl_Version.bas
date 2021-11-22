@@ -2,8 +2,8 @@ Attribute VB_Name = "mdl_Version"
 Option Explicit
 Option Private Module
 
-Public Const strMakroVersion As String = "0.05"
-Public Const dtVersionOf As Date = #11/18/2021#
+Public Const strMakroVersion As String = "0.06"
+Public Const dtVersionOf As Date = #11/22/2021#
 Public Const strVBProjects As String = "inoHolidays"
 Private Const strVBComponents As String = "DieseArbeitsmappe"
 
@@ -216,3 +216,18 @@ Private Function DeleteVBAModulesAndUserForms()
     Next VBComp
 End Function
 
+Public Function CheckVBAReferences(ByVal strApp As String) As Boolean
+  Dim i As Integer
+  Dim wkb As Workbook
+  CheckVBAReferences = False
+  Set wkb = Application.Workbooks(strVBProjects & ".xlam")
+  For i = 1 To wkb.VBProject.References.Count
+    If wkb.VBProject.References(i).IsBroken Then
+        If wkb.VBProject.References(i).Name = strApp Then
+            MsgBox printF(strError(1), strApp), , strError(0)
+        End If
+        Exit Function
+    End If
+  Next i
+  CheckVBAReferences = True
+End Function

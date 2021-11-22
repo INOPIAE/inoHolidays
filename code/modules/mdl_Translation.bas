@@ -46,6 +46,7 @@ Public Sub germanText()
     strFrmFunction(8) = "Es wurde kein gültiger Bereich eingegeben."
 
     strError(0) = "Fehler"
+    strError(1) = "{0} ist nicht installiert."
     
     strLabel(0) = "Feiertage importieren"
     strLabel(1) = "Funktion Easter"
@@ -134,6 +135,7 @@ Public Sub englishText()
     strFrmFunction(8) = "No valid range entered."
 
     strError(0) = "Error"
+    strError(1) = "{0} is not installed."
     
     strLabel(0) = "Import Holidays"
     strLabel(1) = "Function Easter"

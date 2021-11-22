@@ -94,7 +94,9 @@ Public Sub rbInfoInoHolidays(ctrl As IRibbonControl)
 End Sub
 
 Public Sub rbOutlookInoHolidays(ctrl As IRibbonControl)
-    frmOutlookImport.Show
+    If CheckVBAReferences("Outlook") = True Then
+        frmOutlookImport.Show
+    End If
 End Sub
 
 Public Sub SetLanguage()
