@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frmFunction 
-   Caption         =   "UserForm1"
+   Caption         =   "no translation"
    ClientHeight    =   4050
    ClientLeft      =   120
    ClientTop       =   465
@@ -20,6 +20,9 @@ Private rngValue As Range
 Public strFunction As String
 Private intGivenYear As Integer
 
+Private Const strDateFormat = "MM/dd/yyyy" ' < translate
+
+
 Private Sub cmdCancel_Click()
     Unload Me
 End Sub
@@ -32,7 +35,7 @@ Private Sub cmdImport_Click()
             Case "Advent"
                 rngStart.Formula = "=LastAdvent(" & Me.reGivenYear.Value & ")"
         End Select
-        rngStart.NumberFormat = strFrmFunction(5)
+        rngStart.NumberFormat = strDateFormat
         Unload Me
     End If
 End Sub
@@ -45,7 +48,7 @@ Private Sub cmdValue_Click()
             Case "Advent"
                 rngStart.Value = LastAdvent(intGivenYear)
         End Select
-        rngStart.NumberFormat = strFrmFunction(5)
+        rngStart.NumberFormat = strDateFormat
         Unload Me
     End If
 End Sub
@@ -61,12 +64,12 @@ Private Sub reGivenYear_Exit(ByVal Cancel As MSForms.ReturnBoolean)
     On Error GoTo Fehler
     Set rngValue = Range(Me.reGivenYear.Value)
     If rngValue.Cells.Count > 1 Then
-      MsgBox strFrmFunction(6)
+      MsgBox t("Only one cell must be selected."), , strErrorCaptionHint
       Cancel = True
     End If
     
     If IsNumeric(rngValue.Value) = False Then
-      MsgBox strFrmFunction(7)
+      MsgBox t("The cell must contain a number."), , strErrorCaptionHint
       Cancel = True
     End If
     
@@ -80,19 +83,15 @@ Fehler:
     Select Case Err.Number
         Case 1004
             If Me.reGivenYear.Value <> vbNullString Then
-                MsgBox strFrmFunction(8)
+                MsgBox t("No valid range entered."), , strErrorCaptionHint
                 Err.Clear
                 Cancel = True
             End If
             Err.Clear
         Case Else
-            MsgBox Err.Number & " - " & Err.Description, , strError(0)
+            MsgBox Err.Number & " - " & Err.Description, , strErrorCaption
     End Select
     
-End Sub
-
-Private Sub lblJahr_Click()
-
 End Sub
 
 Private Sub UserForm_Initialize()
@@ -112,18 +111,15 @@ Private Sub ShowResult()
 End Sub
 
 Public Sub InitForm(ByVal strFunctionDef As String)
-    If lc = 0 Then SetLanguage
     strFunction = strFunctionDef
+    TranslateForm Me
     Select Case strFunction
         Case "Ostern"
-            Me.Caption = strFrmFunction(1)
-            Me.lblInfo = strFrmFunction(2)
+            Me.Caption = t("Function {}", "Easter")
+            Me.lblInfo = t("The function {} returns the date of Easter Sunday of the given year.", "Easter(GivenYear)")
         Case "Advent"
-            Me.Caption = strFrmFunction(3)
-            Me.lblInfo = strFrmFunction(4)
+            Me.Caption = t("Function {}", "LastAdvent")
+            Me.lblInfo = t("The function {} returns the date of 4th Advent Sunday of the given year.", "LastAdvent(GivenYear)")
    End Select
-   Me.cmdCancel.Caption = strCmd(1)
-   Me.cmdValue.Caption = strCmd(3)
-   Me.cmdImport.Caption = strCmd(4)
-   Me.lblJahr.Caption = strFrmFunction(0)
 End Sub
+

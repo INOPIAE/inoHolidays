@@ -5,7 +5,7 @@ Private olApp As Outlook.Application
 Private olHoliday As Outlook.AppointmentItem
 Private olHolidaytest As Outlook.AppointmentItem
 
-Sub EnterHoliday(holiday As String, myDate As Date, Location As String, Optional Status As Integer = 0)
+Sub EnterHoliday(holiday As String, myDate As Date, Location As String, Optional status As Integer = 0)
 
     If olApp Is Nothing Then
         Set olApp = GetObject(, "Outlook.Application")
@@ -20,7 +20,7 @@ Sub EnterHoliday(holiday As String, myDate As Date, Location As String, Optional
         .Subject = holiday
         .ReminderSet = False
         .Location = Location
-        .BusyStatus = Status  'free = 0, busy =2
+        .BusyStatus = status  'free = 0, busy =2
 'TODO Language
         .Categories = "Feiertag, inoHolidays"
         .Save
@@ -117,16 +117,19 @@ Public Sub ImportOutlookHolidays(ByVal myYear As Integer, ByVal CountryDef As St
         End If
     Next
     
-    MsgBox printF(strFrmOutlook(10), intNew + intChanged + intNoChange, myYear, intNew, intChanged, intNoChange)
+    MsgBox t("{} entries processed for {}. Thereof \n" _
+        & "{} new entries\n" _
+        & "{} changed entries\n" _
+        & "{} unchanged entries", intNew + intChanged + intNoChange, myYear, intNew, intChanged, intNoChange)
     
     Exit Sub
     
 MyError:
     Select Case Err.Number
         Case 429
-            MsgBox strFrmOutlook(9)
+            MsgBox t("Outlook must be started."), , strErrorCaptionHint
         Case Else
-            MsgBox Err.Number & " " & Err.Description
+            MsgBox Err.Number & " " & Err.Description, , strErrorCaption
     End Select
 End Sub
 
@@ -172,16 +175,16 @@ Public Sub deleteHolidaysYear(myYear As Integer, Location As String)
             intCount = intCount + 1
         End If
     Next
-    MsgBox printF(strFrmOutlook(11), intCount, myYear)
+    MsgBox t("{} entries deleted for {}.", intCount, myYear)
     
     Exit Sub
     
 MyError:
     Select Case Err.Number
         Case 429
-            MsgBox strFrmOutlook(9)
+            MsgBox t("Outlook must be started."), , strErrorCaptionHint
         Case Else
-            MsgBox Err.Number & " " & Err.Description
+            MsgBox Err.Number & " " & Err.Description, , strErrorCaption
     End Select
 End Sub
 
@@ -214,16 +217,16 @@ Public Sub deleteHolidays()
         End If
     Next
     
-    MsgBox printF(strFrmOutlook(12), intCount)
+    MsgBox t("{} entries deleted.", intCount)
     
     Exit Sub
         
 MyError:
     Select Case Err.Number
         Case 429
-            MsgBox strFrmOutlook(9)
+            MsgBox t("Outlook must be started."), , strErrorCaptionHint
         Case Else
-            MsgBox Err.Number & " " & Err.Description
+            MsgBox Err.Number & " " & Err.Description, , strErrorCaption
     End Select
 End Sub
 

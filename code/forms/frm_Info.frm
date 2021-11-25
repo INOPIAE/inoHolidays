@@ -20,9 +20,10 @@ Private Sub cmdOK_Click()
 End Sub
 
 Private Sub UserForm_Initialize()
-    If lc = 0 Then SetLanguage
+    'SetLanguage "de_DE"
+
+    TranslateForm Me
     Me.lblTitle.Caption = "inoHolidays Version " & strMakroVersion & " (" & dtVersionOf & ")"
-    Me.lblCopyright.Caption = "Copyright 2021 - " & Year(Date)
-    Me.lblInfo.Caption = strFrmInfo(0) & "https://github.com/INOPIAE/inoHolidays"
-    Me.cmdOK.Caption = strCmd(0)
+    Me.lblCopyright.Caption = t("Copyright") & " 2021 - " & Year(Date)
+    Me.lblInfo.Caption = t("The source code is OpenSource under AGPLv3.{}The source code and the documentation are available at {}", vbNewLine, "https://github.com/INOPIAE/inoHolidays")
 End Sub

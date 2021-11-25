@@ -74,7 +74,7 @@ Private Sub TestGetHolidayNameFixed()
 TestEnde:
     Exit Sub
 TestFehlschlag:
-    Assert.Fail "Test hat diesen Fehler ergeben: #" & Err.Number & " - " & Err.Description
+    Assert.fail "Test hat diesen Fehler ergeben: #" & Err.Number & " - " & Err.Description
 End Sub
 
 '@TestMethod("Uncategorized")
@@ -118,7 +118,7 @@ Private Sub TestGetHolidayNameDefault()
 TestEnde:
     Exit Sub
 TestFehlschlag:
-    Assert.Fail "Test hat diesen Fehler ergeben: #" & Err.Number & " - " & Err.Description
+    Assert.fail "Test hat diesen Fehler ergeben: #" & Err.Number & " - " & Err.Description
 End Sub
 
 '@TestMethod("Uncategorized")
@@ -150,7 +150,7 @@ Private Sub TestIsHolidayFixed()
 TestEnde:
     Exit Sub
 TestFehlschlag:
-    Assert.Fail "Test hat diesen Fehler ergeben: #" & Err.Number & " - " & Err.Description
+    Assert.fail "Test hat diesen Fehler ergeben: #" & Err.Number & " - " & Err.Description
 End Sub
 
 '@TestMethod("Uncategorized")
@@ -181,5 +181,5 @@ Private Sub TestIsHolidayDefault()
 TestEnde:
     Exit Sub
 TestFehlschlag:
-    Assert.Fail "Test hat diesen Fehler ergeben: #" & Err.Number & " - " & Err.Description
+    Assert.fail "Test hat diesen Fehler ergeben: #" & Err.Number & " - " & Err.Description
 End Sub

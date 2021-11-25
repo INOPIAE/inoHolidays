@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frmImportHoliday 
-   Caption         =   "Feiertage importieren"
+   Caption         =   "Import Holidays"
    ClientHeight    =   4260
    ClientLeft      =   120
    ClientTop       =   465
@@ -26,7 +26,7 @@ End Sub
 
 Private Sub cmdImport_Click()
     If IsNumeric(Me.txtJahr.Value) = False Then
-        MsgBox strFrmHolidays(5)
+        MsgBox t("GivenYear needs to be entered as number."), , strErrorCaptionHint
         With Me.txtJahr
             .SetFocus
             .SelStart = 0
@@ -37,7 +37,7 @@ Private Sub cmdImport_Click()
     
     Dim rng As Range
     If Me.reZelle.Value = vbNullString Then
-        MsgBox strFrmHolidays(6)
+        MsgBox t("Select a cell."), , strErrorCaptionHint
         With Me.reZelle
             .SetFocus
             .SelStart = 0
@@ -47,7 +47,7 @@ Private Sub cmdImport_Click()
     End If
     Set rng = Range(Me.reZelle.Value)
     If rng.Cells.Count > 1 Then
-        MsgBox strFrmHolidays(7)
+        MsgBox t("Only one cell must be selected."), , strErrorCaptionHint
         With Me.reZelle
             .SetFocus
             .SelStart = 0
@@ -72,15 +72,15 @@ Private Sub FillCountries()
     Dim strPath As String
     Dim strFile As String
     Dim intCount As Integer
-    strPath = AddIns(strVBProjects).Path & "\countrycodes\"
-    strFile = Dir(strPath & "*")
+    strPath = AddIns(strVBProjects).path & "\countrycodes\"
+    strFile = dir(strPath & "*")
     Do While strFile <> ""
         ReDim Preserve Countries(intCount)
         Dim c() As String
         c = Split(strFile, ".")
         Me.cboCountry.AddItem (c(0))
         intCount = intCount + 1
-        strFile = Dir()
+        strFile = dir()
     Loop
 End Sub
 
@@ -92,12 +92,6 @@ Public Sub FillForm(ByVal j As Integer, ByVal c As String)
 End Sub
 
 Private Sub InitLanguage()
-    If lc = 0 Then SetLanguage
-    Me.Caption = strFrmHolidays(0)
-    Me.lblJahr.Caption = strFrmHolidays(1)
-    Me.lblCell.Caption = strFrmHolidays(2)
-    Me.lblCountry.Caption = strFrmHolidays(3)
-    Me.lblInfo.Caption = strFrmHolidays(4)
-    Me.cmdCancel.Caption = strCmd(1)
-    Me.cmdImport.Caption = strCmd(2)
+    TranslateForm Me
+    Me.lblInfo.Caption = t("There should be 3 emtpy columns and 20 empty rows starting from the given cell. Filled cell will be overwriten without further notification.")
 End Sub

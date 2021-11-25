@@ -1,7 +1,5 @@
 # Excel Add-In which adds functions to calculate Easter Sunday and the 4th Advent Sunday as well as functions to get information about public holidays and a list of public holidays and add the list to Outlook.
 
-Add the inoHolidays.xlam file to the Excel Add-Ins.
-
 Currently the user interface is available in English and German. The language is chosen by the add-in according to the language of the Excel GUI.
 
 Currently holidays are available for these countries:
@@ -42,9 +40,11 @@ In the tab Formulas there is a group inoHolidays which contains these buttons:
 
 ### Functions
 
-Within the fuction wizzard the category inoHolidays shows these functions
+Within the function wizzard the category inoHolidays shows these functions
 
 * Easter(GivenYear) - returns the date of the Easter Sunday of a given year
-* isHoliday(GivenDate,[Country],[State]) -Checks whether the given date is a holiday for a given country and tentative state.
+* isHoliday(GivenDate, [Country], [State]) - Checks whether the given date is a holiday for a given country and tentative state.
 * LastAdvent(GivenYear) - returns the date of the 4th Advent Sunday of a given year
+
+
 

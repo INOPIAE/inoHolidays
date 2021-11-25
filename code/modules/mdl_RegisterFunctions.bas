@@ -3,7 +3,8 @@ Option Explicit
 'https://jkp-ads.com/Articles/RegisterUDF00.asp
 
 Sub RegisterFunction()
-    SetLanguage
+    rbSetLanguage
+    DetectLanguage
     
     Dim vArgDescr() As Variant
     

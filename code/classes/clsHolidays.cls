@@ -101,7 +101,7 @@ Private Sub InitDateFile()
     Dim myLine() As String
     FNr = FreeFile
     Dim strFile As String
-    strFile = AddIns(strVBProjects).Path & "\countrycodes\" & Country & ".inocsv"
+    strFile = AddIns(strVBProjects).path & "\countrycodes\" & Country & ".inocsv"
     
     If mdlHelper_FileExists(strFile) = False Then
         InitDate
@@ -127,12 +127,12 @@ Private Sub InitDateFile()
             If myLine(0) = "Ostern" Then
                 Holidays(intLine).GivenDate = Ostersonntag
             Else
-            Select Case Left(myLine(0), pos - 1)
-                Case "Ostern"
-                   Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), Ostersonntag)
-                Case "Advent"
-                   Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), LetzterAdvent)
-            End Select
+                Select Case Left(myLine(0), pos - 1)
+                    Case "Ostern"
+                       Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), Ostersonntag)
+                    Case "Advent"
+                       Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), LetzterAdvent)
+                End Select
             End If
             
         End If
@@ -270,14 +270,14 @@ Private Sub FillCountries()
     Dim strPath As String
     Dim strFile As String
     Dim intCount As Integer
-    strPath = AddIns(strVBProjects).Path & "\countrycodes\"
-    strFile = Dir(strPath & "*")
+    strPath = AddIns(strVBProjects).path & "\countrycodes\"
+    strFile = dir(strPath & "*")
     Do While strFile <> ""
         ReDim Preserve Countries(intCount)
         Dim c() As String
         c = Split(strFile, ".")
         Countries(intCount) = c(0)
         intCount = intCount + 1
-        strFile = Dir()
+        strFile = dir()
     Loop
 End Sub

@@ -7,7 +7,7 @@ Option Private Module
 Private Sub NewZip(sPath)
 'Create empty Zip File
 'Changed by keepITcool Dec-12-2005
-    If Len(Dir(sPath)) > 0 Then Kill sPath
+    If Len(dir(sPath)) > 0 Then Kill sPath
     Open sPath For Output As #1
     Print #1, Chr$(80) & Chr$(75) & Chr$(5) & Chr$(6) & String(18, 0)
     Close #1
@@ -33,21 +33,21 @@ Sub Zip_File_Or_Files()
     Dim FName, vArr, FileNameZip
     
     Dim strPath As String
-    strPath = AddIns(strVBProjects).Path & "\"
+    strPath = AddIns(strVBProjects).path & "\"
     
     FileNameZip = clearPath(strPath & "download_inoHolidays.zip")
     ReDim FName(0)
     FName(0) = clearPath(strPath & "inoHolidays.xlam")
     
     Dim strFile As String
-    strFile = Dir(strPath & "countrycodes\" & "*.inocsv")
+    strFile = dir(strPath & "countrycodes\" & "*.inocsv")
     Do While strFile <> ""
         
         Dim intC As Integer
         intC = UBound(FName) + 1
         ReDim Preserve FName(intC)
         FName(intC) = strPath & "countrycodes\" & strFile
-        strFile = Dir()
+        strFile = dir()
     Loop
     'FName(1) = clearPath(strPath & "countrycodes\de.inocsv")
 

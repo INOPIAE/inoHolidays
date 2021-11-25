@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frmOutlookImport 
-   Caption         =   "Import Feiertage nach Outlook"
+   Caption         =   "Add Holidays To Outlook"
    ClientHeight    =   4680
    ClientLeft      =   120
    ClientTop       =   465
@@ -33,7 +33,7 @@ End Sub
 
 Private Sub cmdDeleteYear_Click()
     If IsNumeric(Me.txtJahr.Value) = False Then
-        MsgBox strFrmHolidays(5)
+        MsgBox t("GivenYear needs to be entered as number."), , strErrorCaptionHint
         With Me.txtJahr
             .SetFocus
             .SelStart = 0
@@ -42,7 +42,7 @@ Private Sub cmdDeleteYear_Click()
         Exit Sub
     End If
     If Me.cboCountry.Value = vbNullString Then
-        MsgBox strFrmHolidays(5)
+        MsgBox t("Country needs to be given."), , strErrorCaptionHint
         With Me.cboCountry
             .SetFocus
             .SelStart = 0
@@ -55,7 +55,7 @@ End Sub
 
 Private Sub cmdImport_Click()
     If IsNumeric(Me.txtJahr.Value) = False Then
-        MsgBox strFrmOutlook(6)
+        MsgBox t("Year must be entered as number."), , strErrorCaptionHint
         With Me.txtJahr
             .SetFocus
             .SelStart = 0
@@ -64,7 +64,7 @@ Private Sub cmdImport_Click()
         Exit Sub
     End If
     If Me.cboCountry.Value = vbNullString Then
-        MsgBox strFrmOutlook(7)
+        MsgBox t("A country must be selected."), , strErrorCaptionHint
         With Me.cboCountry
             .SetFocus
             .SelStart = 0
@@ -73,7 +73,7 @@ Private Sub cmdImport_Click()
         Exit Sub
     End If
     If Me.cboState.Value = vbNullString Then
-        MsgBox strFrmOutlook(8)
+        MsgBox t("A state must be selected."), , strErrorCaptionHint
         With Me.cboState
             .SetFocus
             .SelStart = 0
@@ -95,15 +95,15 @@ Private Sub FillCountries()
     Dim strPath As String
     Dim strFile As String
     Dim intCount As Integer
-    strPath = AddIns(strVBProjects).Path & "\countrycodes\"
-    strFile = Dir(strPath & "*")
+    strPath = AddIns(strVBProjects).path & "\countrycodes\"
+    strFile = dir(strPath & "*")
     Do While strFile <> ""
         ReDim Preserve Countries(intCount)
         Dim c() As String
         c = Split(strFile, ".")
         Me.cboCountry.AddItem (c(0))
         intCount = intCount + 1
-        strFile = Dir()
+        strFile = dir()
     Loop
 End Sub
 
@@ -129,15 +129,8 @@ Private Sub FillState()
 End Sub
 
 Private Sub InitLanguage()
-    If lc = 0 Then SetLanguage
-    Me.Caption = strFrmOutlook(0)
-    Me.lblJahr.Caption = strFrmOutlook(1)
-    Me.lblCountry.Caption = strFrmOutlook(2)
-    Me.lblState.Caption = strFrmOutlook(3)
-    Me.chkBusy.Caption = strFrmOutlook(4)
-    Me.lblInfo.Caption = strFrmOutlook(5)
-    Me.cmdCancel.Caption = strCmd(1)
-    Me.cmdImport.Caption = strCmd(5)
-    Me.cmdDeleteYear.Caption = strCmd(6)
-    Me.cmdDeleteAll.Caption = strCmd(7)
+    TranslateForm Me
+    Me.lblInfo.Caption = t("The first 3 fields must be used.{}If 'Add holiday as busy' is ticked the public holidays will be add as busy for the given State/Region. If State/Region = All only the countrywide holidays are set as busy.", vbNewLine)
 End Sub
+
+

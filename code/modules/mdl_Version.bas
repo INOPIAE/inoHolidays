@@ -2,8 +2,8 @@ Attribute VB_Name = "mdl_Version"
 Option Explicit
 Option Private Module
 
-Public Const strMakroVersion As String = "0.06"
-Public Const dtVersionOf As Date = #11/22/2021#
+Public Const strMakroVersion As String = "0.07"
+Public Const dtVersionOf As Date = #11/25/2021#
 Public Const strVBProjects As String = "inoHolidays"
 Private Const strVBComponents As String = "DieseArbeitsmappe"
 
@@ -12,7 +12,7 @@ Private Const strVBComponents As String = "DieseArbeitsmappe"
 Public Sub Build()
     UpdateXlamFileProperties
     ExportModules
-    Zip_File_Or_Files
+    'Zip_File_Or_Files
 End Sub
 
 Public Sub UpdateXlamFileProperties()
@@ -103,7 +103,7 @@ Public Sub ImportModules()
     ' and  modified
     Dim wkbTarget As Excel.Workbook
     Dim objFSO As Scripting.FileSystemObject
-    Dim objFile As Scripting.File
+    Dim objFile As Scripting.file
     Dim szTargetWorkbook As String
     Dim szImportPath As String
     Dim szFileName As String
@@ -152,7 +152,7 @@ Public Sub ImportModules()
         If (objFSO.GetExtensionName(objFile.Name) = "cls") Or _
             (objFSO.GetExtensionName(objFile.Name) = "frm") Or _
             (objFSO.GetExtensionName(objFile.Name) = "bas") Then
-            cmpComponents.Import objFile.Path
+            cmpComponents.Import objFile.path
         End If
         
     Next objFile
@@ -171,7 +171,7 @@ Public Function FolderWithVBAProjectFiles() As String
     Set WshShell = CreateObject("WScript.Shell")
     Set FSO = CreateObject("scripting.filesystemobject")
 
-    SpecialPath = ThisWorkbook.Path
+    SpecialPath = ThisWorkbook.path
 
     If VBA.Right(SpecialPath, 1) <> "\" Then
         SpecialPath = SpecialPath & "\"
@@ -221,10 +221,10 @@ Public Function CheckVBAReferences(ByVal strApp As String) As Boolean
   Dim wkb As Workbook
   CheckVBAReferences = False
   Set wkb = Application.Workbooks(strVBProjects & ".xlam")
-  For i = 1 To wkb.VBProject.References.Count
-    If wkb.VBProject.References(i).IsBroken Then
-        If wkb.VBProject.References(i).Name = strApp Then
-            MsgBox printF(strError(1), strApp), , strError(0)
+  For i = 1 To wkb.VBProject.references.Count
+    If wkb.VBProject.references(i).IsBroken Then
+        If wkb.VBProject.references(i).Name = strApp Then
+            MsgBox t("{} is not installed.", strApp), , strErrorCaption
         End If
         Exit Function
     End If

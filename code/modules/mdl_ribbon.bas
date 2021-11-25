@@ -11,60 +11,60 @@ Public Sub OnRibbonLoad(ByRef ribbon As IRibbonUI)
 End Sub
 
 Public Sub rbGetLabelH(ByRef control As IRibbonControl, ByRef label As Variant)
-    SetLanguage
-    Select Case control.ID
+    rbSetLanguage
+    Select Case control.id
         Case "grpInoHolidays"
             label = "inoHolidays"
         Case "btnInoHolidays"
-            label = strLabel(0)
+            label = t("Import Holidays")
         Case "btnInoOstern"
-            label = strLabel(1)
+            label = t("Function Easter")
         Case "btnInoLastAdvent"
-            label = strLabel(2)
+            label = t("Function LastAdvent")
         Case "mnuInoRound"
-            label = strLabel(3)
+            label = ""
         Case "btnInfoInoHolidays"
-            label = strLabel(4)
+            label = t("Info")
         Case "btnOutlookInoHolidays"
-            label = strLabel(5)
+            label = t("Add Holidays to Outlook")
         Case Else
             label = ""
     End Select
 End Sub
 
 Public Sub rbGetScreentipH(ByRef control As IRibbonControl, ByRef text)
-    Select Case control.ID
+    Select Case control.id
         Case "btnInoHolidays"
-            text = strScreentip(0)
+            text = t("Import holidays of a given Year.")
         Case "btnInoOstern"
-            text = strScreentip(1)
+            text = t("Function Easter returns the date of Easter sunday of a given year.")
         Case "btnInoLastAdvent"
-            text = strScreentip(2)
+            text = t("Function LastAdvent returns the date of the 4th Sunday in Advent of a given year.")
         Case "mnuInoRound"
-            text = strScreentip(3)
+            text = ""
         Case "btnInfoInoHolidays"
-            text = strScreentip(4)
+            text = ""
         Case "btnOutlookInoHolidays"
-            text = strScreentip(5)
+            text = t("Add Holidays to Outlook")
         Case Else
             text = ""
     End Select
 End Sub
 
 Public Sub rbGetSupertipH(ByRef control As IRibbonControl, ByRef text)
-    Select Case control.ID
+    Select Case control.id
         Case "btnInoHolidays"
-            text = strSupertip(0)
+            text = t("Import holidays of a given Year.")
         Case "btnInoOstern"
-            text = strSupertip(1)
+            text = t("Function Easter returns the date of Easter sunday of a given year.")
         Case "btnInoLastAdvent"
-            text = strSupertip(2)
+            text = t("Function LastAdvent returns the date of the 4th Sunday in Advent of a given year.")
         Case "mnuInoRound"
-            text = strSupertip(3)
+            text = ""
         Case "btnInfoInoHolidays"
-            text = strSupertip(4)
+            text = ""
         Case "btnOutlookInoHolidays"
-            text = strSupertip(5)
+            text = t("Add Holidays to Outlook")
         Case Else
             text = ""
     End Select
@@ -99,7 +99,7 @@ Public Sub rbOutlookInoHolidays(ctrl As IRibbonControl)
     End If
 End Sub
 
-Public Sub SetLanguage()
+Public Sub rbSetLanguage()
     lc = Application.LanguageSettings.LanguageID(msoLanguageIDUI)
     Select Case lc
         Case 1031
