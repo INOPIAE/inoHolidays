@@ -9,7 +9,7 @@ Public ImportBln As Boolean
 Public ImportCountry As String
 
 Public Function Easter(ByVal GivenYear As Integer) As Date
-Attribute Easter.VB_Description = "Gibt das Datum des Ostersonntags des angegeben Jahres (GivenYear) zurück."
+Attribute Easter.VB_Description = "Gibt das Datum des Ostersonntags für das angegebene Jahr zurück."
 Attribute Easter.VB_ProcData.VB_Invoke_Func = " \n20"
 
     'calculates the date of Easter of a given year
@@ -51,7 +51,7 @@ Attribute Easter.VB_ProcData.VB_Invoke_Func = " \n20"
 End Function
 
 Public Function LastAdvent(ByVal GivenYear As Integer) As Date
-Attribute LastAdvent.VB_Description = "Gibt das Datum des 4. Adventsonntags des angegeben Jahres (GivenYear) zurück."
+Attribute LastAdvent.VB_Description = "Gibt das Datum des 4. Adventsonntags für das angegebene Jahr zurück."
 Attribute LastAdvent.VB_ProcData.VB_Invoke_Func = " \n20"
     Dim dt As Date
     dt = DateSerial(GivenYear, 12, 24)

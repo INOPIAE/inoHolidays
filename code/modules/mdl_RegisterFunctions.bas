@@ -3,9 +3,7 @@ Option Explicit
 'https://jkp-ads.com/Articles/RegisterUDF00.asp
 
 Sub RegisterFunction()
-    rbSetLanguage
-    DetectLanguage
-    
+   
     Dim vArgDescr() As Variant
     
     'Function Easter

@@ -11,7 +11,7 @@ Public Sub OnRibbonLoad(ByRef ribbon As IRibbonUI)
 End Sub
 
 Public Sub rbGetLabelH(ByRef control As IRibbonControl, ByRef label As Variant)
-    rbSetLanguage
+'    rbSetLanguage
     Select Case control.id
         Case "grpInoHolidays"
             label = "inoHolidays"
@@ -100,13 +100,13 @@ Public Sub rbOutlookInoHolidays(ctrl As IRibbonControl)
 End Sub
 
 Public Sub rbSetLanguage()
-    lc = Application.LanguageSettings.LanguageID(msoLanguageIDUI)
-    Select Case lc
-        Case 1031
-            germanText
-        Case 1033
-            englishText
-        Case Else
-            englishText
-    End Select
+'    lc = Application.LanguageSettings.LanguageID(msoLanguageIDUI)
+'    Select Case lc
+'        Case 1031
+'            germanText
+'        Case 1033
+'            englishText
+'        Case Else
+'            englishText
+'    End Select
 End Sub
