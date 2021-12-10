@@ -311,7 +311,7 @@ msgid ""
 "An error occurred with the FormatMessage API function call.\n"
 "Error: {} (Hex {})."
 msgstr ""
-"Ein Fehler in dem FormatMessage API Funktionsaufruf ist aufgetreten.\n"
+"Ein Fehler ist in dem FormatMessage API Funktionsaufruf aufgetreten.\n"
 "Fehler: {} (Hex {})."
 
 #: Module_Win32API:435
