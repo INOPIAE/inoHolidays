@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL-ADDRESS\n"
-"POT-Creation-Date: 2021-11-25 09:57:36 +0100\n"
-"PO-Revision-Date: 2021-11-25 09:57:36 +0100\n"
+"POT-Creation-Date: 2022-05-05 09:04:48 +0100\n"
+"PO-Revision-Date: 2022-05-05 09:04:48 +0100\n"
 "Last-Translator: LAST TRANSLATOR\n"
 "Language-Team: TEAM NAME\n"
 "Language: EN-US\n"
@@ -38,11 +38,11 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: frmImportHoliday:cmdCancel frmFunction:cmdCancel frmOutlookImport:cmdCancel
+#: frmImportHoliday:cmdCancel frmFunction:cmdCancel frmOutlookImport:cmdCancel frmProjectImport:cmdCancel
 msgid "Cancel"
 msgstr ""
 
-#: frmImportHoliday:lblJahr frmOutlookImport:lblJahr
+#: frmImportHoliday:lblJahr frmOutlookImport:lblJahr frmProjectImport:lblJahr
 msgid "Year:"
 msgstr ""
 
@@ -50,11 +50,11 @@ msgstr ""
 msgid "Import into cell:"
 msgstr ""
 
-#: frmImportHoliday:lblInfo frm_Info:lblTitle frm_Info:lblInfo frm_Info:lblCopyright frmFunction:Caption frmFunction:lblInfo frmFunction:lblJahrValue frmFunction:lblResult frmOutlookImport:lblInfo
+#: frmImportHoliday:lblInfo frm_Info:lblTitle frm_Info:lblInfo frm_Info:lblCopyright frmFunction:Caption frmFunction:lblInfo frmFunction:lblJahrValue frmFunction:lblResult frmOutlookImport:lblInfo frmProjectImport:lblInfo
 msgid "no translation"
 msgstr ""
 
-#: frmImportHoliday:lblCountry frmOutlookImport:lblCountry
+#: frmImportHoliday:lblCountry frmOutlookImport:lblCountry frmProjectImport:lblCountry
 msgid "Country:"
 msgstr ""
 
@@ -70,32 +70,36 @@ msgstr ""
 msgid "Info"
 msgstr ""
 
-#: mdl_ribbon:28 mdl_ribbon:47 mdl_ribbon:66
+#: mdl_ribbon:28 mdl_ribbon:49 mdl_ribbon:70
 msgid "Add Holidays to Outlook"
 msgstr ""
 
-#: mdl_ribbon:37 mdl_ribbon:56
+#: mdl_ribbon:30 mdl_ribbon:51 mdl_ribbon:72
+msgid "Add Holidays to MS Project"
+msgstr ""
+
+#: mdl_ribbon:39 mdl_ribbon:60
 msgid "Import holidays of a given Year."
 msgstr ""
 
-#: mdl_ribbon:39 mdl_ribbon:58
+#: mdl_ribbon:41 mdl_ribbon:62
 msgid "Function Easter returns the date of Easter sunday of a given year."
 msgstr ""
 
-#: mdl_ribbon:41 mdl_ribbon:60
+#: mdl_ribbon:43 mdl_ribbon:64
 msgid "Function LastAdvent returns the date of the 4th Sunday in Advent of a given year."
 msgstr ""
 
-#: frm_Info:12
+#: frm_Info:10
 msgid "Copyright"
 msgstr ""
 
-#: frm_Info:13
+#: frm_Info:11
 msgid "The source code is OpenSource under AGPLv3.{}The source code and the documentation are available at {}"
 msgstr ""
 
 #: frm_Info:Caption
-msgid "inoRound"
+msgid "inoHolidays"
 msgstr ""
 
 #: frm_Info:cmdOK
@@ -106,59 +110,59 @@ msgstr ""
 msgid "{} is not installed."
 msgstr ""
 
-#: mdl_Translation:16
+#: mdl_Translation:7
 msgid "Error"
 msgstr ""
 
-#: mdl_Translation:17
+#: mdl_Translation:8
 msgid "Instering hint"
 msgstr ""
 
-#: mdl_Translation:20
+#: mdl_Translation:11
 msgid "GivenYear - Year for the Easter Sunday"
 msgstr ""
 
-#: mdl_Translation:21
-msgid "Returns the date of Easter Sunday of the given year"
+#: mdl_Translation:12
+msgid "Returns the date of Easter Sunday of the given year."
 msgstr ""
 
-#: mdl_Translation:22
+#: mdl_Translation:13
 msgid "GivenYear - Year for the 4th Advent Sunday"
 msgstr ""
 
-#: mdl_Translation:23
-msgid "Returns the date of 4th Advent Sunday of the given year"
+#: mdl_Translation:14
+msgid "Returns the date of 4th Advent Sunday of the given year."
 msgstr ""
 
-#: mdl_Translation:24
+#: mdl_Translation:15
 msgid "GivenDate - Date to be checked"
 msgstr ""
 
-#: mdl_Translation:26
+#: mdl_Translation:17
 msgid "Country - Country in 2-letter-ISO-Code for which the holiday shall be checked. Default value is 'de'."
 msgstr ""
 
-#: mdl_Translation:28
+#: mdl_Translation:19
 msgid "State - State for which the holiday shall be checked. (see documantation) No default value given."
 msgstr ""
 
-#: mdl_Translation:29
+#: mdl_Translation:20
 msgid "Checks whether the given date is a holiday for a given country and tentative state."
 msgstr ""
 
-#: mdl_Translation:31
+#: mdl_Translation:22
 msgid "Germany"
 msgstr ""
 
-#: mdl_Translation:32
+#: mdl_Translation:23
 msgid "Austria"
 msgstr ""
 
-#: mdl_Translation:33
+#: mdl_Translation:24
 msgid "Switzerland"
 msgstr ""
 
-#: mdl_Translation:34
+#: mdl_Translation:25
 msgid "Italy"
 msgstr ""
 
@@ -198,7 +202,7 @@ msgstr ""
 msgid "Insert value"
 msgstr ""
 
-#: mdl_Oultlook:122
+#: mdl_Oultlook:122 mdl_Project:109
 msgid ""
 "{} entries processed for {}. Thereof \n"
 "{} new entries\n"
@@ -222,15 +226,15 @@ msgstr ""
 msgid "Country needs to be given."
 msgstr ""
 
-#: frmOutlookImport:43
+#: frmOutlookImport:43 frmProjectImport:31
 msgid "Year must be entered as number."
 msgstr ""
 
-#: frmOutlookImport:52
+#: frmOutlookImport:52 frmProjectImport:49
 msgid "A country must be selected."
 msgstr ""
 
-#: frmOutlookImport:61
+#: frmOutlookImport:61 frmProjectImport:58
 msgid "A state must be selected."
 msgstr ""
 
@@ -242,20 +246,20 @@ msgstr ""
 msgid "Add Holidays To Outlook"
 msgstr ""
 
-#: frmOutlookImport:cmdImport
+#: frmOutlookImport:cmdImport frmProjectImport:cmdImport
 msgid "Import"
 msgstr ""
 
-#: frmOutlookImport:lblState
-msgid "State/Region:"
-msgstr ""
-
-#: frmOutlookImport:cmdDeleteAll
+#: frmOutlookImport:cmdDeleteAll frmProjectImport:cmdDeleteAll
 msgid "Delete all"
 msgstr ""
 
-#: frmOutlookImport:cmdDeleteYear
+#: frmOutlookImport:cmdDeleteYear frmProjectImport:cmdDeleteYear
 msgid "Delete year"
+msgstr ""
+
+#: frmOutlookImport:Label1 frmProjectImport:lblState
+msgid "State/Region:"
 msgstr ""
 
 #: frmOutlookImport:chkBusy
@@ -273,4 +277,32 @@ msgid ""
 "An internal system error occurred with the\n"
 "FormatMessage API function: {}.\n"
 "No futher information is available."
+msgstr ""
+
+#: frmProjectImport:40
+msgid "Second year must be entered as number."
+msgstr ""
+
+#: frmProjectImport:67
+msgid "A calendar name must be given."
+msgstr ""
+
+#: frmProjectImport:83
+msgid "Import holidays into Project file '{}'"
+msgstr ""
+
+#: frmProjectImport:126
+msgid "The first 4 fields must be used.{}You can enter a new calendar by entering the new name into the calendar field."
+msgstr ""
+
+#: frmProjectImport:Caption
+msgid "Add Holidays To Project"
+msgstr ""
+
+#: frmProjectImport:lblCalendar
+msgid "Calendar:"
+msgstr ""
+
+#: frmProjectImport:lblTo
+msgid "-"
 msgstr ""

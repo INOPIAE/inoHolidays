@@ -1,0 +1,1 @@
+Do not forget to update the holiday regional definition on the add-in configuartion sheet.
