@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL-ADDRESS\n"
-"POT-Creation-Date: 2022-05-05 09:04:48 +0100\n"
-"PO-Revision-Date: 2022-05-05 09:05+0200\n"
+"POT-Creation-Date: 2022-05-05 15:32:05 +0100\n"
+"PO-Revision-Date: 2022-05-05 15:32+0200\n"
 "Last-Translator: \n"
 "Language-Team: TEAM NAME\n"
 "Language: de_DE\n"
@@ -181,19 +181,19 @@ msgstr ""
 "Prüft, ob das angegebene Datum (GivenDate) unter Berücksichtigung des "
 "Staates und evtl. Bundeslandes ein Feiertag ist."
 
-#: mdl_Translation:22
+#: mdl_Translation:22 mdl_Oultlook:234
 msgid "Germany"
 msgstr "Deutschland"
 
-#: mdl_Translation:23
+#: mdl_Translation:23 mdl_Oultlook:236
 msgid "Austria"
 msgstr "Österreich"
 
-#: mdl_Translation:24
+#: mdl_Translation:24 mdl_Oultlook:238
 msgid "Switzerland"
 msgstr "Schweiz"
 
-#: mdl_Translation:25
+#: mdl_Translation:25 mdl_Oultlook:240
 msgid "Italy"
 msgstr "Italien"
 
@@ -238,7 +238,11 @@ msgstr "Funktion einfügen"
 msgid "Insert value"
 msgstr "Wert einfügen"
 
-#: mdl_Oultlook:122 mdl_Project:109
+#: mdl_Oultlook:23
+msgid "Holiday, inoHolidays"
+msgstr "Feiertag, inoHolidays"
+
+#: mdl_Oultlook:121 mdl_Project:109
 msgid ""
 "{} entries processed for {}. Thereof \n"
 "{} new entries\n"
@@ -250,17 +254,29 @@ msgstr ""
 "{} geänderte Einträge\n"
 "{} unveränderte Einträge"
 
-#: mdl_Oultlook:129 mdl_Oultlook:184 mdl_Oultlook:226
+#: mdl_Oultlook:128 mdl_Oultlook:183 mdl_Oultlook:225
 msgid "Outlook must be started."
 msgstr "Outlook muss geöffnet sein."
 
-#: mdl_Oultlook:177
+#: mdl_Oultlook:176
 msgid "{} entries deleted for {}."
 msgstr "{} Einträge für {} gelöscht."
 
-#: mdl_Oultlook:219
+#: mdl_Oultlook:218
 msgid "{} entries deleted."
 msgstr "{} Einträge gelöscht."
+
+#: mdl_Oultlook:242
+msgid "Netherlands"
+msgstr "Niederlande"
+
+#: mdl_Oultlook:244
+msgid "Poland"
+msgstr "Polen"
+
+#: mdl_Oultlook:246
+msgid "Sweden"
+msgstr "Schweden"
 
 #: frmOutlookImport:30
 msgid "Country needs to be given."

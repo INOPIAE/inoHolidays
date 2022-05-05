@@ -1,5 +1,4 @@
-# Excel Add-In which adds functions to calculate Easter Sunday and the 4th Advent Sunday as well as functions to get information about public holidays and a list of public holidays and add the list to Outlook.
-
+# Excel Add-In which adds functions to calculate Easter Sunday and the 4th Advent Sunday as well as functions to get information about public holidays and a list of public holidays and add the list to Outlook and MS Project
 Currently the user interface is available in English and German. The language is chosen by the add-in according to the language of the Excel GUI.
 
 Currently holidays are available for these countries:
@@ -40,6 +39,7 @@ In the tab Formulas there is a group inoHolidays which contains these buttons:
 * Function Easter - Return the date of Easter Sunday of a given year as fixed date or as function
 * Function LastAdvent - Return the date of 4th Advent Sunday of a given year as fixed date or as function
 * Add holidays to Outlook - Adds all public holidays for a given year and country to Outlook
+* Add holidays to MS Project - Adds all public holidays for a given year period and country to a MS Project Calendar
 
 ### Functions
 

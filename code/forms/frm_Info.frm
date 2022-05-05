@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} frm_Info 
-   Caption         =   "inoRound"
+   Caption         =   "inoHolidays"
    ClientHeight    =   3240
    ClientLeft      =   45
    ClientTop       =   390
@@ -20,8 +20,6 @@ Private Sub cmdOK_Click()
 End Sub
 
 Private Sub UserForm_Initialize()
-    'SetLanguage "de_DE"
-
     TranslateForm Me
     Me.lblTitle.Caption = "inoHolidays Version " & strMakroVersion & " (" & dtVersionOf & ")"
     Me.lblCopyright.Caption = t("Copyright") & " 2021 - " & Year(Date)

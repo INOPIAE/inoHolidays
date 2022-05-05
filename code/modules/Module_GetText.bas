@@ -58,7 +58,11 @@ Option Explicit
 
 
 #If VBA7 Then
-    Private Declare PtrSafe Function compute_hashval Lib "xltoolbox.dll" (ByVal text As String, ByVal keylen As Long) As Long
+    #If Win64 = 0 Then
+        Private Declare PtrSafe Function compute_hashval Lib "xltoolbox-32.dll" (ByVal text As String, ByVal keylen As Long) As Long
+    #Else
+        Private Declare PtrSafe Function compute_hashval Lib "xltoolbox-64.dll" (ByVal text As String, ByVal keylen As Long) As Long
+    #End If
 #Else
     Private Declare Function compute_hashval Lib "xltoolbox.dll" (ByVal text As String, ByVal keylen As Long) As Long
 #End If
@@ -74,9 +78,9 @@ Function RegisterXLToolboxDLL() As Boolean
     On Error Resume Next
     Dim strPath As String
     strPath = AddPathSep(ThisWorkbook.path)
-    If Not FileExists(strPath & "xltoolbox.dll") Then
+    If Not FileExists(strPath & "xltoolbox-64.dll") Then
         strPath = AddPathSep(strPath & "resource")
-        If Not FileExists(strPath & "xltoolbox.dll") Then Exit Function
+        If Not FileExists(strPath & "xltoolbox-64.dll") Then Exit Function
     End If
     AddDLLPath strPath
     If Err.LastDllError = 0 Then
@@ -237,7 +241,7 @@ Function SetLanguage(languageCode As String) As Boolean
             ' was not found, attempt to locate the one with the pure language
             ' code ("en" in this case") only.
             If strCode Like "??-??" Then
-                strCode = Left$(strCode, 2)
+                'strCode = Left$(strCode, 2)
                 If Not FileExists(GetMoFilePath(strCode)) Then Exit Function
             Else
                 Exit Function
@@ -546,7 +550,7 @@ Private Sub CreateLocaleInfo()
     
     AddLangInfo "Deutsch - Deutschland", "de", "de-de", 1031
     AddLangInfo "English - United States", "en", "en-us", 1033
-    AddLangInfo "Nederlands - Nederland", "nl", "nl-nl", 1043
+ '   AddLangInfo "Nederlands - Nederland", "nl", "nl-nl", 1043
     
     
 '    AddLangInfo "Afrikaans", "af", "af", 1078

@@ -21,8 +21,7 @@ Sub EnterHoliday(holiday As String, myDate As Date, Location As String, Optional
         .ReminderSet = False
         .Location = Location
         .BusyStatus = status  'free = 0, busy =2
-'TODO Language
-        .Categories = "Feiertag, inoHolidays"
+        .Categories = t("Holiday, inoHolidays")
         .Save
 
         '.Display
@@ -233,10 +232,18 @@ End Sub
 Public Function getLocation(ByVal strLocation As String) As String
     Select Case strLocation
         Case "de"
-            getLocation = "Deutschland"
+            getLocation = t("Germany")
         Case "at"
-            getLocation = "Österreich"
+            getLocation = t("Austria")
         Case "ch"
-            getLocation = "Schweiz"
+            getLocation = t("Switzerland")
+        Case "it"
+            getLocation = t("Italy")
+        Case "nl"
+            getLocation = t("Netherlands")
+        Case "pl"
+            getLocation = t("Poland")
+        Case "se"
+            getLocation = t("Sweden")
     End Select
 End Function

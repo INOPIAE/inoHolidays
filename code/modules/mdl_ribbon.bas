@@ -27,6 +27,8 @@ Public Sub rbGetLabelH(ByRef control As IRibbonControl, ByRef label As Variant)
             label = t("Info")
         Case "btnOutlookInoHolidays"
             label = t("Add Holidays to Outlook")
+        Case "btnProjectInoHolidays"
+            label = t("Add Holidays to MS Project")
         Case Else
             label = ""
     End Select
@@ -46,6 +48,8 @@ Public Sub rbGetScreentipH(ByRef control As IRibbonControl, ByRef text)
             text = ""
         Case "btnOutlookInoHolidays"
             text = t("Add Holidays to Outlook")
+        Case "btnProjectInoHolidays"
+            text = t("Add Holidays to MS Project")
         Case Else
             text = ""
     End Select
@@ -65,6 +69,8 @@ Public Sub rbGetSupertipH(ByRef control As IRibbonControl, ByRef text)
             text = ""
         Case "btnOutlookInoHolidays"
             text = t("Add Holidays to Outlook")
+        Case "btnProjectInoHolidays"
+            text = t("Add Holidays to MS Project")
         Case Else
             text = ""
     End Select
@@ -98,6 +104,14 @@ Public Sub rbOutlookInoHolidays(ctrl As IRibbonControl)
         frmOutlookImport.Show
     End If
 End Sub
+
+
+Public Sub rbProjectInoHolidays(ctrl As IRibbonControl)
+    If CheckVBAReferences("MSProject") = True Then
+        ShowProjectImport
+    End If
+End Sub
+
 
 Public Sub rbSetLanguage()
 '    lc = Application.LanguageSettings.LanguageID(msoLanguageIDUI)
