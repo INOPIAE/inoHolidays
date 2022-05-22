@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL-ADDRESS\n"
-"POT-Creation-Date: 2022-05-05 15:32:05 +0100\n"
-"PO-Revision-Date: 2022-05-05 15:32+0200\n"
+"POT-Creation-Date: 2022-05-22 09:20:18 +0100\n"
+"PO-Revision-Date: 2022-05-22 09:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: TEAM NAME\n"
 "Language: de_DE\n"
@@ -26,7 +26,7 @@ msgstr "Es muss eine Zelle ausgewählt werden."
 msgid "Only one cell must be selected."
 msgstr "Es darf nur eine Zelle ausgewählt werden."
 
-#: frmImportHoliday:81
+#: frmImportHoliday:87
 msgid ""
 "There should be 3 emtpy columns and 20 empty rows starting from the given "
 "cell. Filled cell will be overwriten without further notification."
@@ -208,6 +208,10 @@ msgstr "Die Zelle muss eine Zahl enthalten."
 #: frmFunction:71
 msgid "No valid range entered."
 msgstr "Es wurde kein gültiger Bereich eingegeben."
+
+#: frmFunction:77
+msgid "The error {} occured in line {}:"
+msgstr "Der Fehler {} ist in Zeile {} aufgetreten:"
 
 #: frmFunction:103 frmFunction:106
 msgid "Function {}"

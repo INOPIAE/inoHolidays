@@ -24,102 +24,102 @@ Private Const strDateFormat = "MM/dd/yyyy" ' < translate
 
 
 Private Sub cmdCancel_Click()
-    Unload Me
+1   Unload Me
 End Sub
 
 Private Sub cmdImport_Click()
-    If intGivenYear > 0 Then
-        Select Case strFunction
+2   If intGivenYear > 0 Then
+3       Select Case strFunction
             Case "Ostern"
-                rngStart.Formula = "=Easter(" & Me.reGivenYear.Value & ")"
-            Case "Advent"
-                rngStart.Formula = "=LastAdvent(" & Me.reGivenYear.Value & ")"
-        End Select
-        rngStart.NumberFormat = strDateFormat
-        Unload Me
-    End If
+4               rngStart.Formula = "=Easter(" & Me.reGivenYear.Value & ")"
+5           Case "Advent"
+6               rngStart.Formula = "=LastAdvent(" & Me.reGivenYear.Value & ")"
+7       End Select
+8       rngStart.NumberFormat = strDateFormat
+9       Unload Me
+10  End If
 End Sub
 
 Private Sub cmdValue_Click()
-    If intGivenYear > 0 Then
-        Select Case strFunction
+11  If intGivenYear > 0 Then
+12      Select Case strFunction
             Case "Ostern"
-                rngStart.Value = Easter(intGivenYear)
-            Case "Advent"
-                rngStart.Value = LastAdvent(intGivenYear)
-        End Select
-        rngStart.NumberFormat = strDateFormat
-        Unload Me
-    End If
+13              rngStart.Value = Easter(intGivenYear)
+14          Case "Advent"
+15              rngStart.Value = LastAdvent(intGivenYear)
+16      End Select
+17      rngStart.NumberFormat = strDateFormat
+18      Unload Me
+19  End If
 End Sub
 
 Private Sub reGivenYear_Exit(ByVal Cancel As MSForms.ReturnBoolean)
-    If IsNumeric(Me.reGivenYear.Value) Then
-        Me.lblGivenYearValue.Caption = Me.reGivenYear.Value
-        intGivenYear = Me.reGivenYear.Value
-        ShowResult
-        Exit Sub
-    End If
+20  If IsNumeric(Me.reGivenYear.Value) Then
+21      Me.lblGivenYearValue.Caption = Me.reGivenYear.Value
+22      intGivenYear = Me.reGivenYear.Value
+23      ShowResult
+24      Exit Sub
+25  End If
     
-    On Error GoTo Fehler
-    Set rngValue = Range(Me.reGivenYear.Value)
-    If rngValue.Cells.Count > 1 Then
-      MsgBox t("Only one cell must be selected."), , strErrorCaptionHint
-      Cancel = True
-    End If
+26  On Error GoTo Fehler
+27  Set rngValue = Range(Me.reGivenYear.Value)
+28  If rngValue.Cells.Count > 1 Then
+29    MsgBox t("Only one cell must be selected."), , strErrorCaptionHint
+30    Cancel = True
+31  End If
     
-    If IsNumeric(rngValue.Value) = False Then
-      MsgBox t("The cell must contain a number."), , strErrorCaptionHint
-      Cancel = True
-    End If
+32  If IsNumeric(rngValue.Value) = False Then
+33    MsgBox t("The cell must contain a number."), , strErrorCaptionHint
+34    Cancel = True
+35  End If
     
     
-    intGivenYear = rngValue.Value
-    Me.lblJahrValue.Caption = intGivenYear
-    ShowResult
+36  intGivenYear = rngValue.Value
+37  Me.lblJahrValue.Caption = intGivenYear
+38  ShowResult
     
-    Exit Sub
-Fehler:
-    Select Case Err.Number
+39  Exit Sub
+40 Fehler:
+41  Select Case Err.Number
         Case 1004
-            If Me.reGivenYear.Value <> vbNullString Then
-                MsgBox t("No valid range entered."), , strErrorCaptionHint
-                Err.Clear
-                Cancel = True
-            End If
-            Err.Clear
-        Case Else
-            MsgBox Err.Number & " - " & Err.Description, , strErrorCaption
-    End Select
+42          If Me.reGivenYear.Value <> vbNullString Then
+43              MsgBox t("No valid range entered."), , strErrorCaptionHint
+44              Err.Clear
+45              Cancel = True
+46          End If
+47          Err.Clear
+48      Case Else
+49          MsgBox t("The error {} occured in line {}:", Err.Number, Erl) & vbNewLine & Err.Description, , strErrorCaption
+50  End Select
     
 End Sub
 
 Private Sub UserForm_Initialize()
-    Me.lblJahrValue.Caption = ""
-    Me.lblResult.Caption = ""
+51  Me.lblJahrValue.Caption = ""
+52  Me.lblResult.Caption = ""
 
-    Set rngStart = ActiveCell
+53  Set rngStart = ActiveCell
 End Sub
 
 Private Sub ShowResult()
-    Select Case strFunction
+54  Select Case strFunction
         Case "Ostern"
-            Me.lblResult.Caption = Easter(intGivenYear)
-        Case "Advent"
-            Me.lblResult.Caption = LastAdvent(intGivenYear)
-    End Select
+55          Me.lblResult.Caption = Easter(intGivenYear)
+56      Case "Advent"
+57          Me.lblResult.Caption = LastAdvent(intGivenYear)
+58  End Select
 End Sub
 
 Public Sub InitForm(ByVal strFunctionDef As String)
-    strFunction = strFunctionDef
-    TranslateForm Me
-    Select Case strFunction
+59  strFunction = strFunctionDef
+60  TranslateForm Me
+61  Select Case strFunction
         Case "Ostern"
-            Me.Caption = t("Function {}", "Easter")
-            Me.lblInfo = t("The function {} returns the date of Easter Sunday of the given year.", "Easter(GivenYear)")
-        Case "Advent"
-            Me.Caption = t("Function {}", "LastAdvent")
-            Me.lblInfo = t("The function {} returns the date of 4th Advent Sunday of the given year.", "LastAdvent(GivenYear)")
-   End Select
+62          Me.Caption = t("Function {}", "Easter")
+63          Me.lblInfo = t("The function {} returns the date of Easter Sunday of the given year.", "Easter(GivenYear)")
+64      Case "Advent"
+65          Me.Caption = t("Function {}", "LastAdvent")
+66          Me.lblInfo = t("The function {} returns the date of 4th Advent Sunday of the given year.", "LastAdvent(GivenYear)")
+67 End Select
 End Sub
 
