@@ -63,6 +63,10 @@ Private Sub cmdImport_Click()
     Unload Me
 End Sub
 
+Private Sub reZelle_BeforeDragOver(Cancel As Boolean, ByVal Data As MSForms.DataObject, ByVal x As stdole.OLE_XPOS_CONTAINER, ByVal y As stdole.OLE_YPOS_CONTAINER, ByVal DragState As MSForms.fmDragState, Effect As MSForms.fmDropEffect, ByVal Shift As Integer)
+
+End Sub
+
 Private Sub UserForm_Initialize()
     FillCountries
     InitLanguage
@@ -78,8 +82,10 @@ Private Sub FillCountries()
         ReDim Preserve Countries(intCount)
         Dim c() As String
         c = Split(strFile, ".")
-        Me.cboCountry.AddItem (c(0))
-        intCount = intCount + 1
+        If c(1) = "inocsv" Then
+            Me.cboCountry.AddItem (c(0))
+            intCount = intCount + 1
+        End If
         strFile = dir()
     Loop
 End Sub

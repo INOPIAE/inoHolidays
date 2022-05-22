@@ -4,7 +4,7 @@ Currently the user interface is available in English and German. The language is
 Currently holidays are available for these countries:
 
 * Austria (States: All)
-* Germany (States according to https://www.datenportal.bmbf.de/portal/de/G122.html: All, BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SH, SL, SN, ST, TH = Th�ringen)
+* Germany (States according to https://www.datenportal.bmbf.de/portal/de/G122.html: All, BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SH, SL, SN, ST, TH = Thüringen)
 * Netherlands
 * Italy (States: All, Alto Adige)
 * Poland
