@@ -14,6 +14,8 @@ Currently holidays are available for these countries:
 To execute the unit tests in the module mdl_UnitTestClsHolidays.bas the the COM add-in rubberduck needs be installed (https://github.com/rubberduck-vba/Rubberduck).
 (Thank you guys for your work)
 
+Line numbering in the code is generated with the code from https://github.com/INOPIAE/inoLineNumbering.
+
 ## Installation
 
 Download the file download_inoHolidays.zip to your system and unzip the content.
