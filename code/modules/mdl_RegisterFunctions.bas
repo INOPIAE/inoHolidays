@@ -41,6 +41,19 @@ Sub RegisterFunction()
         Category:="inoHolidays", _
         ArgumentDescriptions:=vArgDescr
 
+    'Function DayOfMonth
+    ReDim vArgDescr(4)
+    
+    vArgDescr(1) = strRegister(8)
+    vArgDescr(2) = strRegister(9)
+    vArgDescr(3) = strRegister(10)
+    vArgDescr(4) = strRegister(11)
+    
+    Application.MacroOptions _
+        Macro:="DayOfMonth", _
+        Description:=strRegister(12), _
+        Category:="inoHolidays", _
+        ArgumentDescriptions:=vArgDescr
 End Sub
 
 Sub UnRegisterFunction()
@@ -71,5 +84,12 @@ Sub UnRegisterFunction()
         Category:=14, _
         ArgumentDescriptions:=vArgDescr
 
+    'Function DayOfMonth
+    ReDim vArgDescr(4)
+    Application.MacroOptions _
+        Macro:="DayOfMonth", _
+        Description:=strRegister(12), _
+        Category:=14, _
+        ArgumentDescriptions:=vArgDescr
 End Sub
 

@@ -63,10 +63,6 @@ Private Sub cmdImport_Click()
     Unload Me
 End Sub
 
-Private Sub reZelle_BeforeDragOver(Cancel As Boolean, ByVal Data As MSForms.DataObject, ByVal x As stdole.OLE_XPOS_CONTAINER, ByVal y As stdole.OLE_YPOS_CONTAINER, ByVal DragState As MSForms.fmDragState, Effect As MSForms.fmDropEffect, ByVal Shift As Integer)
-
-End Sub
-
 Private Sub UserForm_Initialize()
     FillCountries
     InitLanguage

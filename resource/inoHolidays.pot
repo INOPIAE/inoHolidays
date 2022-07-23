@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL-ADDRESS\n"
-"POT-Creation-Date: 2022-05-22 09:20:18 +0100\n"
-"PO-Revision-Date: 2022-05-22 09:20:18 +0100\n"
+"POT-Creation-Date: 2022-07-23 13:02:45 +0100\n"
+"PO-Revision-Date: 2022-07-23 13:02:45 +0100\n"
 "Last-Translator: LAST TRANSLATOR\n"
 "Language-Team: TEAM NAME\n"
 "Language: EN-US\n"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Only one cell must be selected."
 msgstr ""
 
-#: frmImportHoliday:87
+#: frmImportHoliday:83
 msgid "There should be 3 emtpy columns and 20 empty rows starting from the given cell. Filled cell will be overwriten without further notification."
 msgstr ""
 
@@ -110,59 +110,79 @@ msgstr ""
 msgid "{} is not installed."
 msgstr ""
 
-#: mdl_Translation:7
+#: mdl_Translation:11
 msgid "Error"
 msgstr ""
 
-#: mdl_Translation:8
+#: mdl_Translation:12
 msgid "Instering hint"
 msgstr ""
 
-#: mdl_Translation:11
+#: mdl_Translation:14
 msgid "GivenYear - Year for the Easter Sunday"
 msgstr ""
 
-#: mdl_Translation:12
+#: mdl_Translation:15
 msgid "Returns the date of Easter Sunday of the given year."
 msgstr ""
 
-#: mdl_Translation:13
+#: mdl_Translation:17
 msgid "GivenYear - Year for the 4th Advent Sunday"
 msgstr ""
 
-#: mdl_Translation:14
+#: mdl_Translation:18
 msgid "Returns the date of 4th Advent Sunday of the given year."
 msgstr ""
 
-#: mdl_Translation:15
+#: mdl_Translation:20
 msgid "GivenDate - Date to be checked"
 msgstr ""
 
-#: mdl_Translation:17
+#: mdl_Translation:22
 msgid "Country - Country in 2-letter-ISO-Code for which the holiday shall be checked. Default value is 'de'."
 msgstr ""
 
-#: mdl_Translation:19
+#: mdl_Translation:24
 msgid "State - State for which the holiday shall be checked. (see documantation) No default value given."
 msgstr ""
 
-#: mdl_Translation:20
+#: mdl_Translation:25
 msgid "Checks whether the given date is a holiday for a given country and tentative state."
 msgstr ""
 
-#: mdl_Translation:22 mdl_Oultlook:234
+#: mdl_Translation:27
+msgid "GivenYear - year"
+msgstr ""
+
+#: mdl_Translation:28
+msgid "GivenMonth - month given as number"
+msgstr ""
+
+#: mdl_Translation:29
+msgid "DayOfWeek - given as number, 1 - Sunday to 7 - Saturday"
+msgstr ""
+
+#: mdl_Translation:30
+msgid "NumInMonth - given as number, 1 - 5, 6 = last of month"
+msgstr ""
+
+#: mdl_Translation:31
+msgid "Returns a date given by year, month, weekday and occurance in a month."
+msgstr ""
+
+#: mdl_Translation:33 mdl_Oultlook:234
 msgid "Germany"
 msgstr ""
 
-#: mdl_Translation:23 mdl_Oultlook:236
+#: mdl_Translation:34 mdl_Oultlook:236
 msgid "Austria"
 msgstr ""
 
-#: mdl_Translation:24 mdl_Oultlook:238
+#: mdl_Translation:35 mdl_Oultlook:238
 msgid "Switzerland"
 msgstr ""
 
-#: mdl_Translation:25 mdl_Oultlook:240
+#: mdl_Translation:36 mdl_Oultlook:240
 msgid "Italy"
 msgstr ""
 
@@ -246,15 +266,15 @@ msgstr ""
 msgid "Country needs to be given."
 msgstr ""
 
-#: frmOutlookImport:43 frmProjectImport:31
+#: frmOutlookImport:43 frmProjectImport:21
 msgid "Year must be entered as number."
 msgstr ""
 
-#: frmOutlookImport:52 frmProjectImport:49
+#: frmOutlookImport:52 frmProjectImport:39
 msgid "A country must be selected."
 msgstr ""
 
-#: frmOutlookImport:61 frmProjectImport:58
+#: frmOutlookImport:61 frmProjectImport:48
 msgid "A state must be selected."
 msgstr ""
 
@@ -299,19 +319,19 @@ msgid ""
 "No futher information is available."
 msgstr ""
 
-#: frmProjectImport:40
+#: frmProjectImport:30
 msgid "Second year must be entered as number."
 msgstr ""
 
-#: frmProjectImport:67
+#: frmProjectImport:57
 msgid "A calendar name must be given."
 msgstr ""
 
-#: frmProjectImport:83
+#: frmProjectImport:73
 msgid "Import holidays into Project file '{}'"
 msgstr ""
 
-#: frmProjectImport:126
+#: frmProjectImport:116
 msgid "The first 4 fields must be used.{}You can enter a new calendar by entering the new name into the calendar field."
 msgstr ""
 

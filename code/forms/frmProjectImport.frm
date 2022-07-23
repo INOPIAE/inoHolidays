@@ -13,8 +13,6 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-
-
 Option Explicit
 
 Public GivenYear As Integer
@@ -31,14 +29,6 @@ End Sub
 
 Private Sub cmdCancel_Click()
     Unload Me
-End Sub
-
-Private Sub cmdDeleteAll_Click()
-
-End Sub
-
-Private Sub cmdDeleteYear_Click()
-
 End Sub
 
 Private Sub cmdImport_Click()

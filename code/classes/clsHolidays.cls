@@ -124,14 +124,21 @@ Private Sub InitDateFile()
                 pos = InStr(myLine(0), "+")
                 intSign = -1
             End If
+            If pos = 0 Then
+                pos = InStr(myLine(0), ",")
+            End If
             If myLine(0) = "Ostern" Then
                 Holidays(intLine).GivenDate = Ostersonntag
             Else
                 Select Case Left(myLine(0), pos - 1)
                     Case "Ostern"
-                       Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), Ostersonntag)
+                        Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), Ostersonntag)
                     Case "Advent"
-                       Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), LetzterAdvent)
+                        Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), LetzterAdvent)
+                    Case "Tag"
+                        Dim Tage() As String
+                        Tage = Split(myLine(0), ",")
+                        Holidays(intLine).GivenDate = DayOfMonth(GivenYear, CInt(Tage(1)), CInt(Tage(2)), CInt(Tage(3)))
                 End Select
             End If
             
