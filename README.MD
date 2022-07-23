@@ -53,6 +53,4 @@ Within the function wizzard the category inoHolidays shows these functions
 * Easter(GivenYear) - returns the date of the Easter Sunday of a given year
 * isHoliday(GivenDate, [Country], [State]) - Checks whether the given date is a holiday for a given country and tentative state.
 * LastAdvent(GivenYear) - returns the date of the 4th Advent Sunday of a given year
-
-
-
+* DayInMonth(GivenYear, GivenMonth, DayInWeek, NumInMonth) - returns a date given by year, month, weekday and occurance in a month.
