@@ -4,6 +4,8 @@ Currently the user interface is available in English and German. The language is
 Currently holidays are available for these countries:
 
 * Austria (States: All)
+* Belgium (States: All, Flandern, Wallonie, Französische Gemeinschaft, Deustche Gemeinschaft)
+* France (States: All, Grand Est)
 * Germany (States according to https://www.datenportal.bmbf.de/portal/de/G122.html: All, BW, BY, BE, BB, HB, HH, HE, MV, NI, NW, RP, SH, SL, SN, ST, TH = Thüringen)
 * Luxembourg
 * Netherlands
