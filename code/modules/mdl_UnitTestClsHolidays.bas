@@ -48,10 +48,10 @@ Private Sub TestGetHolidayNameFixed()
     GivenDate = #1/1/2020#
     
     Feiertag = h.GetHolidayName(GivenDate)
-    If Feiertag <> "NeuGivenYear" Then GoTo TestFehlschlag
+    If Feiertag <> "Neujahr" Then GoTo TestFehlschlag
         
     Feiertag = h.GetHolidayName(GivenDate, "BE")
-    If Feiertag <> "NeuGivenYear" Then GoTo TestFehlschlag
+    If Feiertag <> "Neujahr" Then GoTo TestFehlschlag
         
     GivenDate = #1/2/2020#
     Feiertag = h.GetHolidayName(GivenDate)
@@ -90,10 +90,10 @@ Private Sub TestGetHolidayNameDefault()
     GivenDate = DateSerial(Year(Now), 1, 1)
     
     Feiertag = h.GetHolidayName(GivenDate)
-    If Feiertag <> "NeuGivenYear" Then GoTo TestFehlschlag
+    If Feiertag <> "Neujahr" Then GoTo TestFehlschlag
         
     Feiertag = h.GetHolidayName(GivenDate, "BE")
-    If Feiertag <> "NeuGivenYear" Then GoTo TestFehlschlag
+    If Feiertag <> "Neujahr" Then GoTo TestFehlschlag
         
     GivenDate = DateSerial(Year(Now), 1, 2)
 
