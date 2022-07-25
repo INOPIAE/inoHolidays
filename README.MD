@@ -12,12 +12,14 @@ Currently holidays are available for these countries:
 * Hungary
 * Luxembourg
 * Netherlands
+* Ireland
 * Italy (States: All, Alto Adige)
 * Poland
 * Slovakia
 * Slovenia
 * Sweden
 * Switzerland
+* United Kingdom (States: All, England, Northern Ireland, Scotland, Wales)
 
 To execute the unit tests in the module mdl_UnitTestClsHolidays.bas the the COM add-in rubberduck needs be installed (https://github.com/rubberduck-vba/Rubberduck).
 (Thank you guys for your work)
