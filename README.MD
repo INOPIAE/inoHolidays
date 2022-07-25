@@ -21,7 +21,7 @@ Currently holidays are available for these countries:
 * Switzerland
 * United Kingdom (States: All, England, Northern Ireland, Scotland, Wales)
 
-To execute the unit tests in the module mdl_UnitTestClsHolidays.bas the the COM add-in rubberduck needs be installed (https://github.com/rubberduck-vba/Rubberduck).
+To execute the unit tests in the modules mdl_UnitTestClsHolidays.bas and mdl_UnitTestMdlHolidays the the COM add-in rubberduck needs be installed (https://github.com/rubberduck-vba/Rubberduck).
 (Thank you guys for your work)
 
 Line numbering in the code is generated with the code from https://github.com/INOPIAE/inoLineNumbering.
