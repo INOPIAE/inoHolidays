@@ -97,6 +97,7 @@ Private Sub InitDateFile()
     Ostersonntag = Easter(GivenYear)
     Dim LetzterAdvent As Date
     LetzterAdvent = LastAdvent(GivenYear)
+    Dim LastHoliday As Date
 
     Dim myLine() As String
     FNr = FreeFile
@@ -107,6 +108,8 @@ Private Sub InitDateFile()
         InitDate
         Exit Sub
     End If
+    
+    LastHoliday = #1/1/2000#
     
     Open strFile For Input As FNr
     Do Until EOF(FNr)
@@ -143,6 +146,33 @@ Private Sub InitDateFile()
             End If
             
         End If
+        
+        'Move holiday to monday if holiday on weekend
+        If UBound(myLine) = 3 Then
+            If LCase(Trim(myLine(3))) = "mo" Then
+                If Weekday(Holidays(intLine).GivenDate) = vbSaturday Or Weekday(Holidays(intLine).GivenDate) = vbSunday Then
+                    If LastHoliday = #1/1/2000# Then
+                        If Weekday(Holidays(intLine).GivenDate) = vbSaturday Then
+                            Holidays(intLine).GivenDate = DateAdd("d", 2, Holidays(intLine).GivenDate)
+                        Else
+                            Holidays(intLine).GivenDate = DateAdd("d", 1, Holidays(intLine).GivenDate)
+                        End If
+                    Else
+                        If Weekday(Holidays(intLine).GivenDate) = vbSunday Then
+                            Holidays(intLine).GivenDate = DateAdd("d", 2, Holidays(intLine).GivenDate)
+                        End If
+                    End If
+                    LastHoliday = Holidays(intLine).GivenDate
+                ElseIf LastHoliday > #1/1/2000# Then
+                    If Weekday(Holidays(intLine - 1).GivenDate) = vbMonday And Holidays(intLine).GivenDate = Holidays(intLine - 1).GivenDate Then
+                        Holidays(intLine).GivenDate = DateAdd("d", 1, Holidays(intLine).GivenDate)
+                    End If
+                Else
+                    LastHoliday = #1/1/2000#
+                End If
+            End If
+        End If
+        
         Holidays(intLine).holiday = Trim(myLine(1))
         If InStr(myLine(2), ",") > 0 Then
             Dim c() As String
