@@ -58,7 +58,7 @@ End Sub
 
 
 Sub ImportProjectHolidays(ByVal myYear As Integer, ByVal CountryDef As String, ByVal StateDef As String, _
-    ByVal Calendarname As String, ByVal pjFile As MSProject.Project, pjApp As MSProject.Application, _
+    ByVal Calendarname As String, ByVal pjFileE, pjAppE, _
     ByVal myYearTo As String)
     
     Dim Cal As MSProject.Calendar
@@ -73,6 +73,12 @@ Sub ImportProjectHolidays(ByVal myYear As Integer, ByVal CountryDef As String, B
     Dim intYear As Integer
     
     On Error GoTo Fehler
+    
+    Dim pjApp As MSProject.Application
+    Dim pjFile As MSProject.Project
+    
+    Set pjApp = pjAppE
+    Set pjFile = pjFileE
     
     For Each Cal In pjFile.BaseCalendars
         If Cal.Name = Calendarname Then
@@ -136,7 +142,7 @@ Sub ShowProjectImport()
     End With
     
     With frmProjectImport
-        .pjFileName = ProFilename
-        .Show
+        .DefineProjectFile ProFilename
+       .Show
     End With
 End Sub

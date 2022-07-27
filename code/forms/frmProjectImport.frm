@@ -83,11 +83,16 @@ End Sub
 Private Sub UserForm_Initialize()
     FillCountries
     FillState
-    FillCalendar
     InitLanguage
+End Sub
+
+Public Function DefineProjectFile(ByVal strFile As String)
+    pjFileName = strFile
+    FillCalendar
     Me.Caption = t("Import holidays into Project file '{}'", pjFile.Name)
     AppActivate ActiveWindow.Caption
-End Sub
+
+End Function
 
 Private Sub FillCountries()
     Dim strPath As String
@@ -136,7 +141,13 @@ Sub FillCalendar()
     Dim intIndex As Integer
     Set pjApp = New MSProject.Application
     pjApp.Visible = True
-    pjApp.FileOpen ("D:\Daten\programierung neu\inoHolidays\Beispiele\test.mpp")
+    
+    If pjFileName = vbNullString Then
+        pjApp.FileOpen ("D:\Daten\programierung neu\inoHolidays\Beispiele\test.mpp")
+    Else
+        pjApp.FileOpen pjFileName
+    End If
+    
     Set pjFile = ActiveProject
 
     For Each Cal In pjFile.BaseCalendars

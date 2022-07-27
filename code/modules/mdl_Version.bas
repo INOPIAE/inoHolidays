@@ -223,9 +223,9 @@ Public Function CheckVBAReferences(ByVal strApp As String) As Boolean
   Set wkb = Application.Workbooks(strVBProjects & ".xlam")
   For i = 1 To wkb.VBProject.references.Count
     If wkb.VBProject.references(i).IsBroken Then
-        If wkb.VBProject.references(i).Name = strApp Then
+        'If wkb.VBProject.references(i).Name = strApp Then
             MsgBox t("{} is not installed.", strApp), , strErrorCaption
-        End If
+        'End If
         Exit Function
     End If
   Next i

@@ -40,6 +40,28 @@ Choose tab Add-ins and select "Manage Excel-Add-Ins" and click go.
 
 Use "Browse" to select inoHolidays.xlam and make sure inoHolidays is ticked.
 
+If you are prompted for Copy "inoHolidays.xlam" to Add-In-Library click NO.
+
+![Copy prompt](./images/addins-import.png)
+
+If you have no MS Project installed the folloing messages will occur during the installation:
+
+![Error message missing Library](./images/missing_dll.png)
+
+![Error missing Library](./images/missing_project.png)
+
+Both messages can be finished with OK.
+
+Next adjust some settings within Excel.
+
+Open File - Options - Trust center - Trust Center Settings
+
+![Trust center settings](./images/trustcenter_settings.png)
+
+Navigate to Macro settings and activate Grand accees to VBA-project object model
+
+
+
 Now the Add-In is available.
 
 ## Usage
