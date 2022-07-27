@@ -169,7 +169,7 @@ Function GetLine(Optional Trimmed As Boolean = False) As String
             Dim s As String
             s = mAdodbStream.ReadText(adReadLine)
             If Trimmed Then
-                GetLine = Trim$(s)
+                GetLine = VBA.Trim$(s)
             Else
                 GetLine = s
             End If

@@ -41,7 +41,7 @@ Private Sub cmdImport_Click()
         End With
         Exit Sub
     End If
-    If IsNumeric(Me.txtJahr.Value) = False And Trim(Me.txtJahr.Value) <> vbNullString Then
+    If IsNumeric(Me.txtJahr.Value) = False And VBA.Trim(Me.txtJahr.Value) <> vbNullString Then
         MsgBox t("Second year must be entered as number."), , strErrorCaptionHint
         With Me.txtJahr
             .SetFocus
@@ -68,7 +68,7 @@ Private Sub cmdImport_Click()
         End With
         Exit Sub
     End If
-    If Trim(Me.cboCalendar.text) = vbNullString Then
+    If VBA.Trim(Me.cboCalendar.text) = vbNullString Then
         MsgBox t("A calendar name must be given."), , strErrorCaptionHint
         With Me.cboState
             .SetFocus

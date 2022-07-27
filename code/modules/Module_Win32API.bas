@@ -442,13 +442,13 @@ Public Function GetSystemErrorMessageText(ErrorNumber As Long) As String
     ' Take the left FormatMessageResult characters and
     ' return that text.
     ''''''''''''''''''''''''''''''''''''''''''''''''''''''
-    ErrorText = Left$(ErrorText, FormatMessageResult)
+    ErrorText = VBA.Left$(ErrorText, FormatMessageResult)
     '''''''''''''''''''''''''''''''''''''''''''''
     ' Get rid of the trailing vbCrLf, if present.
     '''''''''''''''''''''''''''''''''''''''''''''
     If Len(ErrorText) >= 2 Then
-        If Right$(ErrorText, 2) = vbCrLf Then
-            ErrorText = Left$(ErrorText, Len(ErrorText) - 2)
+        If VBA.Right$(ErrorText, 2) = vbCrLf Then
+            ErrorText = VBA.Left$(ErrorText, Len(ErrorText) - 2)
         End If
     End If
     
@@ -498,7 +498,7 @@ End Sub
        Dim sValue As String
        Select Case lType
            Case REG_SZ
-               sValue = vValue & Chr$(0)
+               sValue = vValue & VBA.Chr$(0)
                RegSetValueEx = RegSetValueExString(HKEY, sValueName, 0&, _
                                                 lType, sValue, Len(sValue))
            Case REG_DWORD
@@ -536,7 +536,7 @@ End Function
 
              lrc = RegQueryValueExString(lhKey, szValueName, 0&, lType, sValue, cch)
              If lrc = ERROR_NONE Then
-                 vValue = Left$(sValue, cch - 1)
+                 vValue = VBA.Left$(sValue, cch - 1)
              Else
                  vValue = Empty
              End If
@@ -702,7 +702,7 @@ End Sub
 
 Function AddDLLPath(ByRef path As String) As Boolean
     Dim s As String
-    s = path & Chr(0)
+    s = path & VBA.Chr(0)
     AddDLLPath = SetDllDirectory(s)
 End Function
 
@@ -725,7 +725,7 @@ Function TimeZoneOffsetStr() As String
             ' Changed for version 2.71: use Abs(tz.bias) to prevent "+-" to occur
             TimeZoneOffsetStr = _
                 sign & _
-                Format(Abs(tz.Bias) \ 60, "00") + Format(Abs(tz.Bias) Mod 60, "00")
+                VBA.Format(Abs(tz.Bias) \ 60, "00") + VBA.Format(Abs(tz.Bias) Mod 60, "00")
         End With
     End If
 End Function

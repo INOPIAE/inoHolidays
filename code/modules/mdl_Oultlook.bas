@@ -15,7 +15,7 @@ Sub EnterHoliday(holiday As String, myDate As Date, Location As String, Optional
     
     With olHoliday
         .AllDayEvent = True
-        .Start = Format(myDate, "dd.mm.yyyy")
+        .Start = VBA.Format(myDate, "dd.mm.yyyy")
     
         .Subject = holiday
         .ReminderSet = False
@@ -56,8 +56,8 @@ Public Function getHoliday(myDate As Date, holiday As String, Location As String
     olItems.IncludeRecurrences = True
     olItems.Sort "[Start]"
      
-    strRestriction = "[Start] <= '" & Format$(myEnd, "DD.MM.YYYY hh:mm AMPM") _
-    & "' AND [End] >= '" & Format(myStart, "DD.MM.YYYY hh:mm AMPM") & "' and [Location] ='" & Location & "'"
+    strRestriction = "[Start] <= '" & VBA.Format$(myEnd, "DD.MM.YYYY hh:mm AMPM") _
+    & "' AND [End] >= '" & VBA.Format(myStart, "DD.MM.YYYY hh:mm AMPM") & "' and [Location] ='" & Location & "'"
 
     Set olResItems = olItems.Restrict(strRestriction)
      
@@ -94,8 +94,8 @@ Public Sub ImportOutlookHolidays(ByVal myYear As Integer, ByVal CountryDef As St
         Dim h() As String
         Dim intBusy As Integer
         h = Split(arr(i), ";")
-        Set holiday = getHoliday(CDate(h(0)), Trim(h(1)) & ", " & Trim(h(2)), Country)
-        If h(2) Like "*" & StateDef & "*" Or Trim(h(2)) = "All" Then
+        Set holiday = getHoliday(CDate(h(0)), VBA.Trim(h(1)) & ", " & VBA.Trim(h(2)), Country)
+        If h(2) Like "*" & StateDef & "*" Or VBA.Trim(h(2)) = "All" Then
             intBusy = olBusy
         Else
             intBusy = olFree
@@ -104,7 +104,7 @@ Public Sub ImportOutlookHolidays(ByVal myYear As Integer, ByVal CountryDef As St
             intBusy = olFree
         End If
         If holiday Is Nothing Then
-            EnterHoliday Trim(h(1)) & ", " & Trim(h(2)), CDate(h(0)), Country, intBusy
+            EnterHoliday VBA.Trim(h(1)) & ", " & VBA.Trim(h(2)), CDate(h(0)), Country, intBusy
             intNew = intNew + 1
         Else
             If holiday.BusyStatus <> intBusy Then
@@ -163,8 +163,8 @@ Public Sub deleteHolidaysYear(myYear As Integer, Location As String)
     olItems.IncludeRecurrences = True
     olItems.Sort "[Start]"
      
-    strRestriction = "[Start] < '" & Format$(myEnd, "DD.MM.YYYY hh:mm AMPM") _
-    & "' AND [End] >= '" & Format(myStart, "DD.MM.YYYY hh:mm AMPM") & "' and [Location] ='" & Location & "'"
+    strRestriction = "[Start] < '" & VBA.Format$(myEnd, "DD.MM.YYYY hh:mm AMPM") _
+    & "' AND [End] >= '" & VBA.Format(myStart, "DD.MM.YYYY hh:mm AMPM") & "' and [Location] ='" & Location & "'"
 
     Set olResItems = olItems.Restrict(strRestriction)
     Dim intCount As Integer

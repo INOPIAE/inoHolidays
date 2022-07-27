@@ -111,28 +111,28 @@ Function ReadFromFile(file As clsTextFile) As Boolean
     
     ' Read lines from the file until we hit an empty line
     Do
-        line = Trim$(file.GetLine)
-        If Left$(line, 1) = "#" Then
-            c = Mid$(line, 2, 2)
+        line = VBA.Trim$(file.GetLine)
+        If VBA.Left$(line, 1) = "#" Then
+            c = VBA.Mid$(line, 2, 2)
             If c = "  " Then
-                mTranslatorComments = Mid$(line, 4)
+                mTranslatorComments = VBA.Mid$(line, 4)
             ElseIf c = ". " Then
-                mExtractedComments = Mid$(line, 4)
+                mExtractedComments = VBA.Mid$(line, 4)
             ElseIf c = ": " Then
-                mReferences = Mid$(line, 4)
+                mReferences = VBA.Mid$(line, 4)
             ElseIf c = ", " Then
-                mFlags = Mid$(line, 4)
+                mFlags = VBA.Mid$(line, 4)
             ElseIf c = "| " Then
-                mPreviousMsgId = Mid$(line, 4)
+                mPreviousMsgId = VBA.Mid$(line, 4)
             End If
-        ElseIf Left$(line, 8) = "msgctxt " Then
-            mContext = TrimQuotes(Mid$(line, 9))
-        ElseIf Left$(line, 6) = "msgid " Then
-            mMsgId = ReadMultiLine(file, Mid$(line, 7))
-            ' mMsgId = UnescapeQuotes(TrimQuotes((Mid$(Line, 7))))
-        ElseIf Left$(line, 7) = "msgstr " Then
-            mMsgStr = ReadMultiLine(file, Mid$(line, 8))
-            ' mMsgStr = UnescapeQuotes(TrimQuotes(Mid$(Line, 8)))
+        ElseIf VBA.Left$(line, 8) = "msgctxt " Then
+            mContext = TrimQuotes(VBA.Mid$(line, 9))
+        ElseIf VBA.Left$(line, 6) = "msgid " Then
+            mMsgId = ReadMultiLine(file, VBA.Mid$(line, 7))
+            ' mMsgId = UnescapeQuotes(TrimQuotes((VBA.Mid$(Line, 7))))
+        ElseIf VBA.Left$(line, 7) = "msgstr " Then
+            mMsgStr = ReadMultiLine(file, VBA.Mid$(line, 8))
+            ' mMsgStr = UnescapeQuotes(TrimQuotes(VBA.Mid$(Line, 8)))
         End If
     Loop Until Len(line) = 0
             
@@ -194,8 +194,8 @@ Sub Initialize(msgId As String, Optional msgStr As String, Optional module As St
 ' Initializes the object with arguments
     mMsgId = msgId
     If Len(msgStr) Then mMsgStr = msgStr
-    If Len(Trim$(module)) Then mReferences = BuildReference(module, line)
-    If Len(Trim$(context)) Then mContext = context
+    If Len(VBA.Trim$(module)) Then mReferences = BuildReference(module, line)
+    If Len(VBA.Trim$(context)) Then mContext = context
     ComputeHashForMsgId
 End Sub
 
@@ -206,10 +206,10 @@ End Sub
 Private Function TrimQuotes(s As String) As String
 ' Removes one pair of leading and trailing quotes, if one is present
     Dim str As String
-    str = Trim$(s) ' Remove whitespace, if any
-    If (Left$(str, 1) = """" And Right$(str, 1) = """") Or _
-            (Left$(str, 1) = "'" And Right$(str, 1) = "'") Then
-        str = Mid$(str, 2, Len(str) - 2)
+    str = VBA.Trim$(s) ' Remove whitespace, if any
+    If (VBA.Left$(str, 1) = """" And VBA.Right$(str, 1) = """") Or _
+            (VBA.Left$(str, 1) = "'" And VBA.Right$(str, 1) = "'") Then
+        str = VBA.Mid$(str, 2, Len(str) - 2)
     End If
     TrimQuotes = str
 End Function
@@ -220,7 +220,7 @@ Private Sub ComputeHashForMsgId()
 ' which in turn is taken directly from the hash.h source code of
 ' the GetText library (GNU GPL v. 2).
     If Len(mContext) Then
-        mHash = ComputeHash(mContext & Chr(EOT) & mMsgId)
+        mHash = ComputeHash(mContext & VBA.Chr(EOT) & mMsgId)
     Else
         mHash = ComputeHash(mMsgId)
     End If
@@ -228,10 +228,10 @@ End Sub
 
 Private Function BuildReference(module As String, line As String) As String
 ' Builds the reference string using the Module and Line components.
-    If Len(Trim$(line)) Then
-        BuildReference = Trim$(module) & ":" & Trim$(line)
+    If Len(VBA.Trim$(line)) Then
+        BuildReference = VBA.Trim$(module) & ":" & VBA.Trim$(line)
     Else
-        BuildReference = Trim$(module)
+        BuildReference = VBA.Trim$(module)
     End If
 End Function
 
@@ -240,14 +240,14 @@ Private Function EscapeQuotes(s As String) As String
     Dim i As Long
     i = InStr(s, """")
     While i
-        s = Left$(s, i - 1) & "\" & Mid$(s, i)
+        s = VBA.Left$(s, i - 1) & "\" & VBA.Mid$(s, i)
         i = InStr(i + 2, s, """")
     Wend
     
     ' Also escape the occasional line break...
     i = InStr(s, vbNewLine)
     While i
-        s = Left$(s, i - 1) & "\n" & Mid$(s, i + Len(vbNewLine))
+        s = VBA.Left$(s, i - 1) & "\n" & VBA.Mid$(s, i + Len(vbNewLine))
         i = InStr(i + 2, s, vbNewLine)
     Wend
     
@@ -259,7 +259,7 @@ Private Function UnescapeQuotes(s As String) As String
     Dim i As Long
     i = InStr(s, "\""")
     While i
-        s = Left$(s, i - 1) & Mid$(s, i + 1)
+        s = VBA.Left$(s, i - 1) & VBA.Mid$(s, i + 1)
         i = InStr(s, "\""")
     Wend
     
@@ -280,12 +280,12 @@ Private Function ReadMultiLine(f As clsTextFile, FirstLine As String) As String
     multi = UnescapeQuotes(TrimQuotes(FirstLine))
     Do
         line = f.GetLine()
-        s = Trim$(line)
-        While Left$(s, 1) = vbTab
-            s = Mid$(s, 2)
+        s = VBA.Trim$(line)
+        While VBA.Left$(s, 1) = vbTab
+            s = VBA.Mid$(s, 2)
         Wend
-        If Left$(s, 1) = """" Then
-            s = UnescapeQuotes(TrimQuotes(Trim$(line)))
+        If VBA.Left$(s, 1) = """" Then
+            s = UnescapeQuotes(TrimQuotes(VBA.Trim$(line)))
             multi = multi & s
         Else
             f.PutLine line

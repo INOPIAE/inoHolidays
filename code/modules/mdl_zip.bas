@@ -9,7 +9,7 @@ Private Sub NewZip(sPath)
 'Changed by keepITcool Dec-12-2005
     If Len(dir(sPath)) > 0 Then Kill sPath
     Open sPath For Output As #1
-    Print #1, Chr$(80) & Chr$(75) & Chr$(5) & Chr$(6) & String(18, 0)
+    Print #1, VBA.Chr$(80) & VBA.Chr$(75) & VBA.Chr$(5) & VBA.Chr$(6) & String(18, 0)
     Close #1
 End Sub
 

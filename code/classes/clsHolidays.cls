@@ -133,7 +133,7 @@ Private Sub InitDateFile()
             If myLine(0) = "Ostern" Then
                 Holidays(intLine).GivenDate = Ostersonntag
             Else
-                Select Case Left(myLine(0), pos - 1)
+                Select Case VBA.Left(myLine(0), pos - 1)
                     Case "Ostern"
                         Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), Ostersonntag)
                     Case "Advent"
@@ -149,7 +149,7 @@ Private Sub InitDateFile()
         
         'Move holiday to monday if holiday on weekend
         If UBound(myLine) = 3 Then
-            If LCase(Trim(myLine(3))) = "mo" Then
+            If VBA.LCase(VBA.Trim(myLine(3))) = "mo" Then
                 If Weekday(Holidays(intLine).GivenDate) = vbSaturday Or Weekday(Holidays(intLine).GivenDate) = vbSunday Then
                     If LastHoliday = #1/1/2000# Then
                         If Weekday(Holidays(intLine).GivenDate) = vbSaturday Then
@@ -173,10 +173,10 @@ Private Sub InitDateFile()
             End If
         End If
         
-        Holidays(intLine).holiday = Trim(myLine(1))
+        Holidays(intLine).holiday = VBA.Trim(myLine(1))
         If InStr(myLine(2), ",") > 0 Then
             Dim c() As String
-            c = Split(Trim(myLine(2)), ",")
+            c = Split(VBA.Trim(myLine(2)), ",")
             Dim a() As Variant
             ReDim a(UBound(c))
             Dim i As Integer
@@ -186,7 +186,7 @@ Private Sub InitDateFile()
             Next
             Holidays(intLine).State = a
         Else
-            Holidays(intLine).State = Array(Trim(myLine(2)))
+            Holidays(intLine).State = Array(VBA.Trim(myLine(2)))
         End If
         intLine = intLine + 1
     Loop

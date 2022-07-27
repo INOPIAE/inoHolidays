@@ -39,7 +39,7 @@ Public Function printF(ByVal strText As String, ParamArray Args()) As String
         If startPos > 0 Then
             endPos = InStr(startPos + 1, strRetVal, "}")
             formatString = Mid(strRetVal, startPos + 2 + argValueLen, endPos - (startPos + 2 + argValueLen))
-            strRetVal = Mid(strRetVal, 1, startPos - 1) & Format(Nz(Args(i), ""), formatString) & Mid(strRetVal, endPos + 1)
+            strRetVal = Mid(strRetVal, 1, startPos - 1) & VBA.Format(Nz(Args(i), ""), formatString) & Mid(strRetVal, endPos + 1)
         Else
             strRetVal = Replace(strRetVal, "{" & CStr(i) & "}", Nz(Args(i), ""))
         End If

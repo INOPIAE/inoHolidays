@@ -139,7 +139,7 @@ Function t(ByVal text As String, ParamArray params() As Variant) As String
         Do
             i = InStr(s_, "{}")
             If i And (lb + j <= ub) Then
-                s_ = Left$(s_, i - 1) & params(j) & Mid$(s_, i + 2)
+                s_ = VBA.Left$(s_, i - 1) & params(j) & VBA.Mid$(s_, i + 2)
                 j = j + 1
             End If
         Loop Until i = 0
@@ -181,7 +181,7 @@ Function tc(ByRef context As String, ByVal text As String, ParamArray params() A
         Do
             i = InStr(s_, "{}")
             If i And (lb + j <= ub) Then
-                s_ = Left$(s_, i - 1) & params(j) & Mid$(s_, i + 2)
+                s_ = VBA.Left$(s_, i - 1) & params(j) & VBA.Mid$(s_, i + 2)
                 j = j + 1
             End If
         Loop Until i = 0
@@ -227,8 +227,8 @@ Function SetLanguage(languageCode As String) As Boolean
     ' by BuildLanguageList() to make usage more convenient.
     strCode = languageCode
     If strCode Like "*(*)*" Then
-        strCode = Left$(strCode, InStr(strCode, ")") - 1)
-        strCode = Mid$(strCode, InStr(strCode, "(") + 1)
+        strCode = VBA.Left$(strCode, InStr(strCode, ")") - 1)
+        strCode = VBA.Mid$(strCode, InStr(strCode, "(") + 1)
     End If
     
     On Error Resume Next
@@ -241,7 +241,7 @@ Function SetLanguage(languageCode As String) As Boolean
             ' was not found, attempt to locate the one with the pure language
             ' code ("en" in this case") only.
             If strCode Like "??-??" Then
-                'strCode = Left$(strCode, 2)
+                'strCode = VBA.Left$(strCode, 2)
                 If Not FileExists(GetMoFilePath(strCode)) Then Exit Function
             Else
                 Exit Function
@@ -300,19 +300,19 @@ Function EscapeStr(ByVal text As String) As String
     ' Start with vbNewLine, which is vbCarriageReturn & vbLineFeed
     i = InStr(text, vbNewLine)
     While i
-        text = Left$(text, i - 1) & "\n" & Mid$(text, i + 2)
+        text = VBA.Left$(text, i - 1) & "\n" & VBA.Mid$(text, i + 2)
         i = InStr(i + 2, text, vbNewLine)
     Wend
     
     i = InStr(text, vbLf)
     While i
-        text = Left$(text, i - 1) & "\n" & Mid$(text, i + 1)
+        text = VBA.Left$(text, i - 1) & "\n" & VBA.Mid$(text, i + 1)
         i = InStr(i + 2, text, vbLf)
     Wend
     
     i = InStr(text, vbTab)
     While i
-        text = Left$(text, i - 1) & "\t" & Mid$(text, i + 1)
+        text = VBA.Left$(text, i - 1) & "\t" & VBA.Mid$(text, i + 1)
         i = InStr(i + 2, text, vbTab)
     Wend
     
@@ -330,7 +330,7 @@ Function UnescapeStr(ByVal text As String) As String
     o = 0 ' The offset in the string (needed to be able to handle '\\')
     i = InStr(text, "\")
     While i
-        x = Mid$(text, i, 2)
+        x = VBA.Mid$(text, i, 2)
         If x = "\n" Then
             s = vbNewLine
         ElseIf x = "\t" Then
@@ -340,7 +340,7 @@ Function UnescapeStr(ByVal text As String) As String
         Else
             s = ""
         End If
-        text = Left$(text, i - 1) & s & Mid$(text, i + 2)
+        text = VBA.Left$(text, i - 1) & s & VBA.Mid$(text, i + 2)
         o = i + 1
         i = InStr(o, text, "\")
     Wend
@@ -362,7 +362,7 @@ Function EncodeAccelerator(msgId As String, accelerator As String) As String
     ' Escape existing ampersands
     i = InStr(s, "&")
     While i
-        s = Left$(s, i - 1) & "&" & Mid$(s, i)
+        s = VBA.Left$(s, i - 1) & "&" & VBA.Mid$(s, i)
         i = InStr(i + 2, s, "&")
     Wend
     
@@ -370,7 +370,7 @@ Function EncodeAccelerator(msgId As String, accelerator As String) As String
         i = InStr(s, accelerator)
         If i Then
             ' Encode the accelerator
-            s = Left$(s, i - 1) & "&" & Mid$(s, i)
+            s = VBA.Left$(s, i - 1) & "&" & VBA.Mid$(s, i)
         End If
     End If
     
@@ -392,16 +392,16 @@ Function DecodeAccelerator(msgStr As String, ByRef accelerator As String) As Str
         ' the MsgId was stored, any single ampersand must indicate the accelerator.
         i = InStr(msgStr, "&")
         Do While i
-            If Mid$(msgStr, i, 2) = "&&" Then
-                msgStr = Left$(msgStr, i) & Mid$(msgStr, i + 2)
+            If VBA.Mid$(msgStr, i, 2) = "&&" Then
+                msgStr = VBA.Left$(msgStr, i) & VBA.Mid$(msgStr, i + 2)
                 i = InStr(i + 1, msgStr, "&")
             Else
                 Exit Do
             End If
         Loop
         If i Then
-            accelerator = Mid$(msgStr, i + 1, 1)
-            msgStr = Left$(msgStr, i - 1) & Mid$(msgStr, i + 1)
+            accelerator = VBA.Mid$(msgStr, i + 1, 1)
+            msgStr = VBA.Left$(msgStr, i - 1) & VBA.Mid$(msgStr, i + 1)
         End If
     End If
     DecodeAccelerator = msgStr
@@ -447,7 +447,7 @@ Function BuildLanguageList(ByRef currentIndex As Long) As String()
                     If FileExists(GetMoFilePath(.Code)) Then
                         n = n + 1
                         If UBound(a) < LBound(a) + n Then ReDim Preserve a(LBound(a) To UBound(a) + 10)
-                        a(LBound(a) + n) = Left$(.Name, InStr(.Name, " -")) & " (" & .Code & ")"
+                        a(LBound(a) + n) = VBA.Left$(.Name, InStr(.Name, " -")) & " (" & .Code & ")"
                         If mCurrentLang = .Code Then currentIndex = n
                     End If
                 ElseIf FileExists(GetMoFilePath(.LocaleCode)) Then
@@ -529,7 +529,7 @@ Private Sub AddLangInfo(LanguageName, Code, LocaleCode, id)
         ' Make sure that the locale code capitalization follows
         ' the pattern "xx-XX".
         If LocaleCode Like "??-??" Then
-            LocaleCode = Left$(LocaleCode, 3) & UCase$(Mid$(LocaleCode, 4))
+            LocaleCode = VBA.Left$(LocaleCode, 3) & VBA.UCase$(VBA.Mid$(LocaleCode, 4))
         End If
         .LocaleCode = LocaleCode
         .Code = Code

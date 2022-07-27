@@ -84,20 +84,20 @@ Function GetFileNameOnly(ByRef aPath As String, Optional IncludePath As Boolean 
     
     If InStr(aPath, ".") > 0 Then
         i = Len(aPath)
-        Do While Mid$(aPath, i, 1) <> "."
+        Do While VBA.Mid$(aPath, i, 1) <> "."
             i = i - 1
         Loop
-        If i > 1 Then s = Left$(aPath, i - 1) Else s = "" ' If there is a period, but it's the first character in aPath, return nothing
+        If i > 1 Then s = VBA.Left$(aPath, i - 1) Else s = "" ' If there is a period, but it's the first character in aPath, return nothing
     End If
     
     ' Now, strip a potential path, if desired
     If Not IncludePath Then
         If InStr(s, PathSep) > 0 Then
             i = Len(s)
-            Do While Mid$(s, i, 1) <> PathSep
+            Do While VBA.Mid$(s, i, 1) <> PathSep
                 i = i - 1
             Loop
-            If i <> Len(s) Then s = Mid$(s, i + 1) Else s = "" ' If there is a path separator, but it's the last character in aPath, return nothing
+            If i <> Len(s) Then s = VBA.Mid$(s, i + 1) Else s = "" ' If there is a path separator, but it's the last character in aPath, return nothing
         End If
     End If
     
@@ -113,10 +113,10 @@ Function GetFileExtOnly(ByRef aPath As String) As String
     Dim i As Long
     If InStr(aPath, ".") > 0 Then
         i = Len(aPath)
-        Do While Mid$(aPath, i, 1) <> "."
+        Do While VBA.Mid$(aPath, i, 1) <> "."
             i = i - 1
         Loop
-        GetFileExtOnly = Mid$(aPath, i)
+        GetFileExtOnly = VBA.Mid$(aPath, i)
     Else ' No dot found, so no extension...
         GetFileExtOnly = ""
     End If
@@ -136,10 +136,10 @@ Function GetPath(ByRef aPath As String) As String
         
         If InStr(aPath, PathSep) > 0 Then
             i = Len(aPath)
-            Do While Mid$(aPath, i, 1) <> PathSep
+            Do While VBA.Mid$(aPath, i, 1) <> PathSep
                 i = i - 1
             Loop
-            GetPath = Left$(aPath, i)
+            GetPath = VBA.Left$(aPath, i)
         Else ' No path separator found, so no path...
             GetPath = ""
         End If
@@ -156,7 +156,7 @@ Function CompletePath(aPath As String) As String
     
     PathSep = Application.PathSeparator
     
-    If Right$(aPath, 1) = PathSep Then
+    If VBA.Right$(aPath, 1) = PathSep Then
         CompletePath = aPath
     Else
         CompletePath = aPath & PathSep
@@ -171,7 +171,7 @@ Function ValidFileNameString(ByRef fn As String) As Boolean
     
     ValidFileNameString = True
     For i = 1 To Len(fn)
-        If InStr(InvalidFileNameChars, Mid$(fn, i, 1)) <> 0 Then
+        If InStr(InvalidFileNameChars, VBA.Mid$(fn, i, 1)) <> 0 Then
             ValidFileNameString = False
             Exit Function
         End If
@@ -192,8 +192,8 @@ Function MakeValidFileName(ByVal fn As String, Optional UseUnderscores As Boolea
     
     i = 1
     Do Until i > Len(fn)
-        If InStr(InvalidFileNameChars & Chr(13) & Chr(10), Mid$(fn, i, 1)) <> 0 Then
-            fn = Left$(fn, i - 1) & c & Mid$(fn, i + 1)
+        If InStr(InvalidFileNameChars & VBA.Chr(13) & VBA.Chr(10), VBA.Mid$(fn, i, 1)) <> 0 Then
+            fn = VBA.Left$(fn, i - 1) & c & VBA.Mid$(fn, i + 1)
         Else
             i = i + 1
         End If
@@ -221,7 +221,7 @@ Function CreatePath(ByRef aPath As String) As Boolean
     aPath = AddPathSep(aPath)
     i = InStr(aPath, PathSep)
     Do
-        SubPath = Left$(aPath, i)
+        SubPath = VBA.Left$(aPath, i)
         ' Try to make the sub directory (it may exist already)
         On Error Resume Next
             MkDir SubPath
@@ -246,7 +246,7 @@ End Function
 Function ChDirEx(path As String) As String
 ' Changes the working directory and drive; returns the old working directory
     ChDirEx = CurDir
-    If path Like "?:*" Then ChDrive Left$(path, 2)
+    If path Like "?:*" Then ChDrive VBA.Left$(path, 2)
     ChDir path
 End Function
 
@@ -258,12 +258,12 @@ Private Function SpecFolder(ByVal lngFolder As Long) As String
     Dim lngPidl As Long
     Dim strPath As String
 
-    strPath = Space(MAX_PATH)
+    strPath = VBA.Space(MAX_PATH)
     lngPidlFound = SHGetSpecialFolderLocation(0, lngFolder, lngPidl)
     If lngPidlFound = 0 Then
         lngFolderFound = SHGetPathFromIDList(lngPidl, strPath)
         If lngFolderFound Then
-            SpecFolder = Left$(strPath, _
+            SpecFolder = VBA.Left$(strPath, _
                 InStr(1, strPath, vbNullChar) - 1)
         End If
     End If
@@ -293,8 +293,8 @@ Function AddPathSep(s As String) As String
     Dim NewPath As String
     Dim PathSep As String
     PathSep = Application.PathSeparator
-    NewPath = Trim$(s)
-    If (Len(NewPath) > 0) And (Right$(NewPath, 1) <> PathSep) Then
+    NewPath = VBA.Trim$(s)
+    If (Len(NewPath) > 0) And (VBA.Right$(NewPath, 1) <> PathSep) Then
         NewPath = NewPath & PathSep
     End If
     AddPathSep = NewPath
@@ -307,13 +307,13 @@ Function RemovePathSep(s As String) As String
     Dim PathSep As String
     
     PathSep = Application.PathSeparator
-    NewPath = Trim$(s)
-    If (Right$(NewPath, 1) = PathSep) Then
-        NewPath = Left$(NewPath, Len(NewPath) - 1)
+    NewPath = VBA.Trim$(s)
+    If (VBA.Right$(NewPath, 1) = PathSep) Then
+        NewPath = VBA.Left$(NewPath, Len(NewPath) - 1)
         
         ' Make sure not to remove the path separator
         ' after a drive symbol (root path)
-        If Right$(NewPath, 1) = ":" Then NewPath = NewPath & PathSep
+        If VBA.Right$(NewPath, 1) = ":" Then NewPath = NewPath & PathSep
     End If
     RemovePathSep = NewPath
 

@@ -8,51 +8,52 @@ Option Explicit
 Global Const c_strGUID = "{A7107640-94DF-1068-855E-00DD01075445}," ' MSProject
 
 Sub SetReferences()
-Dim strGUID As Variant
-Dim theRef As Variant
-Dim i, v_anzahl As Long
-
-'*****************************************************************************
-'**** Referenzen setzen, um Outlook und Excel zu aktivieren
-'*****************************************************************************
+    Dim strGUID As Variant
+    Dim theRef As Variant
+    Dim i, v_anzahl As Long
     
-'****Referencen als Konstanten definieren
-strGUID = Split(c_strGUID, ",")
-v_anzahl = UBound(strGUID)
-
-'****Hier ausdrücklich keine explizite Fehlerbehandlung
-    On Error Resume Next
-'****Fehlerhafte Referenzen entfernen
-    For i = Application.VBE.ActiveVBProject.references.Count To 1 Step -1
-        Set theRef = Application.VBE.ActiveVBProject.references.Item(i)
-        If theRef.IsBroken = True Then
-            Application.VBE.ActiveVBProject.references.Remove theRef
-        End If
-    Next i
-   
-'****Unter c_strGUID definierte Referencen setzen
-    For i = 0 To v_anzahl - 1
-         'Fehler löschen, um expizite Fehlerbewertung zu ermöglichen
-        Err.Clear
+    '*****************************************************************************
+    '**** Referenzen setzen, um Outlook und Excel zu aktivieren
+    '*****************************************************************************
         
-         'Referenz setzen
-        Application.VBE.ActiveVBProject.references.AddFromGuid GUID:=strGUID(i), Major:=1, Minor:=0
-         'Fehler interpretieren
-        Select Case Err.Number
-        Case 32813
-             'Referenz schon gesetzt - keine Aktivität erforderlich
-        Case vbNullString
-             'Referenz ohne Problem gesetzt
-        Case Else
-             'Unbekannter Fehler - Abbruch
-             GoTo Ref_Error
-        End Select
-    Next i
-'****Unterdrücken der Fehlerbehandlung wird wieder deaktiviert
-On Error GoTo 0
-Exit Sub
+    '****Referencen als Konstanten definieren
+    strGUID = Split(c_strGUID, ",")
+    v_anzahl = UBound(strGUID)
+    
+    
+    '****Hier ausdrücklich keine explizite Fehlerbehandlung
+        On Error Resume Next
+    '****Fehlerhafte Referenzen entfernen
+        For i = Application.VBE.ActiveVBProject.references.Count To 1 Step -1
+            Set theRef = Application.VBE.ActiveVBProject.references.Item(i)
+            If theRef.IsBroken = True Then
+                Application.VBE.ActiveVBProject.references.Remove theRef
+            End If
+        Next i
+       
+    '****Unter c_strGUID definierte Referencen setzen
+        For i = 0 To v_anzahl - 1
+             'Fehler löschen, um expizite Fehlerbewertung zu ermöglichen
+            Err.Clear
+            
+             'Referenz setzen
+            Application.VBE.ActiveVBProject.references.AddFromGuid GUID:=strGUID(i), Major:=1, Minor:=0
+             'Fehler interpretieren
+            Select Case Err.Number
+            Case 32813
+                 'Referenz schon gesetzt - keine Aktivität erforderlich
+            Case vbNullString
+                 'Referenz ohne Problem gesetzt
+            Case Else
+                 'Unbekannter Fehler - Abbruch
+                 GoTo Ref_Error
+            End Select
+        Next i
+    '****Unterdrücken der Fehlerbehandlung wird wieder deaktiviert
+    On Error GoTo 0
+    Exit Sub
 Ref_Error:
-MsgBox "Referenz nicht gesetzt, Fehler: " & Err.Number & " - " & Err.Description
+    MsgBox "Referenz nicht gesetzt, Fehler: " & Err.Number & " - " & Err.Description
 End Sub
 
 
@@ -84,7 +85,7 @@ Sub ImportProjectHolidays(ByVal myYear As Integer, ByVal CountryDef As String, B
     If blnCal = False Then
         pjApp.BaseCalendarCreate Name:=Calendarname
     End If
-    If IsNumeric(myYearTo) = False Or Trim(myYearTo) = vbNullString Then
+    If IsNumeric(myYearTo) = False Or VBA.Trim(myYearTo) = vbNullString Then
         myYearTo = myYear
     End If
     For intYear = myYear To myYearTo
@@ -97,8 +98,8 @@ Sub ImportProjectHolidays(ByVal myYear As Integer, ByVal CountryDef As String, B
             h = Split(arr(i), ";")
             
 
-            If h(2) Like "*" & StateDef & "*" Or Trim(h(2)) = "All" Then
-                pjFile.BaseCalendars(Calendarname).Exceptions.Add Type:=1, Start:=CDate(h(0)), Finish:=CDate(h(0)), Name:=Trim(h(1))
+            If h(2) Like "*" & StateDef & "*" Or VBA.Trim(h(2)) = "All" Then
+                pjFile.BaseCalendars(Calendarname).Exceptions.Add Type:=1, Start:=CDate(h(0)), Finish:=CDate(h(0)), Name:=VBA.Trim(h(1))
                 intNew = intNew + 1
 Weiter:
             End If

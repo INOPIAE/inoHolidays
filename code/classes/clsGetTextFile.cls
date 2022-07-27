@@ -93,9 +93,9 @@ Private Const CP_UTF8 As Long = 65001
 Function ReadFile(filename As String) As Boolean
 ' Reads a PO/MO file
         
-    If UCase$(Right$(filename, 3)) = ".PO" Then
+    If VBA.UCase$(VBA.Right$(filename, 3)) = ".PO" Then
         ReadFile = ReadPoFile(filename)
-    ElseIf UCase$(Right$(filename, 3)) = ".MO" Then
+    ElseIf VBA.UCase$(VBA.Right$(filename, 3)) = ".MO" Then
         ReadFile = ReadMoFile(filename)
     End If
     
@@ -163,7 +163,7 @@ Function GetTextContext(context As String, msgId As String) As String
     Dim o As clsGetTextObject
     
     If Len(context) Then
-        h = ComputeHash(context & Chr(EOT) & msgId)
+        h = ComputeHash(context & VBA.Chr(EOT) & msgId)
     Else
         h = ComputeHash(msgId)
     End If
@@ -214,7 +214,7 @@ Sub AddHeaderLine(line As String)
 ' Adds a comment line to the file header.
     Dim s As String
     s = line
-    If Left$(s, 1) <> "#" Then s = "#" & s
+    If VBA.Left$(s, 1) <> "#" Then s = "#" & s
     mNumHeaderLines = mNumHeaderLines + 1
     If mNumHeaderLines > UBound(mHeaderLines) Then
         ReDim Preserve mHeaderLines(UBound(mHeaderLines) + 5)
@@ -363,14 +363,14 @@ Private Function ReadHeader() As Boolean
     
     Do
         line = mFile.GetLine
-        If (Left$(line, 2) = "# ") Or (Len(Trim$(line)) = 0) Then
+        If (VBA.Left$(line, 2) = "# ") Or (Len(VBA.Trim$(line)) = 0) Then
             mNumHeaderLines = mNumHeaderLines + 1
             If mNumHeaderLines > UBound(mHeaderLines) Then
                 ReDim Preserve mHeaderLines(1 To UBound(mHeaderLines) + 10)
             End If
             mHeaderLines(mNumHeaderLines) = line
         End If
-    Loop Until ((Left$(line, 2) <> "# ") And Len(Trim$(line)) > 0) Or mFile.EOF
+    Loop Until ((VBA.Left$(line, 2) <> "# ") And Len(VBA.Trim$(line)) > 0) Or mFile.EOF
     
     ' Read the metadata
     With mFile
@@ -423,15 +423,15 @@ Private Function ReadMetadataLine(ByRef line As String, ByRef metaName As String
 ' Returns the content of the meta information as MetaContent
     Dim i As String
     line = mFile.GetLine(Trimmed:=True)
-    If (Left$(line, 1) = """") And (Right$(line, 1) = """") Then
-        line = Mid$(line, 2, Len(line) - 2)
+    If (VBA.Left$(line, 1) = """") And (VBA.Right$(line, 1) = """") Then
+        line = VBA.Mid$(line, 2, Len(line) - 2)
         i = InStr(line, ":")
         If i Then
-            metaName = Trim$(Left$(line, i - 1))
+            metaName = VBA.Trim$(VBA.Left$(line, i - 1))
             ' The content is trimmed only on the left side.
-            metaContent = LTrim$(Mid$(line, i + 1))
-            While Right$(line, 2) = "\n"
-                line = Left$(line, Len(line) - 2)
+            metaContent = LVBA.Trim$(VBA.Mid$(line, i + 1))
+            While VBA.Right$(line, 2) = "\n"
+                line = VBA.Left$(line, Len(line) - 2)
             Wend
             ReadMetadataLine = True
         End If
@@ -452,7 +452,7 @@ Private Function WriteHeader(f As clsTextFile) As Boolean
         ' If there are header comments, they need to be separated
         ' from the rest of the file by a blank line.
         If mNumHeaderLines Then
-            If Len(Trim$(mHeaderLines(mNumHeaderLines))) Then .PutLine " "
+            If Len(VBA.Trim$(mHeaderLines(mNumHeaderLines))) Then .PutLine " "
         End If
         
         ' Write the metadata
@@ -545,10 +545,10 @@ Private Function ReadMoFile(filename As String) As Boolean
                     ' Since the msgId may contain the context information
                     ' in the form <context><EOT><msgId>, we now check for the
                     ' EOT byte (ASCII code 4) and separate the two.
-                    j = InStr(msgId, Chr(EOT))
+                    j = InStr(msgId, VBA.Chr(EOT))
                     If j Then
-                        msgCtxt = Left$(msgId, j - 1)
-                        msgId = Mid$(msgId, j + 1)
+                        msgCtxt = VBA.Left$(msgId, j - 1)
+                        msgId = VBA.Mid$(msgId, j + 1)
                     End If
                 Else
                     msgId = vbNullString
@@ -624,9 +624,9 @@ Private Function GetISO8601TimeStamp(Optional IncludeTZOffset As Boolean = True)
 ' create our own ISO8601-to-Date conversion function.
     
     If IncludeTZOffset Then
-        GetISO8601TimeStamp = Format(Now, "yyyy-MM-dd hh:mm:ss") & " " & TimeZoneOffsetStr
+        GetISO8601TimeStamp = VBA.Format(Now, "yyyy-MM-dd hh:mm:ss") & " " & TimeZoneOffsetStr
     Else
-        GetISO8601TimeStamp = Format(Now, "yyyy-MM-dd hh:mm:ss")
+        GetISO8601TimeStamp = VBA.Format(Now, "yyyy-MM-dd hh:mm:ss")
     End If
 End Function
 
@@ -667,7 +667,7 @@ Private Function Utf8ToStr(ByRef b() As Byte) As String
     
     ' Find out how long the string will be and prepare the string
     i = MultiByteToWideChar(CP_UTF8, 0, ptr, n, 0, 0)
-    s = Space$(i)
+    s = VBA.Space$(i)
     
     ' Perform the actual conversion
     MultiByteToWideChar CP_UTF8, 0, ptr, n, StrPtr(s), i
