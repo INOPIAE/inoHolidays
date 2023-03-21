@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL-ADDRESS\n"
-"POT-Creation-Date: 2022-07-23 13:02:45 +0100\n"
-"PO-Revision-Date: 2022-07-23 13:02:45 +0100\n"
+"POT-Creation-Date: 2023-03-21 12:01:22 +0100\n"
+"PO-Revision-Date: 2023-03-21 12:01:22 +0100\n"
 "Last-Translator: LAST TRANSLATOR\n"
 "Language-Team: TEAM NAME\n"
 "Language: EN-US\n"
@@ -170,19 +170,35 @@ msgstr ""
 msgid "Returns a date given by year, month, weekday and occurance in a month."
 msgstr ""
 
-#: mdl_Translation:33 mdl_Oultlook:234
+#: mdl_Translation:34
+msgid "GivenDate - Christian date to be converted"
+msgstr ""
+
+#: mdl_Translation:35
+msgid "Returns a Christian date as Islamic date."
+msgstr ""
+
+#: mdl_Translation:38
+msgid "GivenDate - Islamic date as string to be converted"
+msgstr ""
+
+#: mdl_Translation:39
+msgid "Returns an Islamic date as Christian date eg '1. Muharram 1445 AH'. Spelling of Islamic month:"
+msgstr ""
+
+#: mdl_Translation:43 mdl_Oultlook:234
 msgid "Germany"
 msgstr ""
 
-#: mdl_Translation:34 mdl_Oultlook:236
+#: mdl_Translation:44 mdl_Oultlook:236
 msgid "Austria"
 msgstr ""
 
-#: mdl_Translation:35 mdl_Oultlook:238
+#: mdl_Translation:45 mdl_Oultlook:238
 msgid "Switzerland"
 msgstr ""
 
-#: mdl_Translation:36 mdl_Oultlook:240
+#: mdl_Translation:46 mdl_Oultlook:240
 msgid "Italy"
 msgstr ""
 
@@ -230,7 +246,7 @@ msgstr ""
 msgid "Holiday, inoHolidays"
 msgstr ""
 
-#: mdl_Oultlook:121 mdl_Project:109
+#: mdl_Oultlook:121 mdl_Project:116
 msgid ""
 "{} entries processed for {}. Thereof \n"
 "{} new entries\n"
@@ -327,11 +343,11 @@ msgstr ""
 msgid "A calendar name must be given."
 msgstr ""
 
-#: frmProjectImport:73
+#: frmProjectImport:77
 msgid "Import holidays into Project file '{}'"
 msgstr ""
 
-#: frmProjectImport:116
+#: frmProjectImport:121
 msgid "The first 4 fields must be used.{}You can enter a new calendar by entering the new name into the calendar field."
 msgstr ""
 

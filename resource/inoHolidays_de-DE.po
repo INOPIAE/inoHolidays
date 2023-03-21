@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL-ADDRESS\n"
-"POT-Creation-Date: 2022-07-23 13:02:45 +0100\n"
-"PO-Revision-Date: 2022-07-23 13:05+0200\n"
+"POT-Creation-Date: 2023-03-21 12:01:22 +0100\n"
+"PO-Revision-Date: 2023-03-21 12:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: TEAM NAME\n"
 "Language: de_DE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: frmImportHoliday:14 frmOutlookImport:21
 msgid "GivenYear needs to be entered as number."
@@ -155,7 +155,7 @@ msgstr "Gibt das Datum des 4. Adventsonntags für das angegebene Jahr zurück."
 
 #: mdl_Translation:20
 msgid "GivenDate - Date to be checked"
-msgstr "Jahr(GivenDate) - Datum das geprüft werden soll"
+msgstr "Jahr(GivenDate) - Datum, das geprüft werden soll"
 
 #: mdl_Translation:22
 msgid ""
@@ -205,19 +205,39 @@ msgstr ""
 "Gibt das Datum für die Eingabe von Jahr, Monat, Wochentag und Vorkommen im "
 "Monat zurück."
 
-#: mdl_Translation:33 mdl_Oultlook:234
+#: mdl_Translation:34
+msgid "GivenDate - Christian date to be converted"
+msgstr "Datum (GivenDate) - Christliches Datum, das konvertiert werden soll"
+
+#: mdl_Translation:35
+msgid "Returns a Christian date as Islamic date."
+msgstr "Gibt ein islamisches Datum aus einem  christlichen Datum zurück."
+
+#: mdl_Translation:38
+msgid "GivenDate - Islamic date as string to be converted"
+msgstr "Datum (GivenDate) - Islamisches Datum, das konvertiert werden soll"
+
+#: mdl_Translation:39
+msgid ""
+"Returns an Islamic date as Christian date eg '1. Muharram 1445 AH'. Spelling "
+"of Islamic month:"
+msgstr ""
+"Gibt ein Christliches Datum aus  einem islamischen zurück, z. B. '1. "
+"Muharram 1445 AH'.  Schreibweise der islamischen Monate:"
+
+#: mdl_Translation:43 mdl_Oultlook:234
 msgid "Germany"
 msgstr "Deutschland"
 
-#: mdl_Translation:34 mdl_Oultlook:236
+#: mdl_Translation:44 mdl_Oultlook:236
 msgid "Austria"
 msgstr "Österreich"
 
-#: mdl_Translation:35 mdl_Oultlook:238
+#: mdl_Translation:45 mdl_Oultlook:238
 msgid "Switzerland"
 msgstr "Schweiz"
 
-#: mdl_Translation:36 mdl_Oultlook:240
+#: mdl_Translation:46 mdl_Oultlook:240
 msgid "Italy"
 msgstr "Italien"
 
@@ -270,7 +290,7 @@ msgstr "Wert einfügen"
 msgid "Holiday, inoHolidays"
 msgstr "Feiertag, inoHolidays"
 
-#: mdl_Oultlook:121 mdl_Project:109
+#: mdl_Oultlook:121 mdl_Project:116
 msgid ""
 "{} entries processed for {}. Thereof \n"
 "{} new entries\n"
@@ -383,11 +403,11 @@ msgstr "Das zweite Jahr muss als Zahl angegeben sein."
 msgid "A calendar name must be given."
 msgstr "Ein Kalendar muss  ausgewählt sein."
 
-#: frmProjectImport:73
+#: frmProjectImport:77
 msgid "Import holidays into Project file '{}'"
 msgstr "Import die Feiertage in Project Datei '{}'"
 
-#: frmProjectImport:116
+#: frmProjectImport:121
 msgid ""
 "The first 4 fields must be used.{}You can enter a new calendar by entering "
 "the new name into the calendar field."
