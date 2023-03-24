@@ -5,7 +5,7 @@ Private olApp As Outlook.Application
 Private olHoliday As Outlook.AppointmentItem
 Private olHolidaytest As Outlook.AppointmentItem
 
-Sub EnterHoliday(holiday As String, myDate As Date, Location As String, Optional status As Integer = 0)
+Sub EnterHoliday(Holiday As String, myDate As Date, Location As String, Optional status As Integer = 0)
 
     If olApp Is Nothing Then
         Set olApp = GetObject(, "Outlook.Application")
@@ -17,7 +17,7 @@ Sub EnterHoliday(holiday As String, myDate As Date, Location As String, Optional
         .AllDayEvent = True
         .Start = VBA.Format(myDate, "dd.mm.yyyy")
     
-        .Subject = holiday
+        .Subject = Holiday
         .ReminderSet = False
         .Location = Location
         .BusyStatus = status  'free = 0, busy =2
@@ -32,7 +32,7 @@ Sub EnterHoliday(holiday As String, myDate As Date, Location As String, Optional
 
 End Sub
 
-Public Function getHoliday(myDate As Date, holiday As String, Location As String) As Outlook.AppointmentItem
+Public Function getHoliday(myDate As Date, Holiday As String, Location As String) As Outlook.AppointmentItem
     Dim myStart As Date
     Dim myEnd As Date
     Dim olCalendar As Outlook.Folder
@@ -62,7 +62,7 @@ Public Function getHoliday(myDate As Date, holiday As String, Location As String
     Set olResItems = olItems.Restrict(strRestriction)
      
     For Each olAppt In olResItems
-        If olAppt.Categories Like "*inoHolidays*" And olAppt.Subject = holiday Then
+        If olAppt.Categories Like "*inoHolidays*" And olAppt.Subject = Holiday Then
             Set getHoliday = olAppt
             Exit Function
         End If
@@ -74,7 +74,7 @@ Public Sub ImportOutlookHolidays(ByVal myYear As Integer, ByVal CountryDef As St
     Dim clsH As New clsHolidays
     Dim arr
     Dim i As Integer
-    Dim holiday As AppointmentItem
+    Dim Holiday As AppointmentItem
     Dim intNew As Integer
     Dim intChanged As Integer
     Dim intNoChange As Integer
@@ -94,7 +94,7 @@ Public Sub ImportOutlookHolidays(ByVal myYear As Integer, ByVal CountryDef As St
         Dim h() As String
         Dim intBusy As Integer
         h = Split(arr(i), ";")
-        Set holiday = getHoliday(CDate(h(0)), VBA.Trim(h(1)) & ", " & VBA.Trim(h(2)), Country)
+        Set Holiday = getHoliday(CDate(h(0)), VBA.Trim(h(1)) & ", " & VBA.Trim(h(2)), Country)
         If h(2) Like "*" & StateDef & "*" Or VBA.Trim(h(2)) = "All" Then
             intBusy = olBusy
         Else
@@ -103,12 +103,12 @@ Public Sub ImportOutlookHolidays(ByVal myYear As Integer, ByVal CountryDef As St
         If blnBusy = False Then
             intBusy = olFree
         End If
-        If holiday Is Nothing Then
+        If Holiday Is Nothing Then
             EnterHoliday VBA.Trim(h(1)) & ", " & VBA.Trim(h(2)), CDate(h(0)), Country, intBusy
             intNew = intNew + 1
         Else
-            If holiday.BusyStatus <> intBusy Then
-                holiday.BusyStatus = intBusy
+            If Holiday.BusyStatus <> intBusy Then
+                Holiday.BusyStatus = intBusy
                 intChanged = intChanged + 1
             Else
                 intNoChange = intNoChange + 1
@@ -229,7 +229,7 @@ MyError:
     End Select
 End Sub
 
-Public Function getLocation(ByVal strLocation As String) As String
+Private Function getLocation(ByVal strLocation As String) As String
     Select Case strLocation
         Case "de"
             getLocation = t("Germany")

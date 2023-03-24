@@ -2,7 +2,7 @@ Attribute VB_Name = "mdl_Translation"
 Option Explicit
 Option Private Module
 
-Public strRegister(12) As String
+Public strRegister(17) As String
 Public strCountry(3) As String
 
 Public strErrorCaption As String
@@ -30,6 +30,16 @@ Public Sub setTranslationStrings()
     strRegister(10) = t("DayOfWeek - given as number, 1 - Sunday to 7 - Saturday")
     strRegister(11) = t("NumInMonth - given as number, 1 - 5, 6 = last of month")
     strRegister(12) = t("Returns a date given by year, month, weekday and occurance in a month.")
+    
+    'Function getIslamicDate
+    strRegister(13) = t("GivenDate - Christian date to be converted")
+    strRegister(14) = t("Returns a Christian date as Islamic date.")
+
+    'Function getChristianDate
+    strRegister(15) = t("GivenDate - Islamic date as string to be converted")
+    strRegister(16) = t("Returns an Islamic date as Christian date eg '1. Muharram 1445 AH'. Spelling of Islamic month:")
+    ' Do not translate
+    strRegister(17) = "Muharram, Safar, Rabi I, Rabi II, Jumada I, Jumada II, Radschab, Sha'ban, Ramadan, Schawwal, Dhu'l-Qa'dah, Dhu'l-Hijja"
     
     strCountry(0) = t("Germany")
     strCountry(1) = t("Austria")

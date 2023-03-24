@@ -54,6 +54,28 @@ Sub RegisterFunction()
         Description:=strRegister(12), _
         Category:="inoHolidays", _
         ArgumentDescriptions:=vArgDescr
+        
+    'Function getIslamicDate
+    ReDim vArgDescr(1)
+    
+    vArgDescr(1) = strRegister(13)
+
+    Application.MacroOptions _
+        Macro:="getIslamicDate", _
+        Description:=strRegister(14), _
+        Category:="inoHolidays", _
+        ArgumentDescriptions:=vArgDescr
+
+    'Function getChristianDate
+    ReDim vArgDescr(1)
+    
+    vArgDescr(1) = strRegister(15)
+
+    Application.MacroOptions _
+        Macro:="getChristianDate", _
+        Description:=strRegister(16) & vbNewLine & strRegister(17), _
+        Category:="inoHolidays", _
+        ArgumentDescriptions:=vArgDescr
 End Sub
 
 Sub UnRegisterFunction()
@@ -89,6 +111,22 @@ Sub UnRegisterFunction()
     Application.MacroOptions _
         Macro:="DayOfMonth", _
         Description:=strRegister(12), _
+        Category:=14, _
+        ArgumentDescriptions:=vArgDescr
+        
+    'Function getIslamicDate
+    ReDim vArgDescr(1)
+    Application.MacroOptions _
+        Macro:="getIslamicDate", _
+        Description:=strRegister(14), _
+        Category:=14, _
+        ArgumentDescriptions:=vArgDescr
+
+    'Function getChristianDate
+    ReDim vArgDescr(1)
+    Application.MacroOptions _
+        Macro:="getChristianDate", _
+        Description:=strRegister(16) & vbNewLine & strRegister(17), _
         Category:=14, _
         ArgumentDescriptions:=vArgDescr
 End Sub
