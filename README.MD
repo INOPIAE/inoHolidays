@@ -1,4 +1,5 @@
-# Excel Add-In which adds functions to calculate Easter Sunday and the 4th Advent Sunday as well as functions to get information about public holidays and a list of public holidays and add the list to Outlook and MS Project
+# Excel Add-In which adds functions to calculate Easter Sunday and the 4th Advent Sunday, the converison of christian dates to ismalic dates and vice versa as well as functions to get information about public holidays and a list of public holidays and add the list to Outlook and MS Project
+
 Currently the user interface is available in English and German. The language is chosen by the add-in according to the language of the Excel GUI.
 
 Currently holidays are available for these countries:
@@ -19,6 +20,7 @@ Currently holidays are available for these countries:
 * Slovenia
 * Sweden
 * Switzerland
+* Turkey
 * United Kingdom (States: All, England, Northern Ireland, Scotland, Wales)
 
 To execute the unit tests in the modules mdl_UnitTestClsHolidays.bas and mdl_UnitTestMdlHolidays the the COM add-in rubberduck needs be installed (https://github.com/rubberduck-vba/Rubberduck).
@@ -83,3 +85,5 @@ Within the function wizzard the category inoHolidays shows these functions
 * isHoliday(GivenDate, [Country], [State]) - Checks whether the given date is a holiday for a given country and tentative state.
 * LastAdvent(GivenYear) - returns the date of the 4th Advent Sunday of a given year
 * DayInMonth(GivenYear, GivenMonth, DayInWeek, NumInMonth) - returns a date given by year, month, weekday and occurance in a month.
+* getChristianDate(GivenIslamicDate) - returns a christian date 
+* getIslamicDate(GivenDate) - reurns an islamic date
