@@ -1,6 +1,6 @@
 Attribute VB_Name = "mdl_IslamicCalender"
 Option Explicit
-
+Option Private Module
 
 ' 0 - running days of years, 1 - is islamic leap year: 0 - no leap year, 1 -leap year
 Private IslamicYears(30, 1) As Integer
@@ -181,10 +181,10 @@ StartCorrection:
     getIslamicDayOfMonth = IslamicDayOfMonth
 End Function
 
-Function getIslamicDate(ByVal GivenDate As Date) As String
-Attribute getIslamicDate.VB_Description = "Gibt ein islamisches Datum aus einem  christlichen Datum zurück."
-Attribute getIslamicDate.VB_ProcData.VB_Invoke_Func = " \n14"
-    getIslamicDate = getIslamicDayOfMonth(GivenDate) & ". " & getIslamicMonth(GivenDate) _
+Function IgetIslamicDate(ByVal GivenDate As Date) As String
+Attribute IgetIslamicDate.VB_Description = "Gibt ein islamisches Datum aus einem  christlichen Datum zurück."
+Attribute IgetIslamicDate.VB_ProcData.VB_Invoke_Func = " \n14"
+    IgetIslamicDate = getIslamicDayOfMonth(GivenDate) & ". " & getIslamicMonth(GivenDate) _
         & " " & getIslamicYear(GivenDate) & " AH"
 End Function
 
@@ -212,9 +212,9 @@ Private Function getJulianDays(ByVal GivenIslamicDate As String) As Long
     End If
 End Function
 
-Function getChristianDate(ByVal GivenIslamicDate As String) As Date
-Attribute getChristianDate.VB_Description = "Gibt ein Christliches Datum aus  einem islamischen zurück, z. B. '1. Muharram 1445 AH'.  Schreibweise der islamischen Monate:\r\nMuharram, Safar, Rabi I, Rabi II, Jumada I, Jumada II, Radschab, Sha'ban, Ramadan, Schawwal, Dhu'l-Qa'dah, Dhu'l-Hijja"
-Attribute getChristianDate.VB_ProcData.VB_Invoke_Func = " \n14"
+Function IgetChristianDate(ByVal GivenIslamicDate As String) As Date
+Attribute IgetChristianDate.VB_Description = "Gibt ein Christliches Datum aus  einem islamischen zurück, z. B. '1. Muharram 1445 AH'.  Schreibweise der islamischen Monate:\r\nMuharram, Safar, Rabi I, Rabi II, Jumada I, Jumada II, Radschab, Sha'ban, Ramadan, Schawwal, Dhu'l-Qa'dah, Dhu'l-Hijja"
+Attribute IgetChristianDate.VB_ProcData.VB_Invoke_Func = " \n14"
     fillVariables
     Dim id As Long
     Dim chrDateK As Date
@@ -253,5 +253,5 @@ StartCorrection:
             chrDate = chrDateK
         End If
     End If
-    getChristianDate = chrDate
+    IgetChristianDate = chrDate
 End Function

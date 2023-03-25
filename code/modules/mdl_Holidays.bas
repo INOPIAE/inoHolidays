@@ -1,5 +1,6 @@
 Attribute VB_Name = "mdl_Holidays"
 Option Explicit
+Option Private Module
 
 Private clsH As New clsHolidays
 
@@ -17,9 +18,9 @@ Public Enum NumberInMonth
     Last = 6
 End Enum
 
-Public Function Easter(ByVal GivenYear As Integer) As Date
-Attribute Easter.VB_Description = "Gibt das Datum des Ostersonntags für das angegebene Jahr zurück."
-Attribute Easter.VB_ProcData.VB_Invoke_Func = " \n14"
+Public Function IEaster(ByVal GivenYear As Integer) As Date
+Attribute IEaster.VB_Description = "Gibt das Datum des Ostersonntags für das angegebene Jahr zurück."
+Attribute IEaster.VB_ProcData.VB_Invoke_Func = " \n14"
 
     'calculates the date of Easter of a given year
     
@@ -55,13 +56,13 @@ Attribute Easter.VB_ProcData.VB_Invoke_Func = " \n14"
     
     GivenDate = W + 31 * (W > 31)
     
-    Easter = DateSerial(GivenYear, Mon, GivenDate)
+    IEaster = DateSerial(GivenYear, Mon, GivenDate)
 
 End Function
 
-Public Function LastAdvent(ByVal GivenYear As Integer) As Date
-Attribute LastAdvent.VB_Description = "Jahr(GivenYear) - Jahr für den 4. Adventsonntag"
-Attribute LastAdvent.VB_ProcData.VB_Invoke_Func = " \n14"
+Public Function ILastAdvent(ByVal GivenYear As Integer) As Date
+Attribute ILastAdvent.VB_Description = "Jahr(GivenYear) - Jahr für den 4. Adventsonntag"
+Attribute ILastAdvent.VB_ProcData.VB_Invoke_Func = " \n14"
     Dim dt As Date
     dt = DateSerial(GivenYear, 12, 24)
     Dim wkday As Integer
@@ -69,7 +70,7 @@ Attribute LastAdvent.VB_ProcData.VB_Invoke_Func = " \n14"
     If wkday <> 7 Then
         dt = DateAdd("d", -wkday, dt)
     End If
-    LastAdvent = dt
+    ILastAdvent = dt
 End Function
 
 Public Sub ImportHolidays()
@@ -100,30 +101,30 @@ Public Sub ImportHolidays()
     
 End Sub
 
-Public Function isHoliday(ByVal GivenDate As Date, _
+Public Function IisHoliday(ByVal GivenDate As Date, _
     Optional ByVal Country As String = "de", Optional ByVal State As String = vbNullString) As Boolean
-Attribute isHoliday.VB_Description = "Prüft, ob das angegebene Datum (GivenDate) unter Berücksichtigung des Staates und evtl. Bundeslandes ein Feiertag ist."
-Attribute isHoliday.VB_ProcData.VB_Invoke_Func = " \n14"
-    isHoliday = clsH.isHoliday(GivenDate, Country, State)
+Attribute IisHoliday.VB_Description = "Prüft, ob das angegebene Datum (GivenDate) unter Berücksichtigung des Staates und evtl. Bundeslandes ein Feiertag ist."
+Attribute IisHoliday.VB_ProcData.VB_Invoke_Func = " \n14"
+    IisHoliday = clsH.isHoliday(GivenDate, Country, State)
 End Function
 
-Public Function DayOfMonth(ByVal GivenYear As Integer, GivenMonth As Integer, ByVal DayOfWeek As VbDayOfWeek, ByVal NumInMonth As NumberInMonth) As Variant
-Attribute DayOfMonth.VB_Description = "Gibt das Datum für die Eingabe von Jahr, Monat, Wochentag und Vorkommen im Monat zurück."
-Attribute DayOfMonth.VB_ProcData.VB_Invoke_Func = " \n14"
+Public Function IDayOfMonth(ByVal GivenYear As Integer, GivenMonth As Integer, ByVal DayOfWeek As VbDayOfWeek, ByVal NumInMonth As NumberInMonth) As Variant
+Attribute IDayOfMonth.VB_Description = "Gibt das Datum für die Eingabe von Jahr, Monat, Wochentag und Vorkommen im Monat zurück."
+Attribute IDayOfMonth.VB_ProcData.VB_Invoke_Func = " \n14"
     Dim PosMonth As Integer
     Dim GivenDate As Date
     GivenDate = DateSerial(GivenYear, GivenMonth, 1)
     PosMonth = NumInMonth
     If NumInMonth = 6 Then PosMonth = NumInMonth - 1
     
-    DayOfMonth = GivenDate - Weekday(GivenDate - DayOfWeek + 1, 2) + 7 * PosMonth
+    IDayOfMonth = GivenDate - Weekday(GivenDate - DayOfWeek + 1, 2) + 7 * PosMonth
 
-    If Month(DayOfMonth) <> Month(GivenDate) Then
+    If Month(IDayOfMonth) <> Month(GivenDate) Then
         If NumInMonth = 6 Then
             PosMonth = NumInMonth - 2
-            DayOfMonth = GivenDate - Weekday(GivenDate - DayOfWeek + 1, 2) + 7 * PosMonth
+            IDayOfMonth = GivenDate - Weekday(GivenDate - DayOfWeek + 1, 2) + 7 * PosMonth
         Else
-            DayOfMonth = CVErr(xlErrNA)
+            IDayOfMonth = CVErr(xlErrNA)
         End If
     End If
 End Function
