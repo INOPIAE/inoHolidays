@@ -1,4 +1,8 @@
-# Excel Add-In which adds functions to calculate Easter Sunday and the 4th Advent Sunday, the converison of christian dates to ismalic dates and vice versa as well as functions to get information about public holidays and a list of public holidays and add the list to Outlook and MS Project
+# Excel Add-In for various date calculations and conversions conversions and to list public holidays and import a public holiday list to Outlook an MS Project 
+
+inoHolidays offers functions to calculate Easter and the 4th Advent Sunday for given year and  do conversion from a Christian date to an Islamic date and vice versa. 
+
+Furthermore a list for public holdidays for a given county can be generated. The holiday list can be imported to MS Outlook and MS Project. For  some counties there is the choice which regional holiday shoud be imported.
 
 Currently the user interface is available in English and German. The language is chosen by the add-in according to the language of the Excel GUI.
 
@@ -23,7 +27,7 @@ Currently holidays are available for these countries:
 * Turkey
 * United Kingdom (States: All, England, Northern Ireland, Scotland, Wales)
 
-To execute the unit tests in the modules mdl_UnitTestClsHolidays.bas and mdl_UnitTestMdlHolidays the the COM add-in rubberduck needs be installed (https://github.com/rubberduck-vba/Rubberduck).
+To execute the unit tests in the modules starting with mdl_UnitTest the COM add-in rubberduck needs be installed (https://github.com/rubberduck-vba/Rubberduck).
 (Thank you guys for your work)
 
 Line numbering in the code is generated with the code from https://github.com/INOPIAE/inoLineNumbering.
@@ -85,5 +89,11 @@ Within the function wizzard the category inoHolidays shows these functions
 * isHoliday(GivenDate, [Country], [State]) - Checks whether the given date is a holiday for a given country and tentative state.
 * LastAdvent(GivenYear) - returns the date of the 4th Advent Sunday of a given year
 * DayInMonth(GivenYear, GivenMonth, DayInWeek, NumInMonth) - returns a date given by year, month, weekday and occurance in a month.
-* getChristianDate(GivenIslamicDate) - returns a christian date 
-* getIslamicDate(GivenDate) - reurns an islamic date
+
+    DayOfWeek - given as number, 1 - Sunday to 7 - Saturday
+    NumInMonth - given as number, 1 - 5, 6 = last of month
+        
+* getChristianDate(GivenIslamicDate) - returns a christian date
+
+    spelling of isalmic month: Muharram, Safar, Rabi I, Rabi II, Jumada I, Jumada II, Radschab, Sha'ban, Ramadan, Schawwal, Dhu'l-Qa'dah, Dhu'l-Hijja, eg. 1. Muharram 1442 AH
+* getIslamicDate(GivenDate) - returns an islamic date
