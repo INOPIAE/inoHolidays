@@ -38,6 +38,18 @@ Download the file download_inoHolidays.zip to your system and unzip the content.
 
 In Excel use File - Options
 
+First adjust some settings within Excel.
+
+Open File - Options - Trust center - Trust Center Settings
+
+![Trust center settings](./images/trustcenter_settings.png)
+
+Navigate to Macro settings and activate Grand accees to VBA-project object model
+
+Next add the Add-In to Excel 
+
+Open File - Options
+
 ![fileoptions](./images/fileoptions.png)
 
 Choose tab Add-ins and select "Manage Excel-Add-Ins" and click go.
@@ -57,16 +69,6 @@ If you have no MS Project installed the folloing messages will occur during the 
 ![Error missing Library](./images/missing_project.png)
 
 Both messages can be finished with OK.
-
-Next adjust some settings within Excel.
-
-Open File - Options - Trust center - Trust Center Settings
-
-![Trust center settings](./images/trustcenter_settings.png)
-
-Navigate to Macro settings and activate Grand accees to VBA-project object model
-
-
 
 Now the Add-In is available.
 
