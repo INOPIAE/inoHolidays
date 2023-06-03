@@ -2,8 +2,10 @@ Attribute VB_Name = "mdl_Version"
 Option Explicit
 Option Private Module
 
-Public Const strMakroVersion As String = "0.16"
-Public Const dtVersionOf As Date = #3/25/2023#
+Public Const intMajorVersion As String = 0
+Public Const intMinorVersion As String = 17
+Public Const dtVersionDate As Date = #6/3/2023#
+
 Public Const strVBProjects As String = "inoHolidays"
 Private Const strVBComponents As String = "DieseArbeitsmappe"
 
@@ -24,7 +26,7 @@ Public Sub UpdateXlamFileProperties()
     Application.VBE.VBProjects(strVBProjects).VBComponents(strVBComponents).Properties("IsAddin") = False
     Set wkb = Application.Workbooks(strVBProjects & ".xlam")
 '    strText = wkb.BuiltinDocumentProperties("Comments")
-    strText = "Version " & strMakroVersion & " " & VBA.Format(dtVersionOf, "D. MMMM YYYY")
+    strText = "Version " & intMajorVersion & ":" & intMinorVersion & " " & VBA.Format(dtVersionDate, "D. MMMM YYYY")
     wkb.BuiltinDocumentProperties("Comments") = strText
     Application.VBE.VBProjects(strVBProjects).VBComponents(strVBComponents).Properties("IsAddin") = True
 

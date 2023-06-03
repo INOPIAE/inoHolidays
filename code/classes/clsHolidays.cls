@@ -154,7 +154,7 @@ Private Sub InitDateFile()
             End If
             If myLine(0) = "Ostern" Then
                 Holidays(intLine).GivenDate = Ostersonntag
-            ElseIf Left(myLine(0), 3) = "Isl" Then
+            ElseIf VBA.Left(myLine(0), 3) = "Isl" Then
                 Dim Isl() As String
                 Dim islDate As Date
                 Dim blnSecondEntry As Boolean
@@ -181,9 +181,9 @@ Private Sub InitDateFile()
             Else
                 Select Case VBA.Left(myLine(0), pos - 1)
                     Case "Ostern"
-                        Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), Ostersonntag)
+                        Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(VBA.Mid(myLine(0), pos + 1)), Ostersonntag)
                     Case "Advent"
-                        Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(Mid(myLine(0), pos + 1)), LetzterAdvent)
+                        Holidays(intLine).GivenDate = DateAdd("d", -intSign * CInt(VBA.Mid(myLine(0), pos + 1)), LetzterAdvent)
                     Case "Tag"
                         Dim Tage() As String
                         Tage = Split(myLine(0), ",")

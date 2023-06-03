@@ -38,8 +38,8 @@ Public Function printF(ByVal strText As String, ParamArray Args()) As String
         startPos = InStr(strRetVal, "{" & CStr(i) & ":")
         If startPos > 0 Then
             endPos = InStr(startPos + 1, strRetVal, "}")
-            formatString = Mid(strRetVal, startPos + 2 + argValueLen, endPos - (startPos + 2 + argValueLen))
-            strRetVal = Mid(strRetVal, 1, startPos - 1) & VBA.Format(Nz(Args(i), ""), formatString) & Mid(strRetVal, endPos + 1)
+            formatString = VBA.Mid(strRetVal, startPos + 2 + argValueLen, endPos - (startPos + 2 + argValueLen))
+            strRetVal = VBA.Mid(strRetVal, 1, startPos - 1) & VBA.Format(Nz(Args(i), ""), formatString) & VBA.Mid(strRetVal, endPos + 1)
         Else
             strRetVal = Replace(strRetVal, "{" & CStr(i) & "}", Nz(Args(i), ""))
         End If
