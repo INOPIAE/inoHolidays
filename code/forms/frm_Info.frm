@@ -21,7 +21,7 @@ End Sub
 
 Private Sub UserForm_Initialize()
     TranslateForm Me
-    Me.lblTitle.Caption = "inoHolidays Version " & intMajorVersion & "." & intMinorVersion & " (" & dtVersionDate & ")"
-    Me.lblCopyright.Caption = t("Copyright") & " 2021 - " & Year(Date)
+    Me.lblTitle.Caption = "inoHolidays Version " & strMakroVersion & " (" & dtVersionOf & ")"
+    Me.lblCopyright.Caption = t("Copyright") & " 2021 - " & Year(VBA.Date)
     Me.lblInfo.Caption = t("The source code is OpenSource under AGPLv3.{}The source code and the documentation are available at {}", vbNewLine, "https://github.com/INOPIAE/inoHolidays")
 End Sub

@@ -219,8 +219,13 @@ Private Sub InitDateFile()
             End If
         End If
         
-
-        intLine = intLine + 1
+        If UBound(myLine) = 3 Then
+            If Year(Holidays(intLine).GivenDate) = myLine(3) Then
+                intLine = intLine + 1
+            End If
+        Else
+            intLine = intLine + 1
+        End If
     Loop
     
     Close #FNr
