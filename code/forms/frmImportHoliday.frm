@@ -18,6 +18,7 @@ Option Explicit
 Public GivenYear As Integer
 Private Countries() As String
 Public Country As String
+Private sRng As Range
 
 Private Sub cmdCancel_Click()
     ImportBln = False
@@ -61,6 +62,23 @@ Private Sub cmdImport_Click()
     ImportCountry = Me.cboCountry.text
     Set ImportRange = rng
     Unload Me
+End Sub
+
+Private Sub CmdSelect_Click()
+    SelectRange
+End Sub
+
+Private Sub SelectRange()
+    On Error Resume Next
+    Set sRng = Application.InputBox(t("Please select range"), Title:=t("Input"), Type:=8)
+    On Error GoTo 0
+    If Not sRng Is Nothing Then
+        Me.reZelle.Value = sRng.Address
+    End If
+End Sub
+
+Private Sub reZelle_DblClick(ByVal Cancel As MSForms.ReturnBoolean)
+    SelectRange
 End Sub
 
 Private Sub UserForm_Initialize()

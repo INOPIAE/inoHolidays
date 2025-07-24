@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL-ADDRESS\n"
 "POT-Creation-Date: 2023-03-21 12:01:22 +0100\n"
-"PO-Revision-Date: 2023-03-21 12:03+0100\n"
+"PO-Revision-Date: 2025-07-24 11:58+0200\n"
 "Last-Translator: \n"
 "Language-Team: TEAM NAME\n"
 "Language: de_DE\n"
@@ -12,21 +12,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.6\n"
 
-#: frmImportHoliday:14 frmOutlookImport:21
+#: ..\code\forms\frmImportHoliday.frm:30 ..\code\forms\frmOutlookImport.frm:36
 msgid "GivenYear needs to be entered as number."
 msgstr "Das Jahr muss als Zahl angegeben sein."
 
-#: frmImportHoliday:25
+#: ..\code\forms\frmImportHoliday.frm:41
 msgid "Select a cell."
 msgstr "Es muss eine Zelle ausgewählt werden."
 
-#: frmImportHoliday:35 frmFunction:52
+#: ..\code\forms\frmFunction.frm:67 ..\code\forms\frmImportHoliday.frm:51
 msgid "Only one cell must be selected."
 msgstr "Es darf nur eine Zelle ausgewählt werden."
 
-#: frmImportHoliday:83
+#: ..\code\forms\frmImportHoliday.frm:120
 msgid ""
 "There should be 3 emtpy columns and 20 empty rows starting from the given "
 "cell. Filled cell will be overwriten without further notification."
@@ -34,70 +34,43 @@ msgstr ""
 "Es müssen ab der ausgewählten Zelle 3 Spalten und  20 Zeilen Platz sein. "
 "Gefüllte Zellen werden ohne Rückfrage überschrieben."
 
-#: frmImportHoliday:Caption mdl_ribbon:18
+#: ..\code\modules\mdl_ribbon.bas:19
 msgid "Import Holidays"
 msgstr "Feiertage importieren"
 
-#: frmImportHoliday:cmdImport
-msgid "List"
-msgstr "Auflisten"
-
-#: frmImportHoliday:cmdCancel frmFunction:cmdCancel frmOutlookImport:cmdCancel
-#: frmProjectImport:cmdCancel
-msgid "Cancel"
-msgstr "Abbrechen"
-
-#: frmImportHoliday:lblJahr frmOutlookImport:lblJahr frmProjectImport:lblJahr
-msgid "Year:"
-msgstr "Für Jahr:"
-
-#: frmImportHoliday:lblCell
-msgid "Import into cell:"
-msgstr "Importieren in Zelle:"
-
-#: frmImportHoliday:lblInfo frm_Info:lblTitle frm_Info:lblInfo
-#: frm_Info:lblCopyright frmFunction:Caption frmFunction:lblInfo
-#: frmFunction:lblJahrValue frmFunction:lblResult frmOutlookImport:lblInfo
-#: frmProjectImport:lblInfo
-msgid "no translation"
-msgstr "keine Überseztung"
-
-#: frmImportHoliday:lblCountry frmOutlookImport:lblCountry
-#: frmProjectImport:lblCountry
-msgid "Country:"
-msgstr "Land:"
-
-#: mdl_ribbon:20
+#: ..\code\modules\mdl_ribbon.bas:21
 msgid "Function Easter"
 msgstr "Funktion Easter"
 
-#: mdl_ribbon:22
+#: ..\code\modules\mdl_ribbon.bas:23
 msgid "Function LastAdvent"
 msgstr "Funktion LastAdvent"
 
-#: mdl_ribbon:26
+#: ..\code\modules\mdl_ribbon.bas:27
 msgid "Info"
 msgstr "Info"
 
-#: mdl_ribbon:28 mdl_ribbon:49 mdl_ribbon:70
+#: ..\code\modules\mdl_ribbon.bas:29 ..\code\modules\mdl_ribbon.bas:50
+#: ..\code\modules\mdl_ribbon.bas:71
 msgid "Add Holidays to Outlook"
 msgstr "Feiertage nach Outlook importieren"
 
-#: mdl_ribbon:30 mdl_ribbon:51 mdl_ribbon:72
+#: ..\code\modules\mdl_ribbon.bas:31 ..\code\modules\mdl_ribbon.bas:52
+#: ..\code\modules\mdl_ribbon.bas:73
 msgid "Add Holidays to MS Project"
 msgstr "Feiertage nach MS Project importieren"
 
-#: mdl_ribbon:39 mdl_ribbon:60
+#: ..\code\modules\mdl_ribbon.bas:40 ..\code\modules\mdl_ribbon.bas:61
 msgid "Import holidays of a given Year."
 msgstr "Import die Feiertage eines angegebenen Jahres."
 
-#: mdl_ribbon:41 mdl_ribbon:62
+#: ..\code\modules\mdl_ribbon.bas:42 ..\code\modules\mdl_ribbon.bas:63
 msgid "Function Easter returns the date of Easter sunday of a given year."
 msgstr ""
 "Die Funktion Easter gibt das Datum des Ostersonntags für das angegebene Jahr "
 "zurück."
 
-#: mdl_ribbon:43 mdl_ribbon:64
+#: ..\code\modules\mdl_ribbon.bas:44 ..\code\modules\mdl_ribbon.bas:65
 msgid ""
 "Function LastAdvent returns the date of the 4th Sunday in Advent of a given "
 "year."
@@ -105,75 +78,39 @@ msgstr ""
 "Die Funktion LastAdvent gibt das Datum des 4. Adventssonntags für das "
 "angegebene Jahr zurück."
 
-#: frm_Info:10
+#: ..\code\forms\frm_Info.frm:25
 msgid "Copyright"
 msgstr "Copyright"
 
-#: frm_Info:11
-msgid ""
-"The source code is OpenSource under AGPLv3.{}The source code and the "
-"documentation are available at {}"
-msgstr ""
-"Der Quellcode ist OpenSource unter AGPLv3.{}Der Quellcode und die "
-"Dokumentation sind verfügbar auf {}"
-
-#: frm_Info:Caption
-msgid "inoHolidays"
-msgstr "inoHolidays"
-
-#: frm_Info:cmdOK
-msgid "OK"
-msgstr "OK"
-
-#: mdl_Version:226
-msgid "{} is not installed."
-msgstr "{} ist nicht installiert."
-
-#: mdl_Translation:11
+#: ..\code\modules\mdl_Translation.bas:12
 msgid "Error"
 msgstr "Fehler"
 
-#: mdl_Translation:12
+#: ..\code\modules\mdl_Translation.bas:13
 msgid "Instering hint"
 msgstr "Eingabehinweis"
 
-#: mdl_Translation:14
+#: ..\code\modules\mdl_Translation.bas:15
 msgid "GivenYear - Year for the Easter Sunday"
 msgstr "Jahr(GivenYear) - Jahr für den Ostersonntag"
 
-#: mdl_Translation:15
+#: ..\code\modules\mdl_Translation.bas:16
 msgid "Returns the date of Easter Sunday of the given year."
 msgstr "Gibt das Datum des Ostersonntags für das angegebene Jahr zurück."
 
-#: mdl_Translation:17
+#: ..\code\modules\mdl_Translation.bas:18
 msgid "GivenYear - Year for the 4th Advent Sunday"
 msgstr "Jahr(GivenYear) - Jahr für den 4. Adventsonntag"
 
-#: mdl_Translation:18
+#: ..\code\modules\mdl_Translation.bas:19
 msgid "Returns the date of 4th Advent Sunday of the given year."
 msgstr "Gibt das Datum des 4. Adventsonntags für das angegebene Jahr zurück."
 
-#: mdl_Translation:20
+#: ..\code\modules\mdl_Translation.bas:21
 msgid "GivenDate - Date to be checked"
 msgstr "Jahr(GivenDate) - Datum, das geprüft werden soll"
 
-#: mdl_Translation:22
-msgid ""
-"Country - Country in 2-letter-ISO-Code for which the holiday shall be "
-"checked. Default value is 'de'."
-msgstr ""
-"Country - Das Land (Country) in 2-Zeichen-ISO-Code für den der Feiertag "
-"ermittelt werden soll. Standardvorgabe ist 'de'."
-
-#: mdl_Translation:24
-msgid ""
-"State - State for which the holiday shall be checked. (see documantation) No "
-"default value given."
-msgstr ""
-"State/Region - Das Bundesland für das der Feiertag ermittelt werden soll. "
-"(siehe Dokumentation) Es gibt keine Standardvorgabe."
-
-#: mdl_Translation:25
+#: ..\code\modules\mdl_Translation.bas:26
 msgid ""
 "Checks whether the given date is a holiday for a given country and tentative "
 "state."
@@ -181,43 +118,43 @@ msgstr ""
 "Prüft, ob das angegebene Datum (GivenDate) unter Berücksichtigung des "
 "Staates und evtl. Bundeslandes ein Feiertag ist."
 
-#: mdl_Translation:27
+#: ..\code\modules\mdl_Translation.bas:28
 msgid "GivenYear - year"
 msgstr "Jahr(GivenYear) - Jahr"
 
-#: mdl_Translation:28
+#: ..\code\modules\mdl_Translation.bas:29
 msgid "GivenMonth - month given as number"
 msgstr "Monat (GivenMonth) - Monat als Zahl angegeben"
 
-#: mdl_Translation:29
+#: ..\code\modules\mdl_Translation.bas:30
 msgid "DayOfWeek - given as number, 1 - Sunday to 7 - Saturday"
 msgstr ""
 "Wochentag (DayOfWeek) - Eingabe als Zahl , 1  - Sonntag bis 7 - Samstag"
 
-#: mdl_Translation:30
+#: ..\code\modules\mdl_Translation.bas:31
 msgid "NumInMonth - given as number, 1 - 5, 6 = last of month"
 msgstr ""
 "Zahl im Monat (NumInMonth) - Eingabe als Zahl, 1 - 5, 6 = letzter des Monats"
 
-#: mdl_Translation:31
+#: ..\code\modules\mdl_Translation.bas:32
 msgid "Returns a date given by year, month, weekday and occurance in a month."
 msgstr ""
 "Gibt das Datum für die Eingabe von Jahr, Monat, Wochentag und Vorkommen im "
 "Monat zurück."
 
-#: mdl_Translation:34
+#: ..\code\modules\mdl_Translation.bas:35
 msgid "GivenDate - Christian date to be converted"
 msgstr "Datum (GivenDate) - Christliches Datum, das konvertiert werden soll"
 
-#: mdl_Translation:35
+#: ..\code\modules\mdl_Translation.bas:36
 msgid "Returns a Christian date as Islamic date."
 msgstr "Gibt ein islamisches Datum aus einem  christlichen Datum zurück."
 
-#: mdl_Translation:38
+#: ..\code\modules\mdl_Translation.bas:39
 msgid "GivenDate - Islamic date as string to be converted"
 msgstr "Datum (GivenDate) - Islamisches Datum, das konvertiert werden soll"
 
-#: mdl_Translation:39
+#: ..\code\modules\mdl_Translation.bas:40
 msgid ""
 "Returns an Islamic date as Christian date eg '1. Muharram 1445 AH'. Spelling "
 "of Islamic month:"
@@ -225,207 +162,267 @@ msgstr ""
 "Gibt ein Christliches Datum aus  einem islamischen zurück, z. B. '1. "
 "Muharram 1445 AH'.  Schreibweise der islamischen Monate:"
 
-#: mdl_Translation:43 mdl_Oultlook:234
+#: ..\code\modules\mdl_Oultlook.bas:235 ..\code\modules\mdl_Translation.bas:44
 msgid "Germany"
 msgstr "Deutschland"
 
-#: mdl_Translation:44 mdl_Oultlook:236
+#: ..\code\modules\mdl_Oultlook.bas:237 ..\code\modules\mdl_Translation.bas:45
 msgid "Austria"
 msgstr "Österreich"
 
-#: mdl_Translation:45 mdl_Oultlook:238
+#: ..\code\modules\mdl_Oultlook.bas:239 ..\code\modules\mdl_Translation.bas:46
 msgid "Switzerland"
 msgstr "Schweiz"
 
-#: mdl_Translation:46 mdl_Oultlook:240
+#: ..\code\modules\mdl_Oultlook.bas:241 ..\code\modules\mdl_Translation.bas:47
 msgid "Italy"
 msgstr "Italien"
 
-#: frmFunction:8
-msgid "MM/dd/yyyy"
-msgstr "dd.MM.yyyy"
-
-#: frmFunction:57
+#: ..\code\forms\frmFunction.frm:72
 msgid "The cell must contain a number."
 msgstr "Die Zelle muss eine Zahl enthalten."
 
-#: frmFunction:71
+#: ..\code\forms\frmFunction.frm:86
 msgid "No valid range entered."
 msgstr "Es wurde kein gültiger Bereich eingegeben."
 
-#: frmFunction:77
-msgid "The error {} occured in line {}:"
-msgstr "Der Fehler {} ist in Zeile {} aufgetreten:"
-
-#: frmFunction:103 frmFunction:106
-msgid "Function {}"
-msgstr "Funktion {}"
-
-#: frmFunction:104
-msgid "The function {} returns the date of Easter Sunday of the given year."
-msgstr ""
-"Die Funktion {} gibt das Datum des Ostersonntags für das angegebene Jahr "
-"zurück."
-
-#: frmFunction:107
-msgid ""
-"The function {} returns the date of 4th Advent Sunday of the given year."
-msgstr ""
-"Die Funktion {} gibt das Datum des 4. Adventssonntags für das angegebene "
-"Jahr zurück."
-
-#: frmFunction:lblJahr
-msgid "Given Year:"
-msgstr "Jahr (GivenYear):"
-
-#: frmFunction:cmdImport
-msgid "Insert function"
-msgstr "Funktion einfügen"
-
-#: frmFunction:cmdValue
-msgid "Insert value"
-msgstr "Wert einfügen"
-
-#: mdl_Oultlook:23
+#: ..\code\modules\mdl_Oultlook.bas:24
 msgid "Holiday, inoHolidays"
 msgstr "Feiertag, inoHolidays"
 
-#: mdl_Oultlook:121 mdl_Project:116
-msgid ""
-"{} entries processed for {}. Thereof \n"
-"{} new entries\n"
-"{} changed entries\n"
-"{} unchanged entries"
-msgstr ""
-"{} Einträge für {} bearbeitet. Davon \n"
-"{} neue Einträge\n"
-"{} geänderte Einträge\n"
-"{} unveränderte Einträge"
-
-#: mdl_Oultlook:128 mdl_Oultlook:183 mdl_Oultlook:225
+#: ..\code\modules\mdl_Oultlook.bas:129 ..\code\modules\mdl_Oultlook.bas:184
+#: ..\code\modules\mdl_Oultlook.bas:226
 msgid "Outlook must be started."
 msgstr "Outlook muss geöffnet sein."
 
-#: mdl_Oultlook:176
-msgid "{} entries deleted for {}."
-msgstr "{} Einträge für {} gelöscht."
-
-#: mdl_Oultlook:218
-msgid "{} entries deleted."
-msgstr "{} Einträge gelöscht."
-
-#: mdl_Oultlook:242
+#: ..\code\modules\mdl_Oultlook.bas:243
 msgid "Netherlands"
 msgstr "Niederlande"
 
-#: mdl_Oultlook:244
+#: ..\code\modules\mdl_Oultlook.bas:245
 msgid "Poland"
 msgstr "Polen"
 
-#: mdl_Oultlook:246
+#: ..\code\modules\mdl_Oultlook.bas:247
 msgid "Sweden"
 msgstr "Schweden"
 
-#: frmOutlookImport:30
+#: ..\code\forms\frmOutlookImport.frm:45
 msgid "Country needs to be given."
 msgstr "Land (Country) muss angegeben werden."
 
-#: frmOutlookImport:43 frmProjectImport:21
+#: ..\code\forms\frmOutlookImport.frm:58 ..\code\forms\frmProjectImport.frm:36
 msgid "Year must be entered as number."
 msgstr "Das Jahr muss als Zahl angegeben sein."
 
-#: frmOutlookImport:52 frmProjectImport:39
+#: ..\code\forms\frmOutlookImport.frm:67 ..\code\forms\frmProjectImport.frm:54
 msgid "A country must be selected."
 msgstr "Es darf nur eine Zelle ausgewählt werden."
 
-#: frmOutlookImport:61 frmProjectImport:48
+#: ..\code\forms\frmOutlookImport.frm:76 ..\code\forms\frmProjectImport.frm:63
 msgid "A state must be selected."
 msgstr "Es darf nur eine Zelle ausgewählt werden."
 
-#: frmOutlookImport:118
-msgid ""
-"The first 3 fields must be used.{}If 'Add holiday as busy' is ticked the "
-"public holidays will be add as busy for the given State/Region. If State/"
-"Region = All only the countrywide holidays are set as busy."
-msgstr ""
-"Die ersten 3 Felder müssen gefüllt sein.{}Wenn 'Feiertage als gebucht "
-"eintragen' ausgewählt ist, werden die Feiertage für das ausgewählte "
-"Bundesland/Region als gebucht eingetragen. Bundesland/Region =  All nur die "
-"landesweiten Feiertage werden eingetragen."
-
-#: frmOutlookImport:Caption
-msgid "Add Holidays To Outlook"
-msgstr "Feiertage nach Outlook importieren"
-
-#: frmOutlookImport:cmdImport frmProjectImport:cmdImport
-msgid "Import"
-msgstr "Import"
-
-#: frmOutlookImport:cmdDeleteAll frmProjectImport:cmdDeleteAll
-msgid "Delete all"
-msgstr "Alle löschen"
-
-#: frmOutlookImport:cmdDeleteYear frmProjectImport:cmdDeleteYear
-msgid "Delete year"
-msgstr "Jahr löschen"
-
-#: frmOutlookImport:Label1 frmProjectImport:lblState
-msgid "State/Region:"
-msgstr "Bundesland/Region:"
-
-#: frmOutlookImport:chkBusy
-msgid "Add holiday as busy"
-msgstr "Feiertage als gebucht eintragen"
-
-#: Module_Win32API:432
-msgid ""
-"An error occurred with the FormatMessage API function call.\n"
-"Error: {} (Hex {})."
-msgstr ""
-"Ein Fehler ist in dem FormatMessage API Funktionsaufruf aufgetreten.\n"
-"Fehler: {} (Hex {})."
-
-#: Module_Win32API:435
-msgid ""
-"An internal system error occurred with the\n"
-"FormatMessage API function: {}.\n"
-"No futher information is available."
-msgstr ""
-"Ein interner Systemfehler ist bei der FormatMessage API Funktion: {} "
-"aufgetreten.\n"
-"Keine weiteren Informationen verfügbar."
-
-#: frmProjectImport:30
+#: ..\code\forms\frmProjectImport.frm:45
 msgid "Second year must be entered as number."
 msgstr "Das zweite Jahr muss als Zahl angegeben sein."
 
-#: frmProjectImport:57
+#: ..\code\forms\frmProjectImport.frm:72
 msgid "A calendar name must be given."
 msgstr "Ein Kalendar muss  ausgewählt sein."
 
-#: frmProjectImport:77
-msgid "Import holidays into Project file '{}'"
-msgstr "Import die Feiertage in Project Datei '{}'"
-
-#: frmProjectImport:121
-msgid ""
-"The first 4 fields must be used.{}You can enter a new calendar by entering "
-"the new name into the calendar field."
+#: ..\code\forms\frmFunction.frm:36
+msgid " & Me.reGivenYear.Value & "
 msgstr ""
-"Die ersten 4 Felder müssen gefüllt sein.{}Ein neuer Kalender kann durch die "
-"Eingabe eines neuen  Namens angelegt werden.."
 
-#: frmProjectImport:Caption
-msgid "Add Holidays To Project"
-msgstr "Feiertage nach MS Project importieren"
+#: ..\code\forms\frmImportHoliday.frm:75
+msgid "Please select range"
+msgstr "Bitte Bereich auswählen"
 
-#: frmProjectImport:lblCalendar
-msgid "Calendar:"
-msgstr "Kalender:"
+#: ..\code\forms\frmImportHoliday.frm:75
+msgid "Input"
+msgstr "Eingabe"
 
-#: frmProjectImport:lblTo
-msgid "-"
-msgstr "-"
+#: ..\code\modules\mdl_UnitTestClsHolidays.bas:17
+#: ..\code\modules\mdl_UnitTestMdlHolidays.bas:14
+#: ..\code\modules\mdl_UnitTestMdlIslamicCalender.bas:14
+msgid "Rubberduck.AssertClass"
+msgstr ""
+
+#: ..\code\modules\mdl_UnitTestClsHolidays.bas:18
+#: ..\code\modules\mdl_UnitTestMdlHolidays.bas:15
+#: ..\code\modules\mdl_UnitTestMdlIslamicCalender.bas:15
+msgid "Rubberduck.FakesProvider"
+msgstr ""
+
+#: ..\code\modules\mdl_Version.bas:171
+msgid "WScript.Shell"
+msgstr ""
+
+#: ..\code\modules\mdl_Version.bas:172
+msgid "scripting.filesystemobject"
+msgstr ""
+
+#: ..\code\modules\mdl_zip.bas:59
+msgid "Shell.Application"
+msgstr ""
+
+#~ msgid "List"
+#~ msgstr "Auflisten"
+
+#~ msgid "Cancel"
+#~ msgstr "Abbrechen"
+
+#~ msgid "Year:"
+#~ msgstr "Für Jahr:"
+
+#~ msgid "Import into cell:"
+#~ msgstr "Importieren in Zelle:"
+
+#~ msgid "no translation"
+#~ msgstr "keine Überseztung"
+
+#~ msgid "Country:"
+#~ msgstr "Land:"
+
+#~ msgid ""
+#~ "The source code is OpenSource under AGPLv3.{}The source code and the "
+#~ "documentation are available at {}"
+#~ msgstr ""
+#~ "Der Quellcode ist OpenSource unter AGPLv3.{}Der Quellcode und die "
+#~ "Dokumentation sind verfügbar auf {}"
+
+#~ msgid "inoHolidays"
+#~ msgstr "inoHolidays"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "{} is not installed."
+#~ msgstr "{} ist nicht installiert."
+
+#~ msgid ""
+#~ "Country - Country in 2-letter-ISO-Code for which the holiday shall be "
+#~ "checked. Default value is 'de'."
+#~ msgstr ""
+#~ "Country - Das Land (Country) in 2-Zeichen-ISO-Code für den der Feiertag "
+#~ "ermittelt werden soll. Standardvorgabe ist 'de'."
+
+#~ msgid ""
+#~ "State - State for which the holiday shall be checked. (see documantation) "
+#~ "No default value given."
+#~ msgstr ""
+#~ "State/Region - Das Bundesland für das der Feiertag ermittelt werden soll. "
+#~ "(siehe Dokumentation) Es gibt keine Standardvorgabe."
+
+#~ msgid "MM/dd/yyyy"
+#~ msgstr "dd.MM.yyyy"
+
+#~ msgid "The error {} occured in line {}:"
+#~ msgstr "Der Fehler {} ist in Zeile {} aufgetreten:"
+
+#~ msgid "Function {}"
+#~ msgstr "Funktion {}"
+
+#~ msgid "The function {} returns the date of Easter Sunday of the given year."
+#~ msgstr ""
+#~ "Die Funktion {} gibt das Datum des Ostersonntags für das angegebene Jahr "
+#~ "zurück."
+
+#~ msgid ""
+#~ "The function {} returns the date of 4th Advent Sunday of the given year."
+#~ msgstr ""
+#~ "Die Funktion {} gibt das Datum des 4. Adventssonntags für das angegebene "
+#~ "Jahr zurück."
+
+#~ msgid "Given Year:"
+#~ msgstr "Jahr (GivenYear):"
+
+#~ msgid "Insert function"
+#~ msgstr "Funktion einfügen"
+
+#~ msgid "Insert value"
+#~ msgstr "Wert einfügen"
+
+#~ msgid ""
+#~ "{} entries processed for {}. Thereof \n"
+#~ "{} new entries\n"
+#~ "{} changed entries\n"
+#~ "{} unchanged entries"
+#~ msgstr ""
+#~ "{} Einträge für {} bearbeitet. Davon \n"
+#~ "{} neue Einträge\n"
+#~ "{} geänderte Einträge\n"
+#~ "{} unveränderte Einträge"
+
+#~ msgid "{} entries deleted for {}."
+#~ msgstr "{} Einträge für {} gelöscht."
+
+#~ msgid "{} entries deleted."
+#~ msgstr "{} Einträge gelöscht."
+
+#~ msgid ""
+#~ "The first 3 fields must be used.{}If 'Add holiday as busy' is ticked the "
+#~ "public holidays will be add as busy for the given State/Region. If State/"
+#~ "Region = All only the countrywide holidays are set as busy."
+#~ msgstr ""
+#~ "Die ersten 3 Felder müssen gefüllt sein.{}Wenn 'Feiertage als gebucht "
+#~ "eintragen' ausgewählt ist, werden die Feiertage für das ausgewählte "
+#~ "Bundesland/Region als gebucht eingetragen. Bundesland/Region =  All nur "
+#~ "die landesweiten Feiertage werden eingetragen."
+
+#~ msgid "Add Holidays To Outlook"
+#~ msgstr "Feiertage nach Outlook importieren"
+
+#~ msgid "Import"
+#~ msgstr "Import"
+
+#~ msgid "Delete all"
+#~ msgstr "Alle löschen"
+
+#~ msgid "Delete year"
+#~ msgstr "Jahr löschen"
+
+#~ msgid "State/Region:"
+#~ msgstr "Bundesland/Region:"
+
+#~ msgid "Add holiday as busy"
+#~ msgstr "Feiertage als gebucht eintragen"
+
+#~ msgid ""
+#~ "An error occurred with the FormatMessage API function call.\n"
+#~ "Error: {} (Hex {})."
+#~ msgstr ""
+#~ "Ein Fehler ist in dem FormatMessage API Funktionsaufruf aufgetreten.\n"
+#~ "Fehler: {} (Hex {})."
+
+#~ msgid ""
+#~ "An internal system error occurred with the\n"
+#~ "FormatMessage API function: {}.\n"
+#~ "No futher information is available."
+#~ msgstr ""
+#~ "Ein interner Systemfehler ist bei der FormatMessage API Funktion: {} "
+#~ "aufgetreten.\n"
+#~ "Keine weiteren Informationen verfügbar."
+
+#~ msgid "Import holidays into Project file '{}'"
+#~ msgstr "Import die Feiertage in Project Datei '{}'"
+
+#~ msgid ""
+#~ "The first 4 fields must be used.{}You can enter a new calendar by "
+#~ "entering the new name into the calendar field."
+#~ msgstr ""
+#~ "Die ersten 4 Felder müssen gefüllt sein.{}Ein neuer Kalender kann durch "
+#~ "die Eingabe eines neuen  Namens angelegt werden.."
+
+#~ msgid "Add Holidays To Project"
+#~ msgstr "Feiertage nach MS Project importieren"
+
+#~ msgid "Calendar:"
+#~ msgstr "Kalender:"
+
+#~ msgid "-"
+#~ msgstr "-"
 
 #~ msgid "inoRound"
 #~ msgstr "inoRound"

@@ -2,8 +2,8 @@ Attribute VB_Name = "mdl_Version"
 Option Explicit
 Option Private Module
 
-Public Const strMakroVersion As String = "0.17"
-Public Const dtVersionOf As Date = #7/23/2025#
+Public Const strMakroVersion As String = "0.18"
+Public Const dtVersionOf As Date = #7/24/2025#
 Public Const strVBProjects As String = "inoHolidays"
 Private Const strVBComponents As String = "DieseArbeitsmappe"
 
